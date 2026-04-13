@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OUTRAI* — agentifique sua gestão e design de produto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <!-- ─── NAV ──────────────────────────────────────────────── -->
+  <nav id="nav">
+    <img src="Assets/logo-outrai.svg" class="nav-logo" alt="OUTRAI*" width="120">
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-pipe-wrap">
+      <img src="assets/pipe.png" alt="" id="heroPipe">
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-logo" id="heroLogo" aria-label="OUTRAI*">
+        <span class="char">O</span><span class="char">U</span><span class="char">T</span><span class="char">R</span><b><span class="char">A</span><span class="char">I</span><span class="char">*</span></b>
+      </h1>
+      <p class="hero-tagline" id="heroTag">agentifique sua gestão e design de produto</p>
+      <div class="hero-cta-wrap" id="heroCta">
+        <button class="btn btn-onlight" onclick="openModal()">Quero saber mais</button>
+      </div>
+    </div>
+    <div class="hero-spacer"></div>
+  </section>
+
+  <!-- ─── MARQUEE ─────────────────────────────────────────────── -->
+  <div class="marquee-wrapper" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Briefing</span><span class="sep"> · </span>
+      <span>User Research</span><span class="sep"> · </span>
+      <span>Definição</span><span class="sep"> · </span>
+      <span>Arquitetura</span><span class="sep"> · </span>
+      <span>UI / DFT</span><span class="sep"> · </span>
+      <span>Desenvolvimento</span><span class="sep"> · </span>
+      <span>Deploy</span><span class="sep"> · </span>
+      <span>Briefing</span><span class="sep"> · </span>
+      <span>User Research</span><span class="sep"> · </span>
+      <span>Definição</span><span class="sep"> · </span>
+      <span>Arquitetura</span><span class="sep"> · </span>
+      <span>UI / DFT</span><span class="sep"> · </span>
+      <span>Desenvolvimento</span><span class="sep"> · </span>
+      <span>Deploy</span><span class="sep"> · </span>
+    </div>
+  </div>
+
+  <!-- ─── PONTO DE PARTIDA ──────────────────────────────────── -->
+  <section class="sec sec-dark loose">
+    <div class="inner">
+      <h2 class="sec-title neon reveal">ponto de partida</h2>
+      <div class="problema-grid">
+        <div class="reveal d2">
+          <p class="problema-text">
+            <strong style="color:var(--offwhite)">OUTRAI*</strong> surge como uma necessidade interna da
+            <strong style="color:var(--offwhite)">outracoisa*</strong>, que ao longo de 11 anos, viu o mercado
+            demandar por uma entrega crescentemente estratégica e uma equipe
+            cada vez mais senior.
+          </p>
+          <p class="problema-q">Como garantir o foco nas tarefas estratégicas?</p>
+        </div>
+        <div class="reveal d3">
+          <p class="problema-text">
+            Ao mesmo tempo, observamos PMs e designers recorrerem individualmente
+            à soluções de IA, sem um pensamento estruturado sobre como ganhar
+            eficiência sem perder de vista a qualidade e os objetivos de negócio.
+          </p>
+          <p class="problema-q">Como aumentar a eficiência, sem perder excelência?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ABORDAGEM ─────────────────────────────────────────── -->
+  <section class="sec sec-dark tight">
+    <div class="inner">
+      <h2 class="sec-title neon reveal">abordagem</h2>
+      <p class="sec-body reveal d2">
+        Nosso foco está nas fases iniciais de um projeto de produto digital
+        user-centric, que compreendem desde os objetivos de negócio até
+        user journeys, personas e um feature backlog priorizado.
+      </p>
+      <div class="phase-wrap reveal d3">
+        <div class="phase-inner">
+          <div class="phase-stages">
+            <span class="phase-stage">Briefing</span>
+            <span class="phase-stage">Research</span>
+            <span class="phase-stage">Definição</span>
+            <span class="phase-stage">Arquit.</span>
+            <span class="phase-stage">UI / DFT</span>
+            <span class="phase-stage">Dev</span>
+            <span class="phase-stage">Deploy</span>
+          </div>
+          <div class="phase-track"></div>
+          <div class="phase-movement-grid">
+            <div class="pm-left">
+              <span class="pm-label neon">→ nosso movimento</span>
+              <p class="pm-desc">Partir dos estágios que pedem mais pensamento crítico, olhar de negócios, skills relacionais e gosto.</p>
+            </div>
+            <div class="pm-right">
+              <span class="pm-label red">movimento da indústria ←</span>
+              <p class="pm-desc">Partir dos estágios mais objetivos e automatizáveis, que demandam menos pensamento crítico.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ESTEIRAS AGÊNTICAS ────────────────────────────────── -->
+  <section class="sec-light esteiras-scroll" id="esteirasSec">
+    <div class="esteiras-sticky">
+      <p class="esteiras-text">
+        <span class="w">Criamos </span><span class="w"><strong>esteiras </strong></span><span class="w"><strong>agênticas</strong> </span><span class="w">que </span><span class="w">conduzem </span><span class="w">os </span><span class="w">processos </span><span class="w">de </span><span class="w">produto </span><span class="w">para </span><span class="w"><strong style="color:var(--orange)">acelerar</strong> </span><span class="w">as </span><span class="w">tarefas </span><span class="w">automatizáveis </span><span class="w">e </span><span class="w"><strong>aprofundar</strong> </span><span class="w">as </span><span class="w">que </span><span class="w">precisam </span><span class="w">das </span><span class="w">mentes </span><span class="w">pensantes.</span>
+      </p>
+      <div class="esteiras-strip">
+        <img src="assets/robots.png" alt="Maquinário industrial — esteiras agênticas">
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SOLUÇÃO HÍBRIDA ───────────────────────────────────── -->
+  <section class="sec sec-light tight">
+    <div class="inner">
+      <div class="split img-left">
+        <div class="split-img reveal">
+          <img src="assets/gift.png" alt="Solução híbrida">
+        </div>
+        <div class="reveal d1">
+          <h2 class="split-text-title">solução híbrida</h2>
+          <p class="split-text-body">
+            Não somos um software self-service e nem uma solução 100% dependente de gente.
+          </p>
+          <p class="split-text-body">
+            Nossa oferta é um mix, que envolve <strong>consultoria</strong>,
+            <strong>capacitação</strong> e um produto com <strong>interfaces amigáveis</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HUMAN-IN-THE-LOOP ─────────────────────────────────── -->
+  <section class="sec sec-light tight">
+    <div class="inner">
+      <div class="split img-right">
+        <div class="reveal">
+          <h2 class="split-text-title">human-in-the-loop</h2>
+          <p class="split-text-body">
+            A definição precisa de onde a IA acelera e onde o
+            <strong>humano é imprescindível</strong> é o segredo
+            que garante o sucesso do negócio.
+          </p>
+        </div>
+        <div class="split-heart reveal d1">
+          <img src="assets/heart.png" alt="Coração anatômico — humano no centro">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── ÁTOMO ─────────────────────────────────────────────── -->
+  <section class="sec sec-dark">
+    <div class="inner" style="text-align:center;">
+      <span class="label reveal" style="text-align:center;">VISÃO DE PRODUTO</span>
+      <h2 class="atomo-title reveal d1">átomo</h2>
+      <div class="atomo-svg-wrap reveal d2">
+        <svg viewBox="0 0 720 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama do átomo: Requisito (H) → Execução (M) → Avaliação (H)">
+          <defs>
+            <marker id="aw" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto">
+              <path d="M0,0.5 L6.5,3.5 L0,6.5Z" fill="rgba(244,244,238,0.5)"/>
+            </marker>
+          </defs>
+          <!-- Outer ellipse -->
+          <ellipse cx="360" cy="155" rx="268" ry="112" fill="#0E2C1E" stroke="rgba(77,245,160,0.3)" stroke-width="1.5"/>
+          <!-- Top equator arc -->
+          <path d="M92,155 Q360,96 628,155" fill="none" stroke="rgba(77,245,160,0.45)" stroke-width="1.2"/>
+          <!-- Bottom equator arc (dimmer) -->
+          <path d="M92,155 Q360,214 628,155" fill="none" stroke="rgba(77,245,160,0.14)" stroke-width="1"/>
+          <!-- Entry arrow top -->
+          <line x1="360" y1="43" x2="360" y2="62" stroke="rgba(77,245,160,0.4)" stroke-width="1" marker-end="url(#aw)"/>
+          <!-- H left -->
+          <text x="186" y="178" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#E8E49A" font-weight="600">H</text>
+          <!-- M center -->
+          <text x="362" y="178" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#F4F4EE" font-weight="300">M</text>
+          <!-- H right -->
+          <text x="538" y="178" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#E8E49A" font-weight="600">H</text>
+          <!-- Arrow H→M -->
+          <line x1="235" y1="154" x2="302" y2="154" stroke="rgba(244,244,238,0.4)" stroke-width="1.5" marker-end="url(#aw)"/>
+          <!-- Arrow M→H -->
+          <line x1="422" y1="154" x2="489" y2="154" stroke="rgba(244,244,238,0.4)" stroke-width="1.5" marker-end="url(#aw)"/>
+          <!-- Labels -->
+          <text x="186" y="247" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.38)" letter-spacing="3">REQUISITO</text>
+          <text x="362" y="247" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.38)" letter-spacing="3">EXECUÇÃO</text>
+          <text x="538" y="247" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.38)" letter-spacing="3">AVALIAÇÃO</text>
+          <!-- Side notes -->
+          <text x="28" y="138" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.3)" text-anchor="middle" transform="rotate(-90,28,155)">contexto, instruções,</text>
+          <text x="28" y="155" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.3)" text-anchor="middle" transform="rotate(-90,28,155)">materiais e resultados</text>
+          <text x="28" y="172" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.3)" text-anchor="middle" transform="rotate(-90,28,172)">esperados</text>
+          <text x="692" y="138" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.3)" text-anchor="middle" transform="rotate(90,692,155)">avaliação e aceite ou</text>
+          <text x="692" y="155" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.3)" text-anchor="middle" transform="rotate(90,692,155)">feedbacks, que servem</text>
+          <text x="692" y="172" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.3)" text-anchor="middle" transform="rotate(90,692,172)">como novos requisitos</text>
+        </svg>
+      </div>
+      <p class="atomo-caption reveal d3">
+        A unidade do workflow é um pedaço de processo que começa com um briefing
+        <strong>humano</strong>, continua com a execução da tarefa pela
+        <strong>máquina</strong>, e se finaliza com um <strong>humano</strong> avaliando o entregável.
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── RUBRICA OUTRACOISA* ───────────────────────────────── -->
+  <section class="sec sec-light tight">
+    <div class="inner">
+      <div class="split img-left">
+        <div class="split-img reveal">
+          <img src="assets/woman.png" alt="Rubrica outracoisa*">
+        </div>
+        <div class="reveal d1">
+          <h2 class="split-text-title">rubrica outracoisa*</h2>
+          <p class="split-text-body">
+            O modelo foi exaustivamente treinado em processos e práticas
+            proprietárias, que partem de <strong>décadas de atuação</strong>
+            em esteiras de produto <strong>user-centric</strong>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── VANTAGENS ────────────────────────────────────────── -->
+  <section class="sec sec-dark loose">
+    <div class="inner">
+      <div class="vantagens-layout">
+        <div>
+          <h2 class="sec-title neon reveal d1" style="margin-bottom:40px;">vantagens</h2>
+          <div class="vantagens-list">
+            <div class="vantagem-item reveal d2">
+              <span class="vantagem-num">01</span>
+              <p class="vantagem-text">Foco na <strong>eficácia</strong>, não só na eficiência. Eliminação de workslop.</p>
+            </div>
+            <div class="vantagem-item reveal d2">
+              <span class="vantagem-num">02</span>
+              <p class="vantagem-text">Redução de riscos de <strong>governança e segurança</strong> através do uso padronizado e intencional da IA.</p>
+            </div>
+            <div class="vantagem-item reveal d3">
+              <span class="vantagem-num">03</span>
+              <p class="vantagem-text"><strong>Soberania cognitiva.</strong> Proteção inteligente das tarefas que dependem de pensamento crítico.</p>
+            </div>
+            <div class="vantagem-item reveal d3">
+              <span class="vantagem-num">04</span>
+              <p class="vantagem-text">Automação na medida em que cada empresa pede, de acordo com sua <strong>maturidade agêntica</strong>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="vantagens-img reveal d2">
+          <img src="assets/clipboard.png" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── MÚLTIPLOS LOOPS ───────────────────────────────────── -->
+  <section class="sec sec-dark tight">
+    <div class="inner">
+      <h2 class="sec-title neon reveal">a solução de múltiplos loops</h2>
+      <span class="loops-sub reveal d2">O foco é "fazer a coisa certa"</span>
+      <div class="loops-scroll reveal d3">
+        <svg viewBox="0 0 1100 240" xmlns="http://www.w3.org/2000/svg" style="min-width:860px;width:100%;" aria-label="Diagrama de múltiplos loops: O → Briefing → Research → Personas & Journeys → Key Feature → Backlog & Arquitetura → Key Design → R">
+          <defs>
+            <marker id="al" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0.5 L5.5,3 L0,5.5Z" fill="rgba(244,244,238,0.3)"/>
+            </marker>
+          </defs>
+          <!-- Spine -->
+          <line x1="46" y1="90" x2="1054" y2="90" stroke="rgba(244,244,238,0.07)" stroke-width="1.5" stroke-dasharray="3,5"/>
+          <!-- O -->
+          <circle cx="30" cy="90" r="15" fill="var(--offwhite)" />
+          <text x="30" y="95" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="12" font-weight="900" fill="var(--dark)">O</text>
+          <!-- R -->
+          <circle cx="1070" cy="90" r="15" fill="var(--offwhite)"/>
+          <text x="1070" y="95" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="12" font-weight="900" fill="var(--dark)">R</text>
+
+          <!-- Loop macro: HMH pod -->
+          <!-- Briefing -->
+          <g transform="translate(68,56)">
+            <ellipse cx="52" cy="34" rx="48" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.35)" stroke-width="1.2"/>
+            <text x="22" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
+            <text x="46" y="40" font-family="Fraunces,serif" font-size="17" fill="#F4F4EE" font-weight="300">M</text>
+            <text x="70" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
+            <text x="52" y="72" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="8.5" fill="rgba(244,244,238,0.38)" letter-spacing="1.5">BRIEFING</text>
+          </g>
+          <!-- Sep H -->
+          <g transform="translate(208,66)">
+            <ellipse cx="20" cy="24" rx="18" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.2)" stroke-width="1"/>
+            <text x="20" y="30" text-anchor="middle" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
+          </g>
+          <!-- User Research -->
+          <g transform="translate(256,56)">
+            <ellipse cx="52" cy="34" rx="48" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.35)" stroke-width="1.2"/>
+            <text x="22" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
+            <text x="46" y="40" font-family="Fraunces,serif" font-size="17" fill="#F4F4EE" font-weight="300">M</text>
+            <text x="70" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
+            <text x="52" y="72" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="8" fill="rgba(244,244,238,0.38)" letter-spacing="1">USER RESEARCH</text>
+          </g>
+          <!-- Sep H -->
+          <g transform="translate(396,66)">
+            <ellipse cx="20" cy="24" rx="18" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.2)" stroke-width="1"/>
+            <text x="20" y="30" text-anchor="middle" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
+          </g>
+          <!-- Personas -->
+          <g transform="translate(444,56)">
+            <ellipse cx="52" cy="34" rx="48" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.35)" stroke-width="1.2"/>
+            <text x="22" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
+            <text x="46" y="40" font-family="Fraunces,serif" font-size="17" fill="#F4F4EE" font-weight="300">M</text>
+            <text x="70" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
+            <text x="52" y="72" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="7.5" fill="rgba(244,244,238,0.38)" letter-spacing="0.8">PERSONAS &amp; JOURNEYS</text>
+          </g>
+          <!-- Sep H -->
+          <g transform="translate(584,66)">
+            <ellipse cx="20" cy="24" rx="18" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.2)" stroke-width="1"/>
+            <text x="20" y="30" text-anchor="middle" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
+          </g>
+          <!-- Backlog -->
+          <g transform="translate(632,56)">
+            <ellipse cx="52" cy="34" rx="48" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.35)" stroke-width="1.2"/>
+            <text x="22" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
+            <text x="46" y="40" font-family="Fraunces,serif" font-size="17" fill="#F4F4EE" font-weight="300">M</text>
+            <text x="70" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
+            <text x="52" y="72" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="7.5" fill="rgba(244,244,238,0.38)" letter-spacing="0.8">BACKLOG &amp; ARQUITETURA</text>
+          </g>
+          <!-- Sep H -->
+          <g transform="translate(772,66)">
+            <ellipse cx="20" cy="24" rx="18" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.2)" stroke-width="1"/>
+            <text x="20" y="30" text-anchor="middle" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
+          </g>
+          <!-- Key Design -->
+          <g transform="translate(820,56)">
+            <ellipse cx="52" cy="34" rx="48" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.35)" stroke-width="1.2"/>
+            <text x="22" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
+            <text x="46" y="40" font-family="Fraunces,serif" font-size="17" fill="#F4F4EE" font-weight="300">M</text>
+            <text x="70" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
+            <text x="52" y="72" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="8.5" fill="rgba(244,244,238,0.38)" letter-spacing="1.5">KEY DESIGN</text>
+          </g>
+
+          <!-- Bottom descriptions -->
+          <text x="130" y="152" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">O processo é uma sequência</text>
+          <text x="130" y="167" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">de tarefas encadeadas com</text>
+          <text x="130" y="182" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">supervisão humana.</text>
+
+          <text x="496" y="152" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">Em cada tarefa define-se o nível</text>
+          <text x="496" y="167" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">adequado de autonomia das</text>
+          <text x="496" y="182" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">atividades de máquina.</text>
+
+          <text x="872" y="152" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">Há mais sucesso nas tarefas</text>
+          <text x="872" y="167" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">finais, pois os requisitos são</text>
+          <text x="872" y="182" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">consistentes.</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER / CTA ──────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-logo reveal">OUTR<b>AI</b>*</div>
+    <p class="footer-tag reveal d1">agentifique sua gestão e design de produto</p>
+    <div class="reveal d2">
+      <button class="btn btn-onlight" onclick="openModal()">Quero saber mais</button>
+    </div>
+    <p class="footer-legal reveal d3">© outracoisa* — todos os direitos reservados</p>
+  </footer>
+
+  <!-- ─── MODAL ─────────────────────────────────────────────── -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="modal">
+      <button class="modal-x" onclick="closeModal()" aria-label="Fechar">&times;</button>
+      <h3 class="modal-title" id="mTitle">Quero saber mais</h3>
+      <p class="modal-desc">Deixa seu nome e email e a gente entra em contato para conversar.</p>
+      <form id="form" novalidate>
+        <div class="field">
+          <label for="fname">Nome</label>
+          <input type="text" id="fname" name="name" placeholder="Seu nome" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="femail">Email</label>
+          <input type="email" id="femail" name="email" placeholder="seu@email.com" required autocomplete="email">
+        </div>
+        <button type="submit" class="form-send" id="sendBtn">Enviar</button>
+      </form>
+      <div class="feedback ok"  id="fbOk">Recebemos! A equipe da outracoisa* vai entrar em contato em breve.</div>
+      <div class="feedback err" id="fbErr">Algo deu errado. Tente novamente ou mande um email para <a href="mailto:vamos@outracoisa.co" style="color:inherit;text-decoration:underline">vamos@outracoisa.co</a>.</div>
+    </div>
+  </div>
+
+  <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
+  <script>
+    /* ── Hero letter reveal ─────────────────────────────────── */
+    window.addEventListener('DOMContentLoaded', () => {
+      const chars = document.querySelectorAll('.hero-logo .char');
+      chars.forEach((c, i) => {
+        setTimeout(() => c.classList.add('in'), 80 + i * 60);
+      });
+      setTimeout(() => document.getElementById('heroTag').classList.add('in'), 680);
+      setTimeout(() => document.getElementById('heroCta').classList.add('in'), 900);
+    });
+
+    /* ── Esteiras scroll reveal ─────────────────────────────── */
+    const esteirasSec   = document.getElementById('esteirasSec');
+    const esteirasWords = esteirasSec ? Array.from(esteirasSec.querySelectorAll('.w')) : [];
+    const esteirasStrip = esteirasSec ? esteirasSec.querySelector('.esteiras-strip') : null;
+
+    function updateEsteiras() {
+      if (!esteirasSec || !esteirasWords.length) return;
+      const rect       = esteirasSec.getBoundingClientRect();
+      const scrollable = esteirasSec.offsetHeight - window.innerHeight;
+      const progress   = Math.max(0, Math.min(1, -rect.top / scrollable));
+      const n          = esteirasWords.length;
+
+      esteirasWords.forEach((w, i) => {
+        const wordStart = i / n;
+        const diff      = progress - wordStart;
+        let opacity;
+        if      (diff > 0.1)  opacity = 1;
+        else if (diff >= 0)   opacity = 0.12 + (diff / 0.1) * 0.88;
+        else                  opacity = 0.12;
+        w.style.opacity = opacity;
+      });
+
+      if (esteirasStrip) esteirasStrip.classList.toggle('visible', progress > 0.88);
+    }
+
+    window.addEventListener('scroll', updateEsteiras, { passive: true });
+    updateEsteiras();
+
+    /* ── Nav on scroll ──────────────────────────────────────── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 64);
+    }, { passive: true });
+
+    /* ── Reveal observer ────────────────────────────────────── */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* ── Modal ──────────────────────────────────────────────── */
+    function openModal()  {
+      document.getElementById('overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('fname').focus(), 100);
+    }
+    function closeModal() {
+      document.getElementById('overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('overlay').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeModal();
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    /* ── Form submit ────────────────────────────────────────── */
+    document.getElementById('form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const name  = document.getElementById('fname').value.trim();
+      const email = document.getElementById('femail').value.trim();
+      if (!name || !email) return;
+
+      const btn = document.getElementById('sendBtn');
+      const ok  = document.getElementById('fbOk');
+      const err = document.getElementById('fbErr');
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+      ok.style.display = err.style.display = 'none';
+
+      try {
+        /*
+         * TROCAR: substitua pela URL do seu formulário no Formspree.
+         * 1. Crie conta em https://formspree.io (grátis)
+         * 2. Crie um formulário e copie o endpoint
+         * 3. Cole no lugar de 'FORMSPREE_ENDPOINT_AQUI'
+         */
+        const ENDPOINT = 'FORMSPREE_ENDPOINT_AQUI';
+        if (ENDPOINT === 'FORMSPREE_ENDPOINT_AQUI') throw new Error('not_configured');
+
+        const res = await fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ name, email })
+        });
+
+        if (res.ok) {
+          this.style.display = 'none';
+          ok.style.display = 'block';
+        } else {
+          throw new Error('server');
+        }
+      } catch(_) {
+        err.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Enviar';
+      }
+    });
+  </script>
+</body>
+</html>
