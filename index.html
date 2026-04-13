@@ -57,24 +57,40 @@
   <!-- ─── PONTO DE PARTIDA ──────────────────────────────────── -->
   <section class="sec sec-dark loose">
     <div class="inner">
-      <h2 class="sec-title neon reveal">ponto de partida</h2>
-      <div class="problema-grid">
-        <div class="reveal d2">
-          <p class="problema-text">
-            <strong style="color:var(--offwhite)">OUTRAI*</strong> surge como uma necessidade interna da
-            <strong style="color:var(--offwhite)">outracoisa*</strong>, que ao longo de 11 anos, viu o mercado
-            demandar por uma entrega crescentemente estratégica e uma equipe
-            cada vez mais senior.
-          </p>
-          <p class="problema-q">Como garantir o foco nas tarefas estratégicas?</p>
-        </div>
-        <div class="reveal d3">
-          <p class="problema-text">
-            Ao mesmo tempo, observamos PMs e designers recorrerem individualmente
-            à soluções de IA, sem um pensamento estruturado sobre como ganhar
-            eficiência sem perder de vista a qualidade e os objetivos de negócio.
-          </p>
-          <p class="problema-q">Como aumentar a eficiência, sem perder excelência?</p>
+      <div class="partida-layout">
+        <div class="partida-spacer"></div>
+        <div class="partida-content">
+          <h2 class="sec-title neon reveal">ponto de partida</h2>
+          <div class="partida-timeline" id="partida-timeline">
+            <div class="partida-step" id="ps1">
+              <div class="partida-track">
+                <span class="pdot"></span>
+                <div class="pline" id="pline"></div>
+              </div>
+              <div class="pbody">
+                <p class="problema-text">
+                  <strong style="color:var(--offwhite)">OUTRAI*</strong> surge como uma necessidade interna da
+                  <strong style="color:var(--offwhite)">outracoisa*</strong>, que ao longo de 11 anos, viu o mercado
+                  demandar por uma entrega crescentemente estratégica e uma equipe
+                  cada vez mais senior.
+                </p>
+                <p class="problema-q">Como garantir o foco nas tarefas estratégicas?</p>
+              </div>
+            </div>
+            <div class="partida-step" id="ps2">
+              <div class="partida-track">
+                <span class="pdot"></span>
+              </div>
+              <div class="pbody">
+                <p class="problema-text">
+                  Ao mesmo tempo, observamos PMs e designers recorrerem individualmente
+                  à soluções de IA, sem um pensamento estruturado sobre como ganhar
+                  eficiência sem perder de vista a qualidade e os objetivos de negócio.
+                </p>
+                <p class="problema-q">Como aumentar a eficiência, sem perder excelência?</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -402,6 +418,32 @@
     </div>
   </div>
 
+  <!-- ─── WIDGET ─────────────────────────────────────────────── -->
+  <div class="widget-anchor">
+    <div class="widget-pill" id="widgetPill">
+      <div class="widget-body" id="widgetBody">
+        <p class="widget-title">Entre na lista de espera</p>
+        <form class="widget-form" id="widgetForm" novalidate>
+          <input class="widget-input" type="text"  name="nome"    placeholder="Nome"    required>
+          <input class="widget-input" type="text"  name="empresa" placeholder="Empresa">
+          <input class="widget-input" type="email" name="email"   placeholder="Email"   required>
+          <div class="widget-form-footer">
+            <button class="widget-submit" type="submit">Enviar</button>
+          </div>
+        </form>
+        <p class="widget-success" id="widgetSuccess">Recebemos! Logo mais falamos.</p>
+      </div>
+      <div class="widget-trigger" id="widgetTrigger">
+        <span class="widget-label">Comece sua transformação</span>
+      </div>
+      <button class="widget-toggle" id="widgetToggle" aria-label="Abrir formulário">
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true">
+          <path d="M0 1H18M0 11H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
   <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
   <script>
     /* ── Hero letter reveal ─────────────────────────────────── */
@@ -456,6 +498,33 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+    /* ── Ponto de partida sequential reveal ────────────────── */
+    (function() {
+      const ps1   = document.getElementById('ps1');
+      const ps2   = document.getElementById('ps2');
+      const pline = document.getElementById('pline');
+      if (!ps1 || !ps2 || !pline) return;
+
+      // Bloco 1: aparece quando entra no viewport
+      const obs1 = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting) return;
+        obs1.unobserve(ps1);
+        requestAnimationFrame(() => requestAnimationFrame(() => ps1.classList.add('in')));
+      }, { threshold: 0.2 });
+      obs1.observe(ps1);
+
+      // Linha + bloco 2: aparecem ao fazer scroll até ps2
+      const obs2 = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting) return;
+        obs2.unobserve(ps2);
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          pline.classList.add('in');
+          setTimeout(() => ps2.classList.add('in'), 480);
+        }));
+      }, { threshold: 0.15 });
+      obs2.observe(ps2);
+    })();
+
     /* ── Modal ──────────────────────────────────────────────── */
     function openModal()  {
       document.getElementById('overlay').classList.add('open');
@@ -469,7 +538,83 @@
     document.getElementById('overlay').addEventListener('click', e => {
       if (e.target === e.currentTarget) closeModal();
     });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeModal();
+        document.getElementById('widgetPill').classList.remove('open');
+      }
+    });
+
+    /* ── Widget ─────────────────────────────────────────────── */
+    (function() {
+      const pill    = document.getElementById('widgetPill');
+      const trigger = document.getElementById('widgetTrigger');
+      const body    = document.getElementById('widgetBody');
+      const form    = document.getElementById('widgetForm');
+      const success = document.getElementById('widgetSuccess');
+
+      // 1. Measure closed dimensions from the trigger's natural size
+      const closedW = trigger.offsetWidth;
+      const closedH = trigger.offsetHeight;
+      pill.style.width  = closedW + 'px';
+      pill.style.height = closedH + 'px';
+
+      // 2. Add transitions after measuring (prevents initial flash)
+      requestAnimationFrame(() => {
+        pill.style.transition = 'width 0.45s cubic-bezier(0.16,1,0.3,1), height 0.5s cubic-bezier(0.16,1,0.3,1)';
+      });
+
+      const toggle = document.getElementById('widgetToggle');
+      const label  = trigger.querySelector('.widget-label');
+      let isOpen   = false;
+
+      function open() {
+        isOpen = true;
+        const openW = window.innerWidth * 0.5;
+        body.style.cssText = 'display:block; position:absolute; visibility:hidden; width:' + openW + 'px';
+        const contentH = closedH + body.offsetHeight;
+        body.style.cssText = '';
+        const openH = Math.max(window.innerHeight * 0.65, contentH);
+        body.style.display  = 'block';
+        pill.style.width    = openW + 'px';
+        pill.style.height   = openH + 'px';
+        label.style.opacity    = '0';
+        label.style.transition = 'opacity 0.2s ease';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          body.classList.add('fadein');
+        }));
+      }
+
+      function close() {
+        isOpen = false;
+        body.classList.remove('fadein');
+        label.style.opacity = '';
+        pill.style.width    = closedW + 'px';
+        pill.style.height   = closedH + 'px';
+        setTimeout(() => { if (!isOpen) body.style.display = ''; }, 500);
+      }
+
+      // Pill click opens when closed; toggle always toggles
+      pill.addEventListener('click',   () => { if (!isOpen) open(); });
+      toggle.addEventListener('click', e  => { e.stopPropagation(); isOpen ? close() : open(); });
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        if (!form.nome.value.trim() || !form.email.value.trim()) return;
+        form.style.display    = 'none';
+        success.style.display = 'block';
+        setTimeout(() => {
+          close();
+          setTimeout(() => {
+            if (!isOpen) {
+              form.style.display    = '';
+              success.style.display = 'none';
+              form.reset();
+            }
+          }, 500);
+        }, 2200);
+      });
+    })();
 
     /* ── Form submit ────────────────────────────────────────── */
     document.getElementById('form').addEventListener('submit', async function(e) {
