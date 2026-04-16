@@ -112,7 +112,7 @@ nav.scrolled .nav-logo {
   display: inline-block;
   overflow: hidden;
 }
-.hero-logo b { font-weight: 900; letter-spacing: 0.08em; }
+.hero-logo b { font-weight: 900; letter-spacing: 0.08em; margin-left: -0.14em; }
 /* Letter-by-letter reveal */
 .hero-logo .char {
   display: inline-block;
