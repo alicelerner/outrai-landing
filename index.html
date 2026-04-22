@@ -314,34 +314,49 @@
   </section>
 
   <!-- ─── VANTAGENS ────────────────────────────────────────── -->
-  <section class="sec sec-dark loose">
-    <div class="inner">
-      <div class="vantagens-layout">
-        <div>
-          <h2 class="sec-title neon reveal d1" style="margin-bottom:40px;">vantagens</h2>
-          <div class="vantagens-list">
-            <div class="vantagem-item reveal d2">
-              <span class="vantagem-num">01</span>
-              <p class="vantagem-text">Foco na <strong>eficácia</strong>, não só na eficiência. Eliminação de workslop.</p>
-            </div>
-            <div class="vantagem-item reveal d2">
-              <span class="vantagem-num">02</span>
-              <p class="vantagem-text">Redução de riscos de <strong>governança e segurança</strong> através do uso padronizado e intencional da IA.</p>
-            </div>
-            <div class="vantagem-item reveal d3">
-              <span class="vantagem-num">03</span>
-              <p class="vantagem-text"><strong>Soberania cognitiva.</strong> Proteção inteligente das tarefas que dependem de pensamento crítico.</p>
-            </div>
-            <div class="vantagem-item reveal d3">
-              <span class="vantagem-num">04</span>
-              <p class="vantagem-text">Automação na medida em que cada empresa pede, de acordo com sua <strong>maturidade agêntica</strong>.</p>
-            </div>
-          </div>
-        </div>
-        <div class="vantagens-img reveal d2">
-          <img src="assets/clipboard.png" alt="">
-        </div>
+  <section class="vantagens-section" id="vantagens">
+    <div class="vantagens-inner">
+      <div class="vantagens-header">
+        <h2 class="vantagens-title">vantagens</h2>
+        <span class="vantagens-count"><b>04</b> BENEFÍCIOS</span>
       </div>
+      <div class="vantagens-divider"></div>
+      <div class="vantagem-row" data-v>
+        <span class="vantagem-ghost">01</span>
+        <div class="vantagem-content">
+          <h3 class="vantagem-heading">Foco na eficácia, não só na eficiência.</h3>
+          <p class="vantagem-body">Eliminação de <strong>workslop</strong>. Cada tarefa existe para mover um objetivo de negócio — não para parecer produtiva.</p>
+        </div>
+        <span class="vantagem-label">EFICÁCIA</span>
+      </div>
+      <div class="vantagens-divider"></div>
+      <div class="vantagem-row" data-v>
+        <span class="vantagem-ghost">02</span>
+        <div class="vantagem-content">
+          <h3 class="vantagem-heading">Governança e segurança por design.</h3>
+          <p class="vantagem-body">Redução de riscos através do uso <strong>padronizado e intencional</strong> da IA — não adoção individual sem supervisão.</p>
+        </div>
+        <span class="vantagem-label">CONTROLE</span>
+      </div>
+      <div class="vantagens-divider"></div>
+      <div class="vantagem-row" data-v>
+        <span class="vantagem-ghost">03</span>
+        <div class="vantagem-content">
+          <h3 class="vantagem-heading">Soberania cognitiva.</h3>
+          <p class="vantagem-body">Proteção inteligente das tarefas que <strong>dependem de pensamento crítico</strong>. O humano não é residual — é protagonista onde importa.</p>
+        </div>
+        <span class="vantagem-label">AUTONOMIA</span>
+      </div>
+      <div class="vantagens-divider"></div>
+      <div class="vantagem-row" data-v>
+        <span class="vantagem-ghost">04</span>
+        <div class="vantagem-content">
+          <h3 class="vantagem-heading">Automação sob medida.</h3>
+          <p class="vantagem-body">Na medida em que cada empresa pede, de acordo com sua <strong>maturidade agêntica</strong>. Sem saltos irrealistas.</p>
+        </div>
+        <span class="vantagem-label">SOB MEDIDA</span>
+      </div>
+      <div class="vantagens-divider"></div>
     </div>
   </section>
 
@@ -672,6 +687,20 @@
           }, 500);
         }, 2200);
       });
+    })();
+
+    /* ── Vantagens scroll reveal ────────────────────────────── */
+    (function() {
+      const rows = document.querySelectorAll('.vantagem-row[data-v]');
+      const vio = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            vio.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      rows.forEach(r => vio.observe(r));
     })();
 
     /* ── Form submit ────────────────────────────────────────── */
