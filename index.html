@@ -117,35 +117,24 @@
       <div class="partida-layout">
         <div class="partida-spacer"></div>
         <div class="partida-content">
-          <h2 class="sec-title neon reveal">ponto de partida</h2>
+          <h2 class="sec-title neon reveal">Ponto de Partida</h2>
           <div class="partida-timeline" id="partida-timeline">
             <div class="partida-step" id="ps1">
-              <div class="partida-track">
-                <span class="pdot"></span>
-                <div class="pline" id="pline"></div>
-              </div>
-              <div class="pbody">
-                <p class="problema-text">
-                  <strong style="color:var(--offwhite)">OUTRAI*</strong> surge como uma necessidade interna da
-                  <strong style="color:var(--offwhite)">outracoisa*</strong>, que ao longo de 11 anos, viu o mercado
-                  demandar por uma entrega crescentemente estratégica e uma equipe
-                  cada vez mais senior.
-                </p>
-                <p class="problema-q">Como garantir o foco nas tarefas estratégicas?</p>
-              </div>
+              <p class="problema-text">
+                OUTRAI* surge como uma necessidade interna da
+                outracoisa*, que ao longo de 11 anos viu o mercado
+                demandar por uma entrega crescentemente estratégica e uma equipe
+                cada vez mais sênior.
+              </p>
+              <p class="problema-q">Como liberar espaço para o pensamento estratégico?</p>
             </div>
             <div class="partida-step" id="ps2">
-              <div class="partida-track">
-                <span class="pdot"></span>
-              </div>
-              <div class="pbody">
-                <p class="problema-text">
-                  Ao mesmo tempo, observamos PMs e designers recorrerem individualmente
-                  à soluções de IA, sem um pensamento estruturado sobre como ganhar
-                  eficiência sem perder de vista a qualidade e os objetivos de negócio.
-                </p>
-                <p class="problema-q">Como aumentar a eficiência, sem perder excelência?</p>
-              </div>
+              <p class="problema-text">
+                Ao mesmo tempo, observamos PMs e designers recorrerem individualmente
+                a soluções de IA, sem um pensamento estruturado sobre como ganhar
+                eficiência sem perder de vista a qualidade e os objetivos de negócio.
+              </p>
+              <p class="problema-q">Como garantir excelência em meio ao clamor pela eficiência?</p>
             </div>
           </div>
         </div>
@@ -596,12 +585,10 @@
 
     /* ── Ponto de partida sequential reveal ────────────────── */
     (function() {
-      const ps1   = document.getElementById('ps1');
-      const ps2   = document.getElementById('ps2');
-      const pline = document.getElementById('pline');
-      if (!ps1 || !ps2 || !pline) return;
+      const ps1 = document.getElementById('ps1');
+      const ps2 = document.getElementById('ps2');
+      if (!ps1 || !ps2) return;
 
-      // Bloco 1: aparece quando entra no viewport
       const obs1 = new IntersectionObserver(entries => {
         if (!entries[0].isIntersecting) return;
         obs1.unobserve(ps1);
@@ -609,14 +596,10 @@
       }, { threshold: 0.2 });
       obs1.observe(ps1);
 
-      // Linha + bloco 2: aparecem ao fazer scroll até ps2
       const obs2 = new IntersectionObserver(entries => {
         if (!entries[0].isIntersecting) return;
         obs2.unobserve(ps2);
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-          pline.classList.add('in');
-          setTimeout(() => ps2.classList.add('in'), 480);
-        }));
+        setTimeout(() => ps2.classList.add('in'), 200);
       }, { threshold: 0.15 });
       obs2.observe(ps2);
     })();
