@@ -13,15 +13,13 @@
 <body>
 
   <!-- ─── NAV ──────────────────────────────────────────────── -->
-  <nav id="nav">
-    <img src="Assets/logo-outrai-text.svg" class="nav-logo" alt="OUTRAI*">
-  </nav>
+  <nav id="nav"></nav>
 
   <!-- ─── HERO ─────────────────────────────────────────────── -->
   <section class="hero">
     <div class="hero-content">
       <h1 class="hero-logo" id="heroLogo" aria-label="OUTRAI*">
-        <span class="char">O</span><span class="char">U</span><span class="char">T</span><span class="char">R</span><b><span class="char">A</span><span class="char">I</span><span class="char">*</span></b>
+        <img src="Assets/logo-outrai-text.svg" alt="OUTRAI*" class="hero-logo-svg">
       </h1>
       <h2 class="hero-headline" id="heroTag">Agentifique sua gestão<br>e design de produto</h2>
     </div>
@@ -508,7 +506,7 @@
         <p class="widget-success" id="widgetSuccess">Recebemos! Logo mais falamos.</p>
       </div>
       <div class="widget-trigger" id="widgetTrigger">
-        <span class="widget-label">Comece sua transformação</span>
+        <span class="widget-label">Comece sua <em class="widget-label-serif">transformação</em></span>
       </div>
       <button class="widget-toggle" id="widgetToggle" aria-label="Abrir formulário">
         <svg width="18" height="12" viewBox="0 0 18 12" fill="none" aria-hidden="true">
@@ -520,14 +518,44 @@
 
   <!-- ─── JAVASCRIPT ────────────────────────────────────────── -->
   <script>
-    /* ── Hero letter reveal ─────────────────────────────────── */
+    /* ── Hero logo reveal ───────────────────────────────────── */
     window.addEventListener('DOMContentLoaded', () => {
-      const chars = document.querySelectorAll('.hero-logo .char');
-      chars.forEach((c, i) => {
-        setTimeout(() => c.classList.add('in'), 80 + i * 60);
-      });
-      setTimeout(() => document.getElementById('heroTag').classList.add('in'), 680);
+      setTimeout(() => document.getElementById('heroLogo').classList.add('in'), 80);
+      setTimeout(() => document.getElementById('heroTag').classList.add('in'), 400);
     });
+
+    /* ── Hero gradient — cursor tracking ───────────────────── */
+    (function () {
+      const hero = document.querySelector('.hero');
+      let cx = 50, cy = 50;   // current rendered position
+      let tx = 50, ty = 50;   // target position
+      let rafId = null;
+      let active = false;
+
+      function tick() {
+        cx += (tx - cx) * 0.08;
+        cy += (ty - cy) * 0.08;
+        hero.style.setProperty('--hero-cx', cx.toFixed(2) + '%');
+        hero.style.setProperty('--hero-cy', cy.toFixed(2) + '%');
+        const settled = Math.abs(tx - cx) < 0.05 && Math.abs(ty - cy) < 0.05;
+        if (settled && !active) { rafId = null; return; }
+        rafId = requestAnimationFrame(tick);
+      }
+
+      hero.addEventListener('mousemove', e => {
+        const r = hero.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width)  * 100;
+        ty = ((e.clientY - r.top)  / r.height) * 100;
+        active = true;
+        if (!rafId) rafId = requestAnimationFrame(tick);
+      });
+
+      hero.addEventListener('mouseleave', () => {
+        tx = 50; ty = 50;
+        active = false;
+        if (!rafId) rafId = requestAnimationFrame(tick);
+      });
+    })();
 
     /* ── Esteiras scroll reveal ─────────────────────────────── */
     const esteirasSec   = document.getElementById('esteirasSec');
@@ -557,11 +585,6 @@
     window.addEventListener('scroll', updateEsteiras, { passive: true });
     updateEsteiras();
 
-    /* ── Nav on scroll ──────────────────────────────────────── */
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 64);
-    }, { passive: true });
 
     /* ── Reveal observer ────────────────────────────────────── */
     const io = new IntersectionObserver(entries => {
