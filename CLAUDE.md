@@ -8,5 +8,5 @@ Static landing page for OUTRAI*. No build system — open `index.html` directly 
 
 ## Knowledge
 
-- `design-references/mood-summary.md` — design system, paleta, tipografia, constraints visuais
+- `DESIGN.md` — design system, paleta, tipografia, componentes, constraints visuais
 - `.claude/knowledge/session-log.md` — histórico de sessões, decisões tomadas, bugs conhecidos
