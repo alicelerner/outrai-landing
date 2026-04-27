@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OUTRAI* — agentifique sua gestão e design de produto</title>
+  <title>OUTRAI* — Delegação intencional de tarefas de design</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
       <h1 class="hero-logo" id="heroLogo" aria-label="OUTRAI*">
         <img src="Assets/logo-outrai-text.svg" alt="OUTRAI*" class="hero-logo-svg">
       </h1>
-      <h2 class="hero-headline" id="heroTag">Agentifique sua gestão<br>e design de produto</h2>
+      <h2 class="hero-headline" id="heroTag">Delegação intencional<br>de tarefas de design</h2>
     </div>
   </section>
 
@@ -117,35 +117,24 @@
       <div class="partida-layout">
         <div class="partida-spacer"></div>
         <div class="partida-content">
-          <h2 class="sec-title neon reveal">ponto de partida</h2>
+          <h2 class="sec-title neon reveal">Ponto de Partida</h2>
           <div class="partida-timeline" id="partida-timeline">
             <div class="partida-step" id="ps1">
-              <div class="partida-track">
-                <span class="pdot"></span>
-                <div class="pline" id="pline"></div>
-              </div>
-              <div class="pbody">
-                <p class="problema-text">
-                  <strong style="color:var(--offwhite)">OUTRAI*</strong> surge como uma necessidade interna da
-                  <strong style="color:var(--offwhite)">outracoisa*</strong>, que ao longo de 11 anos, viu o mercado
-                  demandar por uma entrega crescentemente estratégica e uma equipe
-                  cada vez mais senior.
-                </p>
-                <p class="problema-q">Como garantir o foco nas tarefas estratégicas?</p>
-              </div>
+              <p class="problema-text">
+                OUTRAI* surge como uma necessidade interna da
+                outracoisa*, que ao longo de 11 anos viu o mercado
+                demandar por uma entrega crescentemente estratégica e uma equipe
+                cada vez mais sênior.
+              </p>
+              <p class="problema-q">Como liberar espaço para o pensamento estratégico?</p>
             </div>
             <div class="partida-step" id="ps2">
-              <div class="partida-track">
-                <span class="pdot"></span>
-              </div>
-              <div class="pbody">
-                <p class="problema-text">
-                  Ao mesmo tempo, observamos PMs e designers recorrerem individualmente
-                  à soluções de IA, sem um pensamento estruturado sobre como ganhar
-                  eficiência sem perder de vista a qualidade e os objetivos de negócio.
-                </p>
-                <p class="problema-q">Como aumentar a eficiência, sem perder excelência?</p>
-              </div>
+              <p class="problema-text">
+                Ao mesmo tempo, observamos PMs e designers recorrerem individualmente
+                a soluções de IA, sem um pensamento estruturado sobre como ganhar
+                eficiência sem perder de vista a qualidade e os objetivos de negócio.
+              </p>
+              <p class="problema-q">Como garantir excelência em meio ao clamor pela eficiência?</p>
             </div>
           </div>
         </div>
@@ -461,7 +450,7 @@
   <!-- ─── FOOTER / CTA ──────────────────────────────────────── -->
   <footer class="footer">
     <div class="footer-logo reveal">OUTR<b>AI</b>*</div>
-    <p class="footer-tag reveal d1">agentifique sua gestão e design de produto</p>
+    <p class="footer-tag reveal d1">Delegação intencional de tarefas de design</p>
     <div class="reveal d2">
       <button class="btn btn-onlight" onclick="openModal()">Quero saber mais</button>
     </div>
@@ -596,12 +585,10 @@
 
     /* ── Ponto de partida sequential reveal ────────────────── */
     (function() {
-      const ps1   = document.getElementById('ps1');
-      const ps2   = document.getElementById('ps2');
-      const pline = document.getElementById('pline');
-      if (!ps1 || !ps2 || !pline) return;
+      const ps1 = document.getElementById('ps1');
+      const ps2 = document.getElementById('ps2');
+      if (!ps1 || !ps2) return;
 
-      // Bloco 1: aparece quando entra no viewport
       const obs1 = new IntersectionObserver(entries => {
         if (!entries[0].isIntersecting) return;
         obs1.unobserve(ps1);
@@ -609,14 +596,10 @@
       }, { threshold: 0.2 });
       obs1.observe(ps1);
 
-      // Linha + bloco 2: aparecem ao fazer scroll até ps2
       const obs2 = new IntersectionObserver(entries => {
         if (!entries[0].isIntersecting) return;
         obs2.unobserve(ps2);
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-          pline.classList.add('in');
-          setTimeout(() => ps2.classList.add('in'), 480);
-        }));
+        setTimeout(() => ps2.classList.add('in'), 200);
       }, { threshold: 0.15 });
       obs2.observe(ps2);
     })();
