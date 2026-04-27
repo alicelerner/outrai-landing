@@ -149,6 +149,7 @@ nav {
 /* Variações de ritmo — evita o feel de slides uniformes */
 .sec.tight  { padding-block: 72px; }
 .sec.loose  { padding-block: 148px; }
+.sec.divider-top { border-top: 1px solid rgba(244,244,238,0.08); }
 .inner {
   max-width: 1160px;
   margin: 0 auto;
@@ -324,7 +325,7 @@ nav {
 
 /* ─── ABORDAGEM phase bar ────────────────────────────────── */
 .phase-wrap {
-  margin-top: 72px;
+  margin-top: 112px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   padding-bottom: 4px;
@@ -377,15 +378,15 @@ nav {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 11px;
+  font-size: 16px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 .pm-label.neon { color: var(--neon); }
 .pm-label.red  { color: #d45050; justify-content: flex-end; }
 .pm-desc {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--muted);
 }
