@@ -410,27 +410,24 @@ nav {
 /* ─── ESTEIRAS AGÊNTICAS — scroll reveal ─────────────────── */
 .esteiras-scroll {
   position: relative;
-  min-height: 450vh;
+  z-index: 1;
+  min-height: 220vh;
   background: var(--grad);
 }
 .esteiras-sticky {
   position: sticky;
   top: 0;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 8% 180px;
+  padding: 40px;
   overflow: hidden;
 }
 .esteiras-text {
-  font-size: clamp(36px, 5.8vw, 80px);
-  font-weight: 900;
-  line-height: 1.18;
-  text-align: center;
-  max-width: 1100px;
+  font-size: 64px;
+  font-weight: 300;
+  line-height: 1.2;
+  text-align: left;
   color: var(--dark);
+  max-width: 55%;
   position: relative;
   z-index: 1;
 }
@@ -438,27 +435,45 @@ nav {
   display: inline;
   opacity: 0.12;
 }
+.esteiras-infographic {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: clamp(260px, 38vw, 520px);
+  opacity: 0.6;
+}
+.esteiras-infographic svg {
+  width: 100%;
+  height: auto;
+}
+@keyframes spin-once {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.agent-arrow-group {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spin-once 1.2s ease-out 1 forwards;
+  animation-play-state: paused;
+}
+.row.active .agent-arrow-group {
+  animation-play-state: running;
+}
+/* esteiras-strip — comentado no HTML, regras preservadas para reversão */
 .esteiras-strip {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 0; left: 0; right: 0;
   height: 180px;
   overflow: hidden;
   opacity: 0;
   transition: opacity 0.7s ease;
 }
 .esteiras-strip.visible { opacity: 1; }
-.esteiras-strip img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  object-position: center;
-}
-@media(max-width:600px){
-  .esteiras-sticky { padding: 0 6% 140px; }
-  .esteiras-strip  { height: 130px; }
-  .esteiras-strip img { height: 130px; }
+.esteiras-strip img { width: 100%; height: 180px; object-fit: cover; }
+@media(max-width:900px){
+  .esteiras-sticky { padding: 48px 6%; }
+  .esteiras-text { max-width: 100%; font-size: 48px; }
+  .esteiras-infographic { display: none; }
 }
 
 /* ─── Split sections ─────────────────────────────────────── */
