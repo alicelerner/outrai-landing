@@ -192,13 +192,9 @@
       </p>
       <div class="esteiras-infographic">
         <svg viewBox="-40 -10 780 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <marker id="arr" markerWidth="5" markerHeight="5" refX="5" refY="2.5" orient="auto">
-              <path d="M 0,0 L 5,2.5 L 0,5 Z" fill="rgba(0,0,0,0.35)"/>
-            </marker>
-          </defs>
-          <!-- Snake path com bezier (sem corte na junção) -->
-          <path d="M 50,70 L 650,70 C 720,70 720,210 650,210 L 50,210 C -20,210 -20,350 50,350 L 650,350"
+          <!-- Snake path desenhado no scroll via stroke-dashoffset -->
+          <path class="snake-path"
+                d="M 50,70 L 650,70 C 720,70 720,210 650,210 L 50,210 C -20,210 -20,350 50,350 L 650,350"
                 fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="3" stroke-dasharray="10 7"/>
           <!-- Row 1 (left → right, y=70) -->
           <g class="row" data-row="0" style="opacity:0.1">
@@ -208,11 +204,8 @@
             <circle cx="350" cy="70" r="28" fill="#1A4D38"/>
             <circle cx="450" cy="70" r="28" fill="#1A4D38"/>
             <circle cx="550" cy="70" r="28" fill="#E07828" opacity="0.85"/>
-            <g class="agent-arrow-group">
-              <path d="M 550,28 A 42,42 0 1,1 508,70"
-                    fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="2.5"
-                    marker-end="url(#arr)"/>
-            </g>
+            <image class="agent-arrow-img" href="Assets/arrow.svg"
+                   x="505" y="25" width="90" height="90"/>
             <circle cx="650" cy="70" r="28" fill="#1A4D38"/>
           </g>
           <!-- Row 2 (right → left, y=210) -->
@@ -221,11 +214,8 @@
             <circle cx="550" cy="210" r="28" fill="#1A4D38"/>
             <circle cx="450" cy="210" r="28" fill="#1A4D38"/>
             <circle cx="350" cy="210" r="28" fill="#E07828" opacity="0.85"/>
-            <g class="agent-arrow-group">
-              <path d="M 350,168 A 42,42 0 1,1 308,210"
-                    fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="2.5"
-                    marker-end="url(#arr)"/>
-            </g>
+            <image class="agent-arrow-img" href="Assets/arrow.svg"
+                   x="305" y="165" width="90" height="90"/>
             <circle cx="250" cy="210" r="28" fill="#1A4D38"/>
             <circle cx="150" cy="210" r="28" fill="#1A4D38"/>
             <circle cx="50"  cy="210" r="28" fill="#1A4D38"/>
@@ -236,11 +226,8 @@
             <circle cx="150" cy="350" r="28" fill="#1A4D38"/>
             <circle cx="250" cy="350" r="28" fill="#1A4D38"/>
             <circle cx="350" cy="350" r="28" fill="#E07828" opacity="0.85"/>
-            <g class="agent-arrow-group">
-              <path d="M 350,308 A 42,42 0 1,1 308,350"
-                    fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="2.5"
-                    marker-end="url(#arr)"/>
-            </g>
+            <image class="agent-arrow-img" href="Assets/arrow.svg"
+                   x="305" y="305" width="90" height="90"/>
             <circle cx="450" cy="350" r="28" fill="#1A4D38"/>
             <circle cx="550" cy="350" r="28" fill="#1A4D38"/>
             <circle cx="650" cy="350" r="28" fill="#1A4D38"/>
@@ -613,6 +600,14 @@
     const esteirasSec   = document.getElementById('esteirasSec');
     const esteirasWords = esteirasSec ? Array.from(esteirasSec.querySelectorAll('.w')) : [];
     const esteirasRows  = esteirasSec ? Array.from(esteirasSec.querySelectorAll('.row')) : [];
+    const snakePath     = esteirasSec ? esteirasSec.querySelector('.snake-path') : null;
+    let snakeLen = 0;
+
+    if (snakePath) {
+      snakeLen = snakePath.getTotalLength();
+      snakePath.style.strokeDasharray = snakeLen;
+      snakePath.style.strokeDashoffset = snakeLen;
+    }
 
     function updateEsteiras() {
       if (!esteirasSec || !esteirasWords.length) return;
@@ -635,8 +630,12 @@
         const rowStart    = i / 3;
         const rowProgress = Math.max(0, Math.min(1, (progress - rowStart) / 0.33));
         row.style.opacity = 0.1 + rowProgress * 0.9;
-        row.classList.toggle('active', rowProgress > 0.7);
+        row.classList.toggle('active', rowProgress > 0.8);
       });
+
+      if (snakePath && snakeLen) {
+        snakePath.style.strokeDashoffset = snakeLen * (1 - progress);
+      }
     }
 
     window.addEventListener('scroll', updateEsteiras, { passive: true });
