@@ -21,7 +21,7 @@ body {
   font-family: var(--sans);
   background: var(--dark);
   color: var(--offwhite);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 img { display: block; max-width: 100%; }
 
@@ -125,7 +125,7 @@ nav {
   font-family: var(--serif);
   font-style: normal;
   font-optical-sizing: auto;
-  font-size: 40px;
+  font-size: clamp(20px, 5.5vw, 40px);
   font-weight: 300;
   color: var(--dark);
   line-height: 1.2;
@@ -391,6 +391,15 @@ nav {
   color: var(--muted);
 }
 .pm-right .pm-desc { text-align: right; }
+
+@media(max-width:720px) {
+  .phase-movement-grid {
+    grid-template-columns: 1fr;
+    gap: 24px 0;
+  }
+  .pm-label.red { justify-content: flex-start; }
+  .pm-right .pm-desc { text-align: left; }
+}
 
 /* ─── Robots panorama (legacy) ───────────────────────────── */
 .robots-strip {
@@ -1001,6 +1010,12 @@ nav {
   padding-left: 20px;
 }
 @media(max-width:720px) {
+  .vantagens-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding-bottom: 24px;
+  }
   .vantagem-row {
     grid-template-columns: 80px 1fr;
     grid-template-rows: auto auto;
