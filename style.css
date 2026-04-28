@@ -1027,24 +1027,26 @@ nav {
 /* ─── FOOTER ─────────────────────────────────────────────── */
 .footer {
   background: var(--grad);
-  padding: 0 6% calc(19vw + 50px);
-  text-align: center;
+  padding: 0 0 150px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  height: 75vh;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 80vh;
   position: relative;
   z-index: 1;
   overflow: hidden;
 }
 .footer-robots {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: auto;
   display: block;
+  flex-shrink: 0;
   pointer-events: none;
+}
+.footer-content {
+  text-align: center;
+  padding: 0 6%;
 }
 .footer-logo {
   width: clamp(150px, 22vw, 300px);
