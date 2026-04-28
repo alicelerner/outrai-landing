@@ -287,7 +287,6 @@
           <h2 class="al-title-atom">o <em>átomo</em> do processo</h2>
           <h2 class="al-title-loops">a solução de múltiplos loops</h2>
         </div>
-        <span class="al-sub-loops">O foco é "fazer a coisa certa"</span>
 
         <div class="al-stage-mid">
           <div class="al-side-note al-side-left">
@@ -301,9 +300,7 @@
                 <marker id="al-arr-w" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto">
                   <path d="M0,0.5 L6.5,3.5 L0,6.5Z" fill="rgba(244,244,238,0.5)"/>
                 </marker>
-                <marker id="al-arr-m" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto">
-                  <path d="M0,0.5 L5,3 L0,5.5Z" fill="rgba(77,245,160,0.55)"/>
-                </marker>
+
                 <radialGradient id="al-atom-forest" cx="50%" cy="50%" r="62%">
                   <stop offset="0%" stop-color="#1F5240"/>
                   <stop offset="100%" stop-color="#0B2218"/>
@@ -315,30 +312,30 @@
               </defs>
 
               <!-- Outer ellipse with radial gradient -->
-              <ellipse cx="360" cy="172" rx="268" ry="112" fill="url(#al-atom-forest)" stroke="rgba(77,245,160,0.28)" stroke-width="1.5"/>
+              <ellipse cx="360" cy="172" rx="288" ry="120" fill="url(#al-atom-forest)" stroke="rgba(77,245,160,0.28)" stroke-width="1.5"/>
 
-              <!-- Vertical capsule demarcating the M zone -->
-              <path d="M360,60 Q300,116 300,172 Q300,228 360,284 Q420,228 420,172 Q420,116 360,60 Z" fill="url(#al-atom-capsule)" stroke="rgba(77,245,160,0.42)" stroke-width="1.4"/>
+              <!-- Vertical ellipse demarcating the M zone -->
+              <ellipse cx="360" cy="172" rx="71" ry="117" fill="url(#al-atom-capsule)" stroke="rgba(77,245,160,0.42)" stroke-width="1.4"/>
 
-              <!-- Top loop arrow: H-right (avaliação) arcs over and down to H-left (requisito) -->
-              <path d="M538,108 Q538,68 362,68 Q186,68 186,108" fill="none" stroke="rgba(77,245,160,0.5)" stroke-width="1.2" marker-end="url(#al-arr-m)"/>
+              <!-- Top loop arrow: gray-hh-arrow asset -->
+              <image class="al-atom-detail" href="Assets/gray-hh-arrow.svg" x="186" y="100" width="352" height="24"/>
 
               <!-- H left -->
-              <text x="186" y="196" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#E8E49A" font-weight="700">H</text>
+              <text class="al-atom-detail" x="186" y="196" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#E8E49A" font-weight="700">H</text>
               <!-- M center -->
-              <text x="362" y="196" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#F4F4EE" font-weight="400">M</text>
+              <text class="al-atom-detail" x="362" y="196" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#F4F4EE" font-weight="400">M</text>
               <!-- H right -->
-              <text x="538" y="196" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#E8E49A" font-weight="700">H</text>
+              <text class="al-atom-detail" x="538" y="196" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#E8E49A" font-weight="700">H</text>
 
               <!-- Arrow H→M -->
-              <line x1="235" y1="172" x2="296" y2="172" stroke="rgba(244,244,238,0.45)" stroke-width="1.5" marker-end="url(#al-arr-w)"/>
+              <line class="al-atom-detail" x1="235" y1="172" x2="285" y2="172" stroke="rgba(244,244,238,0.45)" stroke-width="1.5" marker-end="url(#al-arr-w)"/>
               <!-- Arrow M→H -->
-              <line x1="424" y1="172" x2="489" y2="172" stroke="rgba(244,244,238,0.45)" stroke-width="1.5" marker-end="url(#al-arr-w)"/>
+              <line class="al-atom-detail" x1="435" y1="172" x2="489" y2="172" stroke="rgba(244,244,238,0.45)" stroke-width="1.5" marker-end="url(#al-arr-w)"/>
 
               <!-- Labels (close to letters, fully visible) -->
-              <text x="186" y="232" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="13" fill="rgba(244,244,238,0.92)" letter-spacing="2" font-weight="600">REQUISITO</text>
-              <text x="362" y="232" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="13" fill="rgba(244,244,238,0.92)" letter-spacing="2" font-weight="600">EXECUÇÃO</text>
-              <text x="538" y="232" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="13" fill="rgba(244,244,238,0.92)" letter-spacing="2" font-weight="600">AVALIAÇÃO</text>
+              <text class="al-atom-detail" x="186" y="222" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="13" fill="rgba(244,244,238,0.92)" letter-spacing="2" font-weight="600">REQUISITO</text>
+              <text class="al-atom-detail" x="362" y="222" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="13" fill="rgba(244,244,238,0.92)" letter-spacing="2" font-weight="600">EXECUÇÃO</text>
+              <text class="al-atom-detail" x="538" y="222" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="13" fill="rgba(244,244,238,0.92)" letter-spacing="2" font-weight="600">AVALIAÇÃO</text>
             </svg>
 
             <!-- Row of pods (state C+D: pods fade in, central first then siblings) -->
@@ -363,29 +360,29 @@
               </defs>
 
               <!-- Spine -->
-              <line class="al-spine" x1="92" y1="80" x2="1088" y2="80" stroke="rgba(244,244,238,0.07)" stroke-width="1.5" stroke-dasharray="3,5"/>
+              <line class="al-spine" x1="122" y1="80" x2="1058" y2="80" stroke="rgba(244,244,238,0.18)" stroke-width="1.5" stroke-dasharray="3,5"/>
 
               <!-- Pod 0: Endpoint O -->
               <g class="al-pod" data-pos="0">
-                <ellipse cx="46" cy="80" rx="46" ry="22" fill="#F4F4EE"/>
-                <text x="46" y="78" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" font-weight="700" fill="#191919" letter-spacing="1">OBJETIVO</text>
-                <text x="46" y="91" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="8" font-weight="500" fill="rgba(25,25,25,0.65)" letter-spacing="0.6">DE NEGÓCIO</text>
+                <ellipse cx="62" cy="80" rx="60" ry="28" fill="#F4F4EE"/>
+                <text x="62" y="76" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="14" font-weight="700" fill="#191919" letter-spacing="1">OBJETIVO</text>
+                <text x="62" y="93" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" font-weight="500" fill="rgba(25,25,25,0.65)" letter-spacing="0.6">DE NEGÓCIO</text>
               </g>
 
               <!-- Pod 1: Briefing (forest, H-M-H) -->
               <g class="al-pod" data-pos="1">
                 <ellipse cx="192" cy="80" rx="56" ry="26" fill="url(#al-pod-forest)" stroke="rgba(77,245,160,0.32)" stroke-width="1.2"/>
-                <path d="M192,54 Q181,67 181,80 Q181,93 192,106 Q203,93 203,80 Q203,67 192,54 Z" fill="url(#al-pod-forest-capsule)" stroke="rgba(77,245,160,0.45)" stroke-width="0.9"/>
-                <text x="170" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <ellipse cx="192" cy="80" rx="14" ry="25" fill="url(#al-pod-forest-capsule)" stroke="rgba(77,245,160,0.45)" stroke-width="0.9"/>
+                <text x="164" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
                 <text x="192" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#F4F4EE" font-weight="300">M</text>
-                <text x="214" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <text x="220" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
                 <text class="al-pod-label" x="192" y="128" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" fill="rgba(244,244,238,0.85)" letter-spacing="1.6" font-weight="600">BRIEFING</text>
               </g>
 
               <!-- Pod 2: User Research (lime, only H = etapa 100% humana) -->
               <g class="al-pod" data-pos="2">
                 <ellipse cx="320" cy="80" rx="56" ry="26" fill="url(#al-pod-lime)" stroke="rgba(168,245,144,0.55)" stroke-width="1.2"/>
-                <path d="M320,54 Q309,67 309,80 Q309,93 320,106 Q331,93 331,80 Q331,67 320,54 Z" fill="url(#al-pod-lime-capsule)" stroke="rgba(31,59,20,0.4)" stroke-width="0.9"/>
+                <ellipse cx="320" cy="80" rx="14" ry="25" fill="url(#al-pod-lime-capsule)" stroke="rgba(31,59,20,0.4)" stroke-width="0.9"/>
                 <text x="320" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#1F3B14" font-weight="600">H</text>
                 <text class="al-pod-label" x="320" y="124" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" fill="rgba(244,244,238,0.85)" letter-spacing="1.4" font-weight="600">USER</text>
                 <text class="al-pod-label" x="320" y="138" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" fill="rgba(244,244,238,0.85)" letter-spacing="1.4" font-weight="600">RESEARCH</text>
@@ -394,10 +391,10 @@
               <!-- Pod 3: Personas & Journeys (forest, H-M-H) -->
               <g class="al-pod" data-pos="3">
                 <ellipse cx="448" cy="80" rx="56" ry="26" fill="url(#al-pod-forest)" stroke="rgba(77,245,160,0.32)" stroke-width="1.2"/>
-                <path d="M448,54 Q437,67 437,80 Q437,93 448,106 Q459,93 459,80 Q459,67 448,54 Z" fill="url(#al-pod-forest-capsule)" stroke="rgba(77,245,160,0.45)" stroke-width="0.9"/>
-                <text x="426" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <ellipse cx="448" cy="80" rx="14" ry="25" fill="url(#al-pod-forest-capsule)" stroke="rgba(77,245,160,0.45)" stroke-width="0.9"/>
+                <text x="420" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
                 <text x="448" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#F4F4EE" font-weight="300">M</text>
-                <text x="470" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <text x="476" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
                 <text class="al-pod-label" x="448" y="128" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" fill="rgba(244,244,238,0.85)" letter-spacing="1.4" font-weight="600">PERSONAS</text>
                 <text class="al-pod-label" x="448" y="142" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" fill="rgba(244,244,238,0.85)" letter-spacing="1.4" font-weight="600">&amp; JOURNEYS</text>
               </g>
@@ -405,7 +402,7 @@
               <!-- Pod 4: Key Feature (lime, only H = etapa 100% humana) -->
               <g class="al-pod" data-pos="4">
                 <ellipse cx="590" cy="80" rx="56" ry="26" fill="url(#al-pod-lime)" stroke="rgba(168,245,144,0.55)" stroke-width="1.2"/>
-                <path d="M590,54 Q579,67 579,80 Q579,93 590,106 Q601,93 601,80 Q601,67 590,54 Z" fill="url(#al-pod-lime-capsule)" stroke="rgba(31,59,20,0.4)" stroke-width="0.9"/>
+                <ellipse cx="590" cy="80" rx="14" ry="25" fill="url(#al-pod-lime-capsule)" stroke="rgba(31,59,20,0.4)" stroke-width="0.9"/>
                 <text x="590" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#1F3B14" font-weight="600">H</text>
                 <text class="al-pod-label" x="590" y="128" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" fill="rgba(244,244,238,0.85)" letter-spacing="1.6" font-weight="600">KEY</text>
                 <text class="al-pod-label" x="590" y="142" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" fill="rgba(244,244,238,0.85)" letter-spacing="1.6" font-weight="600">FEATURE</text>
@@ -414,10 +411,10 @@
               <!-- Pod 5: Backlog & Arquitetura (forest, H-M-H) — CENTRAL: alvo do morf do átomo -->
               <g class="al-pod" data-pos="5" data-central>
                 <ellipse cx="732" cy="80" rx="56" ry="26" fill="url(#al-pod-forest)" stroke="rgba(77,245,160,0.32)" stroke-width="1.2"/>
-                <path d="M732,54 Q721,67 721,80 Q721,93 732,106 Q743,93 743,80 Q743,67 732,54 Z" fill="url(#al-pod-forest-capsule)" stroke="rgba(77,245,160,0.45)" stroke-width="0.9"/>
-                <text x="710" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <ellipse cx="732" cy="80" rx="14" ry="25" fill="url(#al-pod-forest-capsule)" stroke="rgba(77,245,160,0.45)" stroke-width="0.9"/>
+                <text x="704" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
                 <text x="732" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#F4F4EE" font-weight="300">M</text>
-                <text x="754" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <text x="760" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
                 <text class="al-pod-label" x="732" y="128" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" fill="rgba(244,244,238,0.85)" letter-spacing="1.2" font-weight="600">BACKLOG &amp;</text>
                 <text class="al-pod-label" x="732" y="142" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" fill="rgba(244,244,238,0.85)" letter-spacing="1.2" font-weight="600">ARQUITETURA</text>
               </g>
@@ -425,7 +422,7 @@
               <!-- Pod 6: Key Design (lime, only H = etapa 100% humana) -->
               <g class="al-pod" data-pos="6">
                 <ellipse cx="860" cy="80" rx="56" ry="26" fill="url(#al-pod-lime)" stroke="rgba(168,245,144,0.55)" stroke-width="1.2"/>
-                <path d="M860,54 Q849,67 849,80 Q849,93 860,106 Q871,93 871,80 Q871,67 860,54 Z" fill="url(#al-pod-lime-capsule)" stroke="rgba(31,59,20,0.4)" stroke-width="0.9"/>
+                <ellipse cx="860" cy="80" rx="14" ry="25" fill="url(#al-pod-lime-capsule)" stroke="rgba(31,59,20,0.4)" stroke-width="0.9"/>
                 <text x="860" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#1F3B14" font-weight="600">H</text>
                 <text class="al-pod-label" x="860" y="128" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" fill="rgba(244,244,238,0.85)" letter-spacing="1.6" font-weight="600">KEY</text>
                 <text class="al-pod-label" x="860" y="142" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" fill="rgba(244,244,238,0.85)" letter-spacing="1.6" font-weight="600">DESIGN</text>
@@ -434,19 +431,19 @@
               <!-- Pod 7: Demais Layouts & Dev (forest, H-M-H) -->
               <g class="al-pod" data-pos="7">
                 <ellipse cx="988" cy="80" rx="56" ry="26" fill="url(#al-pod-forest)" stroke="rgba(77,245,160,0.32)" stroke-width="1.2"/>
-                <path d="M988,54 Q977,67 977,80 Q977,93 988,106 Q999,93 999,80 Q999,67 988,54 Z" fill="url(#al-pod-forest-capsule)" stroke="rgba(77,245,160,0.45)" stroke-width="0.9"/>
-                <text x="966" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <ellipse cx="988" cy="80" rx="14" ry="25" fill="url(#al-pod-forest-capsule)" stroke="rgba(77,245,160,0.45)" stroke-width="0.9"/>
+                <text x="960" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
                 <text x="988" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#F4F4EE" font-weight="300">M</text>
-                <text x="1010" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <text x="1016" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
                 <text class="al-pod-label" x="988" y="128" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" fill="rgba(244,244,238,0.85)" letter-spacing="1.2" font-weight="600">DEMAIS LAYOUTS</text>
                 <text class="al-pod-label" x="988" y="142" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" fill="rgba(244,244,238,0.85)" letter-spacing="1.2" font-weight="600">&amp; DEV</text>
               </g>
 
               <!-- Pod 8: Endpoint R -->
               <g class="al-pod" data-pos="8">
-                <ellipse cx="1134" cy="80" rx="46" ry="22" fill="#F4F4EE"/>
-                <text x="1134" y="78" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" font-weight="700" fill="#191919" letter-spacing="1">RESULTADO</text>
-                <text x="1134" y="91" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="8" font-weight="500" fill="rgba(25,25,25,0.65)" letter-spacing="0.6">DE NEGÓCIO</text>
+                <ellipse cx="1118" cy="80" rx="60" ry="28" fill="#F4F4EE"/>
+                <text x="1118" y="76" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="14" font-weight="700" fill="#191919" letter-spacing="1">RESULTADO</text>
+                <text x="1118" y="93" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="11" font-weight="500" fill="rgba(25,25,25,0.65)" letter-spacing="0.6">DE NEGÓCIO</text>
               </g>
             </svg>
           </div>
@@ -551,6 +548,12 @@
       <div class="feedback ok"  id="fbOk">Recebemos! A equipe da outracoisa* vai entrar em contato em breve.</div>
       <div class="feedback err" id="fbErr">Algo deu errado. Tente novamente ou mande um email para <a href="mailto:vamos@outracoisa.co" style="color:inherit;text-decoration:underline">vamos@outracoisa.co</a>.</div>
     </div>
+  </div>
+
+  <!-- ─── CONFIRMAÇÃO OVERLAY ───────────────────────────────── -->
+  <div class="confirm-overlay" id="confirmOverlay" aria-hidden="true">
+    <h2 class="confirm-heading">Até já.</h2>
+    <p class="confirm-body">Entraremos em contato com<br>mais notícias em breve.</p>
   </div>
 
   <!-- ─── WIDGET ─────────────────────────────────────────────── -->
@@ -829,6 +832,7 @@
       const body    = document.getElementById('widgetBody');
       const form    = document.getElementById('widgetForm');
       const success = document.getElementById('widgetSuccess');
+      const confirmOverlay = document.getElementById('confirmOverlay');
 
       // 1. Measure closed dimensions from the trigger's natural size
       const closedW = trigger.offsetWidth;
@@ -878,18 +882,17 @@
       form.addEventListener('submit', e => {
         e.preventDefault();
         if (!form.nome.value.trim() || !form.email.value.trim()) return;
-        form.style.display    = 'none';
-        success.style.display = 'block';
+        close();
+        confirmOverlay.removeAttribute('aria-hidden');
+        confirmOverlay.classList.add('visible');
         setTimeout(() => {
-          close();
+          confirmOverlay.classList.remove('visible');
           setTimeout(() => {
-            if (!isOpen) {
-              form.style.display    = '';
-              success.style.display = 'none';
-              form.reset();
-            }
-          }, 500);
-        }, 2200);
+            confirmOverlay.setAttribute('aria-hidden', 'true');
+            form.style.display = '';
+            form.reset();
+          }, 400);
+        }, 3500);
       });
     })();
 
