@@ -412,7 +412,7 @@ nav {
   position: relative;
   z-index: 1;
   min-height: 220vh;
-  background: var(--grad);
+  background: linear-gradient(180deg, #6EE8D4 0%, #A8F590 100%);
 }
 .esteiras-sticky {
   position: sticky;
@@ -484,33 +484,98 @@ nav {
 
 /* ─── Trio (Características) ─────────────────────────────── */
 .hybrid-block {
-  background: linear-gradient(148deg, #A8F590 0%, #6EE8D4 100%);
-  padding: clamp(80px,12vh,140px) clamp(40px,6%,120px);
+  background: linear-gradient(180deg, #A8F590 0%, #6EE8D4 100%);
+  padding: clamp(48px,7vh,88px) clamp(40px,6%,120px) clamp(64px,9vh,112px);
   position: relative;
   z-index: 1;
   color: #0A0A0A;
 }
-.trio {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(16px, 2.5vw, 32px);
-  align-items: start;
-}
-.trio-card {
+.trio-header {
+  max-width: 1080px;
+  margin: 0 auto clamp(40px, 6vh, 72px);
+  text-align: center;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1),
+              transform 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.trio-header.in { opacity: 1; transform: none; }
+.trio-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(10,10,10,0.55);
+}
+.trio-section-title {
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: #0A0A0A;
+  max-width: 16ch;
+}
+.trio-section-title em {
+  font-style: italic;
+  font-weight: 400;
+}
+.trio {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.trio::before {
+  content: "";
+  position: absolute;
+  top: 32px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(10,10,10,0.18);
+  z-index: 0;
+}
+.trio-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 1 320px;
+  max-width: 320px;
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
               transform 0.75s cubic-bezier(0.16,1,0.3,1);
 }
 .trio-card.in { opacity: 1; transform: none; }
+.trio-num {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  color: rgba(10,10,10,0.7);
+  margin-bottom: 56px;
+  position: relative;
+  z-index: 1;
+}
 .trio-img {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  max-width: 320px;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: 6px;
   flex-shrink: 0;
+  align-self: flex-start;
 }
 .trio-img img {
   width: 100%;
@@ -518,28 +583,32 @@ nav {
   object-fit: cover;
   object-position: center top;
 }
-.trio-text { padding-top: 28px; }
+.trio-text { padding-top: 24px; max-width: 320px; }
 .trio-title {
   font-family: var(--serif);
   font-optical-sizing: auto;
-  font-size: clamp(22px, 3vw, 36px);
+  font-size: clamp(20px, 2.4vw, 28px);
   font-weight: 400;
   font-style: normal;
-  line-height: 1.15;
+  line-height: 1.2;
   color: #0A0A0A;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 .trio-body {
-  font-size: clamp(14px, 1.3vw, 17px);
+  font-size: clamp(14px, 1.2vw, 16px);
   font-weight: 400;
-  line-height: 1.65;
-  color: rgba(10,10,10,0.6);
+  line-height: 1.6;
+  color: rgba(10,10,10,0.65);
 }
-.trio-body + .trio-body { margin-top: 12px; }
+.trio-body + .trio-body { margin-top: 10px; }
 .trio-body strong { color: #0A0A0A; font-weight: 600; }
 @media(max-width:768px){
-  .trio { grid-template-columns: 1fr; gap: 48px; }
-  .trio-img { aspect-ratio: 4 / 3; }
+  .trio { flex-direction: column; gap: 56px; }
+  .trio::before { display: none; }
+  .trio-card { flex: 1 1 auto; max-width: 100%; }
+  .trio-img { aspect-ratio: 4 / 3; max-width: 100%; }
+  .trio-text { max-width: 100%; }
+  .trio-num { margin-bottom: 16px; }
 }
 
 /* ─── Split sections ─────────────────────────────────────── */
@@ -614,7 +683,7 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: clamp(16px, 2.4vh, 32px);
+  gap: clamp(8px, 1.2vh, 18px);
   height: 100%;
 }
 .al-eyebrow {
@@ -623,7 +692,7 @@ nav {
   font-weight: 600;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  opacity: calc(0.45 * (1 - clamp(0, (var(--p) - 0.10) / 0.10, 1)));
+  opacity: 0.45;
   flex-shrink: 0;
 }
 
@@ -646,8 +715,8 @@ nav {
 .al-title-atom {
   font-family: var(--serif);
   font-optical-sizing: auto;
-  font-size: clamp(48px, 7.2vw, 96px);
-  font-weight: 700;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
   color: var(--offwhite);
   opacity: calc(1 - clamp(0, (var(--p) - 0.18) / 0.10, 1));
 }
@@ -657,11 +726,11 @@ nav {
   color: var(--neon);
 }
 .al-title-loops {
-  font-family: var(--sans);
-  font-size: clamp(40px, 6vw, 84px);
-  font-weight: 900;
-  letter-spacing: -0.01em;
-  color: var(--neon);
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 400;
+  color: var(--offwhite);
   opacity: clamp(0, (var(--p) - 0.78) / 0.10, 1);
 }
 .al-sub-loops {
@@ -691,19 +760,19 @@ nav {
 }
 .al-side-note {
   position: absolute;
-  top: 50%;
+  top: 60%;
   transform: translateY(-50%);
   font-family: var(--sans);
-  font-size: 11px;
-  line-height: 1.55;
-  color: rgba(244, 244, 238, 0.5);
+  font-size: 16px;
+  line-height: 1.45;
+  color: rgba(244, 244, 238, 0.6);
   font-weight: 500;
-  width: clamp(120px, 13vw, 170px);
+  width: clamp(140px, 14vw, 200px);
   z-index: 2;
   opacity: calc(1 - clamp(0, (var(--p) - 0.15) / 0.10, 1));
 }
-.al-side-left  { right: calc(50% + clamp(220px, 26vw, 360px)); text-align: right; }
-.al-side-right { left:  calc(50% + clamp(220px, 26vw, 360px)); text-align: left; }
+.al-side-left  { right: calc(50% + clamp(180px, 22vw, 300px)); text-align: right; }
+.al-side-right { left:  calc(50% + clamp(180px, 22vw, 300px)); text-align: left; }
 
 .al-diagram {
   position: relative;
@@ -723,8 +792,11 @@ nav {
 }
 .al-atom {
   max-width: clamp(420px, 50vw, 680px);
-  /* Scale + fade. At p=0 full size, at p=0.55 about 0 (faded out). */
-  transform: scale(calc(1 - 0.92 * clamp(0, (var(--p) - 0.18) / 0.30, 1)));
+  /* Scale + slide right toward Backlog & Arquitetura (pod 5, cx=732 of 1180 row).
+     Translation 12% ≈ (732 − 590) / 1180. */
+  transform:
+    translateX(calc(12% * clamp(0, (var(--p) - 0.18) / 0.30, 1)))
+    scale(calc(1 - 0.92 * clamp(0, (var(--p) - 0.18) / 0.30, 1)));
   transform-origin: center center;
   opacity: calc(1 - clamp(0, (var(--p) - 0.32) / 0.18, 1));
   transition: none;
@@ -763,7 +835,7 @@ nav {
   position: absolute;
   inset: 0 0 auto 0;
   margin: 0 auto;
-  max-width: 720px;
+  max-width: 960px;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
