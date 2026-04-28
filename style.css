@@ -588,29 +588,264 @@ nav {
   line-height: 1.2;
 }
 
-/* ─── ÁTOMO ──────────────────────────────────────────────── */
-.atomo-title {
+/* ─── ÁTOMO + LOOPS STICKY ───────────────────────────────── */
+.al-sticky {
+  position: relative;
+  background: var(--dark);
+  height: 320vh;
+  z-index: 1;
+}
+.al-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.al-canvas {
+  --p: 0;
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: clamp(40px, 6vh, 76px) 4% clamp(40px, 6vh, 76px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 2.4vh, 32px);
+  height: 100%;
+}
+.al-eyebrow {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  opacity: calc(0.45 * (1 - clamp(0, (var(--p) - 0.10) / 0.10, 1)));
+  flex-shrink: 0;
+}
+
+/* Titles: atom and loops share same slot, cross-fade */
+.al-titles {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  min-height: clamp(80px, 11vh, 132px);
+  flex-shrink: 0;
+}
+.al-title-atom,
+.al-title-loops {
+  position: absolute;
+  inset: 0 0 auto 0;
+  width: 100%;
+  text-align: center;
+  line-height: 1;
+}
+.al-title-atom {
   font-family: var(--serif);
   font-optical-sizing: auto;
-  font-size: clamp(64px, 10vw, 120px);
+  font-size: clamp(48px, 7.2vw, 96px);
   font-weight: 700;
-  line-height: 1;
+  color: var(--offwhite);
+  opacity: calc(1 - clamp(0, (var(--p) - 0.18) / 0.10, 1));
+}
+.al-title-atom em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--neon);
+}
+.al-title-loops {
+  font-family: var(--sans);
+  font-size: clamp(40px, 6vw, 84px);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: var(--neon);
+  opacity: clamp(0, (var(--p) - 0.78) / 0.10, 1);
+}
+.al-sub-loops {
+  display: block;
+  width: 100%;
+  font-family: var(--serif);
+  font-style: italic;
+  font-optical-sizing: auto;
+  font-size: clamp(17px, 1.8vw, 22px);
+  font-weight: 300;
+  color: var(--muted);
   text-align: center;
-  margin-bottom: 48px;
+  margin-top: -8px;
+  opacity: clamp(0, (var(--p) - 0.84) / 0.08, 1);
+  flex-shrink: 0;
 }
-.atomo-svg-wrap {
-  max-width: 720px;
-  margin: 0 auto 36px;
+
+/* Stage middle: side notes overlay + diagram (atom and row stacked) */
+.al-stage-mid {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
 }
-.atomo-caption {
-  max-width: 680px;
+.al-side-note {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--sans);
+  font-size: 11px;
+  line-height: 1.55;
+  color: rgba(244, 244, 238, 0.5);
+  font-weight: 500;
+  width: clamp(120px, 13vw, 170px);
+  z-index: 2;
+  opacity: calc(1 - clamp(0, (var(--p) - 0.15) / 0.10, 1));
+}
+.al-side-left  { right: calc(50% + clamp(220px, 26vw, 360px)); text-align: right; }
+.al-side-right { left:  calc(50% + clamp(220px, 26vw, 360px)); text-align: left; }
+
+.al-diagram {
+  position: relative;
+  width: 100%;
+  max-width: clamp(720px, 90vw, 1180px);
+  display: grid;
+  grid-template-areas: 'stack';
+  align-items: center;
+  justify-items: center;
+}
+.al-atom,
+.al-row {
+  grid-area: stack;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.al-atom {
+  max-width: clamp(420px, 50vw, 680px);
+  /* Scale + fade. At p=0 full size, at p=0.55 about 0 (faded out). */
+  transform: scale(calc(1 - 0.92 * clamp(0, (var(--p) - 0.18) / 0.30, 1)));
+  transform-origin: center center;
+  opacity: calc(1 - clamp(0, (var(--p) - 0.32) / 0.18, 1));
+  transition: none;
+  z-index: 1;
+}
+.al-row {
+  max-width: clamp(720px, 90vw, 1180px);
+  opacity: clamp(0, (var(--p) - 0.46) / 0.10, 1);
+}
+/* Central pod: visible from start of row fade-in */
+.al-row .al-pod[data-central] {
+  opacity: 1;
+}
+/* Sibling pods: fade in slightly later */
+.al-row .al-pod:not([data-central]) {
+  opacity: clamp(0, (var(--p) - 0.58) / 0.16, 1);
+  transition: none;
+}
+/* Pod labels — slight separate fade so the type emerges last */
+.al-pod-label {
+  opacity: clamp(0, (var(--p) - 0.66) / 0.14, 1);
+}
+.al-row .al-pod[data-central] .al-pod-label {
+  opacity: clamp(0, (var(--p) - 0.50) / 0.16, 1);
+}
+
+/* Bottom zone: caption (atom) and paragraphs (loops) share the slot */
+.al-bottom {
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  flex-shrink: 0;
+  min-height: clamp(110px, 18vh, 180px);
+}
+.al-caption-atom {
+  position: absolute;
+  inset: 0 0 auto 0;
   margin: 0 auto;
+  max-width: 720px;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  font-size: clamp(16px, 1.8vw, 20px);
+  font-size: clamp(15px, 1.6vw, 19px);
   line-height: 1.7;
   color: var(--muted);
+  opacity: calc(1 - clamp(0, (var(--p) - 0.16) / 0.12, 1));
 }
-.atomo-caption strong { color: var(--offwhite); }
+.al-caption-atom strong { color: var(--offwhite); font-weight: 700; }
+
+.al-paragraphs {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  align-items: start;
+  opacity: clamp(0, (var(--p) - 0.86) / 0.10, 1);
+  transform: translateY(calc(12px * (1 - clamp(0, (var(--p) - 0.86) / 0.10, 1))));
+}
+.al-paragraph {
+  font-family: var(--sans);
+  font-size: clamp(11px, 1vw, 13px);
+  line-height: 1.55;
+  color: rgba(244, 244, 238, 0.52);
+  padding: 4px 18px;
+  border-left: 1px solid rgba(244, 244, 238, 0.08);
+}
+.al-paragraph:first-child { border-left: none; padding-left: 0; }
+.al-paragraph:last-child { padding-right: 0; }
+
+/* Mobile: drop sticky, stack vertically with final state */
+@media (max-width: 720px) {
+  .al-sticky { height: auto; }
+  .al-stage {
+    position: static;
+    height: auto;
+    overflow: visible;
+    padding: 80px 0;
+  }
+  .al-canvas {
+    height: auto;
+    --p: 1;
+    gap: 32px;
+  }
+  .al-titles { min-height: 0; padding-top: 36px; }
+  .al-title-atom { display: none; }
+  .al-title-loops { position: static; }
+  .al-sub-loops { position: static; margin-top: 12px; }
+  .al-stage-mid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .al-side-note { display: none; }
+  .al-atom { display: none; }
+  .al-row { position: static; max-width: 100%; }
+  .al-diagram { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .al-diagram .al-row { min-width: 720px; }
+  .al-bottom { min-height: 0; }
+  .al-caption-atom { display: none; }
+  .al-paragraphs {
+    position: static;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    transform: none;
+  }
+  .al-paragraph {
+    border-left: none;
+    border-top: 1px solid rgba(244, 244, 238, 0.08);
+    padding: 16px 0 0 0;
+  }
+  .al-paragraph:first-child { border-top: none; padding-top: 0; }
+}
+
+/* Reduced motion: collapse to final state */
+@media (prefers-reduced-motion: reduce) {
+  .al-canvas { --p: 1 !important; }
+  .al-atom { display: none; }
+  .al-side-note { display: none; }
+  .al-caption-atom { display: none; }
+}
 
 /* ─── VANTAGENS ──────────────────────────────────────────── */
 .vantagens-section {
@@ -717,23 +952,6 @@ nav {
     padding-left: 0;
     margin-top: 4px;
   }
-}
-
-/* ─── LOOPS ──────────────────────────────────────────────── */
-.loops-sub {
-  font-family: var(--serif);
-  font-style: italic;
-  font-optical-sizing: auto;
-  font-size: clamp(17px, 1.8vw, 22px);
-  font-weight: 300;
-  color: var(--muted);
-  margin-bottom: 52px;
-  display: block;
-}
-.loops-scroll {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 8px;
 }
 
 /* ─── FOOTER ─────────────────────────────────────────────── */

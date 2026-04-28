@@ -271,54 +271,205 @@
     </div>
   </div>
 
-  <!-- ─── ÁTOMO ─────────────────────────────────────────────── -->
-  <section class="sec sec-dark">
-    <div class="inner" style="text-align:center;">
-      <span class="label reveal" style="text-align:center;">VISÃO DE PRODUTO</span>
-      <h2 class="atomo-title reveal d1">átomo</h2>
-      <div class="atomo-svg-wrap reveal d2">
-        <svg viewBox="0 0 720 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagrama do átomo: Requisito (H) → Execução (M) → Avaliação (H)">
-          <defs>
-            <marker id="aw" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto">
-              <path d="M0,0.5 L6.5,3.5 L0,6.5Z" fill="rgba(244,244,238,0.5)"/>
-            </marker>
-          </defs>
-          <!-- Outer ellipse -->
-          <ellipse cx="360" cy="155" rx="268" ry="112" fill="#0E2C1E" stroke="rgba(77,245,160,0.3)" stroke-width="1.5"/>
-          <!-- Top equator arc -->
-          <path d="M92,155 Q360,96 628,155" fill="none" stroke="rgba(77,245,160,0.45)" stroke-width="1.2"/>
-          <!-- Bottom equator arc (dimmer) -->
-          <path d="M92,155 Q360,214 628,155" fill="none" stroke="rgba(77,245,160,0.14)" stroke-width="1"/>
-          <!-- Entry arrow top -->
-          <line x1="360" y1="43" x2="360" y2="62" stroke="rgba(77,245,160,0.4)" stroke-width="1" marker-end="url(#aw)"/>
-          <!-- H left -->
-          <text x="186" y="178" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#E8E49A" font-weight="600">H</text>
-          <!-- M center -->
-          <text x="362" y="178" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#F4F4EE" font-weight="300">M</text>
-          <!-- H right -->
-          <text x="538" y="178" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#E8E49A" font-weight="600">H</text>
-          <!-- Arrow H→M -->
-          <line x1="235" y1="154" x2="302" y2="154" stroke="rgba(244,244,238,0.4)" stroke-width="1.5" marker-end="url(#aw)"/>
-          <!-- Arrow M→H -->
-          <line x1="422" y1="154" x2="489" y2="154" stroke="rgba(244,244,238,0.4)" stroke-width="1.5" marker-end="url(#aw)"/>
-          <!-- Labels -->
-          <text x="186" y="247" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.38)" letter-spacing="3">REQUISITO</text>
-          <text x="362" y="247" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.38)" letter-spacing="3">EXECUÇÃO</text>
-          <text x="538" y="247" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.38)" letter-spacing="3">AVALIAÇÃO</text>
-          <!-- Side notes -->
-          <text x="28" y="138" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.3)" text-anchor="middle" transform="rotate(-90,28,155)">contexto, instruções,</text>
-          <text x="28" y="155" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.3)" text-anchor="middle" transform="rotate(-90,28,155)">materiais e resultados</text>
-          <text x="28" y="172" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.3)" text-anchor="middle" transform="rotate(-90,28,172)">esperados</text>
-          <text x="692" y="138" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.3)" text-anchor="middle" transform="rotate(90,692,155)">avaliação e aceite ou</text>
-          <text x="692" y="155" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.3)" text-anchor="middle" transform="rotate(90,692,155)">feedbacks, que servem</text>
-          <text x="692" y="172" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.3)" text-anchor="middle" transform="rotate(90,692,172)">como novos requisitos</text>
-        </svg>
+  <!-- ─── ÁTOMO + LOOPS STICKY ──────────────────────────────── -->
+  <section class="al-sticky" id="al-sticky">
+    <div class="al-stage">
+      <div class="al-canvas">
+        <span class="al-eyebrow">VISÃO DE PRODUTO</span>
+
+        <div class="al-titles">
+          <h2 class="al-title-atom">o '<em>átomo</em>' do processo</h2>
+          <h2 class="al-title-loops">a solução de múltiplos loops</h2>
+        </div>
+        <span class="al-sub-loops">O foco é "fazer a coisa certa"</span>
+
+        <div class="al-stage-mid">
+          <div class="al-side-note al-side-left">
+            contexto, instruções,<br>materiais e resultados<br>esperados
+          </div>
+
+          <div class="al-diagram">
+            <!-- Big atom (state A: visible at p=0, fades + scales as p→0.55) -->
+            <svg class="al-atom" viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="O átomo do processo: requisito humano, execução pela máquina, avaliação humana">
+              <defs>
+                <marker id="al-arr-w" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto">
+                  <path d="M0,0.5 L6.5,3.5 L0,6.5Z" fill="rgba(244,244,238,0.5)"/>
+                </marker>
+                <marker id="al-arr-m" markerWidth="6" markerHeight="6" refX="4.5" refY="3" orient="auto">
+                  <path d="M0,0.5 L5,3 L0,5.5Z" fill="rgba(77,245,160,0.55)"/>
+                </marker>
+              </defs>
+
+              <!-- Cap on top -->
+              <ellipse cx="360" cy="50" rx="34" ry="11" fill="#0E2C1E" stroke="rgba(77,245,160,0.42)" stroke-width="1"/>
+              <line x1="343" y1="50" x2="343" y2="62" stroke="rgba(77,245,160,0.3)" stroke-width="1"/>
+              <line x1="377" y1="50" x2="377" y2="62" stroke="rgba(77,245,160,0.3)" stroke-width="1"/>
+
+              <!-- Outer ellipse -->
+              <ellipse cx="360" cy="172" rx="268" ry="112" fill="#0E2C1E" stroke="rgba(77,245,160,0.3)" stroke-width="1.5"/>
+              <!-- Top equator arc -->
+              <path d="M92,172 Q360,113 628,172" fill="none" stroke="rgba(77,245,160,0.45)" stroke-width="1.2"/>
+              <!-- Bottom equator arc (dimmer) -->
+              <path d="M92,172 Q360,231 628,172" fill="none" stroke="rgba(77,245,160,0.14)" stroke-width="1"/>
+
+              <!-- Top loop arrow: M up, over and down to H-left -->
+              <path d="M362,108 Q362,72 270,72 Q186,72 186,108" fill="none" stroke="rgba(77,245,160,0.45)" stroke-width="1.2" marker-end="url(#al-arr-m)"/>
+              <!-- Mirror loop arc to right (dimmer) -->
+              <path d="M362,108 Q362,72 454,72 Q538,72 538,108" fill="none" stroke="rgba(77,245,160,0.16)" stroke-width="1.2"/>
+
+              <!-- H left -->
+              <text x="186" y="196" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#E8E49A" font-weight="600">H</text>
+              <!-- M center -->
+              <text x="362" y="196" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#F4F4EE" font-weight="300">M</text>
+              <!-- H right -->
+              <text x="538" y="196" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="78" fill="#E8E49A" font-weight="600">H</text>
+
+              <!-- Arrow H→M -->
+              <line x1="235" y1="172" x2="302" y2="172" stroke="rgba(244,244,238,0.4)" stroke-width="1.5" marker-end="url(#al-arr-w)"/>
+              <!-- Arrow M→H -->
+              <line x1="422" y1="172" x2="489" y2="172" stroke="rgba(244,244,238,0.4)" stroke-width="1.5" marker-end="url(#al-arr-w)"/>
+
+              <!-- Labels -->
+              <text x="186" y="265" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.42)" letter-spacing="3">REQUISITO</text>
+              <text x="362" y="265" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.42)" letter-spacing="3">EXECUÇÃO</text>
+              <text x="538" y="265" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="10" fill="rgba(244,244,238,0.42)" letter-spacing="3">AVALIAÇÃO</text>
+            </svg>
+
+            <!-- Row of pods (state C+D: pods fade in, central first then siblings) -->
+            <svg class="al-row" viewBox="0 0 1180 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A solução de múltiplos loops: do Objetivo de Negócio ao Resultado de Negócio através de sete fases encadeadas">
+              <defs>
+                <linearGradient id="al-lime-grad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#6EE8D4"/>
+                  <stop offset="100%" stop-color="#A8F590"/>
+                </linearGradient>
+                <radialGradient id="al-forest-grad" cx="0.5" cy="0.5" r="0.7">
+                  <stop offset="0%" stop-color="#1A4D38"/>
+                  <stop offset="100%" stop-color="#0E2C1E"/>
+                </radialGradient>
+              </defs>
+
+              <!-- Spine -->
+              <line class="al-spine" x1="92" y1="80" x2="1088" y2="80" stroke="rgba(244,244,238,0.07)" stroke-width="1.5" stroke-dasharray="3,5"/>
+
+              <!-- Pod 0: Endpoint O -->
+              <g class="al-pod" data-pos="0">
+                <ellipse cx="46" cy="80" rx="46" ry="22" fill="#F4F4EE"/>
+                <text x="46" y="78" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" font-weight="700" fill="#191919" letter-spacing="1">OBJETIVO</text>
+                <text x="46" y="91" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="8" font-weight="500" fill="rgba(25,25,25,0.65)" letter-spacing="0.6">DE NEGÓCIO</text>
+              </g>
+
+              <!-- Pod 1: Briefing (forest) -->
+              <g class="al-pod" data-pos="1">
+                <ellipse cx="192" cy="80" rx="56" ry="26" fill="url(#al-forest-grad)" stroke="rgba(77,245,160,0.35)" stroke-width="1.2"/>
+                <path d="M148,80 Q192,56 236,80" fill="none" stroke="rgba(77,245,160,0.32)" stroke-width="0.8"/>
+                <path d="M148,80 Q192,104 236,80" fill="none" stroke="rgba(77,245,160,0.10)" stroke-width="0.8"/>
+                <text x="170" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <text x="192" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#F4F4EE" font-weight="300">M</text>
+                <text x="214" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <text class="al-pod-label" x="192" y="128" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" fill="rgba(244,244,238,0.5)" letter-spacing="1.6" font-weight="500">BRIEFING</text>
+              </g>
+
+              <!-- Pod 2: User Research (lime) -->
+              <g class="al-pod" data-pos="2">
+                <ellipse cx="320" cy="80" rx="56" ry="26" fill="url(#al-lime-grad)" stroke="rgba(168,245,144,0.55)" stroke-width="1.2"/>
+                <path d="M276,80 Q320,56 364,80" fill="none" stroke="rgba(25,25,25,0.18)" stroke-width="0.8"/>
+                <path d="M276,80 Q320,104 364,80" fill="none" stroke="rgba(25,25,25,0.08)" stroke-width="0.8"/>
+                <text x="298" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#1F3B14" font-weight="600">H</text>
+                <text x="320" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#F4F4EE" font-weight="300">M</text>
+                <text x="342" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#1F3B14" font-weight="600">H</text>
+                <text class="al-pod-label" x="320" y="124" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" fill="rgba(244,244,238,0.5)" letter-spacing="1.4" font-weight="500">USER</text>
+                <text class="al-pod-label" x="320" y="138" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" fill="rgba(244,244,238,0.5)" letter-spacing="1.4" font-weight="500">RESEARCH</text>
+              </g>
+
+              <!-- Pod 3: Personas & Journeys (forest) -->
+              <g class="al-pod" data-pos="3">
+                <ellipse cx="448" cy="80" rx="56" ry="26" fill="url(#al-forest-grad)" stroke="rgba(77,245,160,0.35)" stroke-width="1.2"/>
+                <path d="M404,80 Q448,56 492,80" fill="none" stroke="rgba(77,245,160,0.32)" stroke-width="0.8"/>
+                <path d="M404,80 Q448,104 492,80" fill="none" stroke="rgba(77,245,160,0.10)" stroke-width="0.8"/>
+                <text x="426" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <text x="448" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#F4F4EE" font-weight="300">M</text>
+                <text x="470" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <text class="al-pod-label" x="448" y="124" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" fill="rgba(244,244,238,0.5)" letter-spacing="1.4" font-weight="500">PERSONAS</text>
+                <text class="al-pod-label" x="448" y="138" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" fill="rgba(244,244,238,0.5)" letter-spacing="1.4" font-weight="500">&amp; JOURNEYS</text>
+              </g>
+
+              <!-- Pod 4: Key Feature (CENTRAL — cross-fades from atom) -->
+              <g class="al-pod" data-pos="4" data-central>
+                <ellipse cx="590" cy="80" rx="56" ry="26" fill="url(#al-lime-grad)" stroke="rgba(168,245,144,0.55)" stroke-width="1.2"/>
+                <path d="M546,80 Q590,56 634,80" fill="none" stroke="rgba(25,25,25,0.18)" stroke-width="0.8"/>
+                <path d="M546,80 Q590,104 634,80" fill="none" stroke="rgba(25,25,25,0.08)" stroke-width="0.8"/>
+                <text x="568" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#1F3B14" font-weight="600">H</text>
+                <text x="590" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#F4F4EE" font-weight="300">M</text>
+                <text x="612" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#1F3B14" font-weight="600">H</text>
+                <text class="al-pod-label" x="590" y="124" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" fill="rgba(244,244,238,0.5)" letter-spacing="1.6" font-weight="500">KEY</text>
+                <text class="al-pod-label" x="590" y="138" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" fill="rgba(244,244,238,0.5)" letter-spacing="1.6" font-weight="500">FEATURE</text>
+              </g>
+
+              <!-- Pod 5: Backlog & Arquitetura (forest) -->
+              <g class="al-pod" data-pos="5">
+                <ellipse cx="732" cy="80" rx="56" ry="26" fill="url(#al-forest-grad)" stroke="rgba(77,245,160,0.35)" stroke-width="1.2"/>
+                <path d="M688,80 Q732,56 776,80" fill="none" stroke="rgba(77,245,160,0.32)" stroke-width="0.8"/>
+                <path d="M688,80 Q732,104 776,80" fill="none" stroke="rgba(77,245,160,0.10)" stroke-width="0.8"/>
+                <text x="710" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <text x="732" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#F4F4EE" font-weight="300">M</text>
+                <text x="754" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <text class="al-pod-label" x="732" y="124" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" fill="rgba(244,244,238,0.5)" letter-spacing="1.2" font-weight="500">BACKLOG &amp;</text>
+                <text class="al-pod-label" x="732" y="138" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" fill="rgba(244,244,238,0.5)" letter-spacing="1.2" font-weight="500">ARQUITETURA</text>
+              </g>
+
+              <!-- Pod 6: Key Design (lime) -->
+              <g class="al-pod" data-pos="6">
+                <ellipse cx="860" cy="80" rx="56" ry="26" fill="url(#al-lime-grad)" stroke="rgba(168,245,144,0.55)" stroke-width="1.2"/>
+                <path d="M816,80 Q860,56 904,80" fill="none" stroke="rgba(25,25,25,0.18)" stroke-width="0.8"/>
+                <path d="M816,80 Q860,104 904,80" fill="none" stroke="rgba(25,25,25,0.08)" stroke-width="0.8"/>
+                <text x="838" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#1F3B14" font-weight="600">H</text>
+                <text x="860" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#F4F4EE" font-weight="300">M</text>
+                <text x="882" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#1F3B14" font-weight="600">H</text>
+                <text class="al-pod-label" x="860" y="124" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" fill="rgba(244,244,238,0.5)" letter-spacing="1.6" font-weight="500">KEY</text>
+                <text class="al-pod-label" x="860" y="138" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" fill="rgba(244,244,238,0.5)" letter-spacing="1.6" font-weight="500">DESIGN</text>
+              </g>
+
+              <!-- Pod 7: Demais Layouts & Dev (forest) -->
+              <g class="al-pod" data-pos="7">
+                <ellipse cx="988" cy="80" rx="56" ry="26" fill="url(#al-forest-grad)" stroke="rgba(77,245,160,0.35)" stroke-width="1.2"/>
+                <path d="M944,80 Q988,56 1032,80" fill="none" stroke="rgba(77,245,160,0.32)" stroke-width="0.8"/>
+                <path d="M944,80 Q988,104 1032,80" fill="none" stroke="rgba(77,245,160,0.10)" stroke-width="0.8"/>
+                <text x="966" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <text x="988" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#F4F4EE" font-weight="300">M</text>
+                <text x="1010" y="86" text-anchor="middle" font-family="Fraunces, serif" font-size="20" fill="#E8E49A" font-weight="600">H</text>
+                <text class="al-pod-label" x="988" y="124" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" fill="rgba(244,244,238,0.5)" letter-spacing="1.2" font-weight="500">DEMAIS LAYOUTS</text>
+                <text class="al-pod-label" x="988" y="138" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" fill="rgba(244,244,238,0.5)" letter-spacing="1.2" font-weight="500">&amp; DEV</text>
+              </g>
+
+              <!-- Pod 8: Endpoint R -->
+              <g class="al-pod" data-pos="8">
+                <ellipse cx="1134" cy="80" rx="46" ry="22" fill="#F4F4EE"/>
+                <text x="1134" y="78" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="9" font-weight="700" fill="#191919" letter-spacing="1">RESULTADO</text>
+                <text x="1134" y="91" text-anchor="middle" font-family="'Public Sans', sans-serif" font-size="8" font-weight="500" fill="rgba(25,25,25,0.65)" letter-spacing="0.6">DE NEGÓCIO</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="al-side-note al-side-right">
+            avaliação e aceite ou<br>feedbacks, que servem<br>como novos requisitos
+          </div>
+        </div>
+
+        <div class="al-bottom">
+          <p class="al-caption-atom">
+            A unidade do workflow é um pedaço de processo que começa com um briefing
+            <strong>humano</strong>, continua com a execução da tarefa pela
+            <strong>máquina</strong>, e se finaliza com um <strong>humano</strong> avaliando o entregável.
+          </p>
+
+          <div class="al-paragraphs">
+            <div class="al-paragraph">O processo é uma sequência de tarefas encadeadas com supervisão humana.</div>
+            <div class="al-paragraph">O foco de boa parte das tarefas é descobrir o que deve ser feito e como.</div>
+            <div class="al-paragraph">Em cada tarefa define-se o nível adequado de autonomia nas atividades de máquina.</div>
+            <div class="al-paragraph">Há mais sucesso nas tarefas finais (layouts e dev), pois os requisitos são consistentes.</div>
+          </div>
+        </div>
       </div>
-      <p class="atomo-caption reveal d3">
-        A unidade do workflow é um pedaço de processo que começa com um briefing
-        <strong>humano</strong>, continua com a execução da tarefa pela
-        <strong>máquina</strong>, e se finaliza com um <strong>humano</strong> avaliando o entregável.
-      </p>
     </div>
   </section>
 
@@ -366,106 +517,6 @@
         <span class="vantagem-label">SOB MEDIDA</span>
       </div>
       <div class="vantagens-divider"></div>
-    </div>
-  </section>
-
-  <!-- ─── MÚLTIPLOS LOOPS ───────────────────────────────────── -->
-  <section class="sec sec-dark tight">
-    <div class="inner">
-      <h2 class="sec-title neon reveal">a solução de múltiplos loops</h2>
-      <span class="loops-sub reveal d2">O foco é "fazer a coisa certa"</span>
-      <div class="loops-scroll reveal d3">
-        <svg viewBox="0 0 1100 240" xmlns="http://www.w3.org/2000/svg" style="min-width:860px;width:100%;" aria-label="Diagrama de múltiplos loops: O → Briefing → Research → Personas & Journeys → Key Feature → Backlog & Arquitetura → Key Design → R">
-          <defs>
-            <marker id="al" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-              <path d="M0,0.5 L5.5,3 L0,5.5Z" fill="rgba(244,244,238,0.3)"/>
-            </marker>
-          </defs>
-          <!-- Spine -->
-          <line x1="46" y1="90" x2="1054" y2="90" stroke="rgba(244,244,238,0.07)" stroke-width="1.5" stroke-dasharray="3,5"/>
-          <!-- O -->
-          <circle cx="30" cy="90" r="15" fill="var(--offwhite)" />
-          <text x="30" y="95" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="12" font-weight="900" fill="var(--dark)">O</text>
-          <!-- R -->
-          <circle cx="1070" cy="90" r="15" fill="var(--offwhite)"/>
-          <text x="1070" y="95" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="12" font-weight="900" fill="var(--dark)">R</text>
-
-          <!-- Loop macro: HMH pod -->
-          <!-- Briefing -->
-          <g transform="translate(68,56)">
-            <ellipse cx="52" cy="34" rx="48" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.35)" stroke-width="1.2"/>
-            <text x="22" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
-            <text x="46" y="40" font-family="Fraunces,serif" font-size="17" fill="#F4F4EE" font-weight="300">M</text>
-            <text x="70" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
-            <text x="52" y="72" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="8.5" fill="rgba(244,244,238,0.38)" letter-spacing="1.5">BRIEFING</text>
-          </g>
-          <!-- Sep H -->
-          <g transform="translate(208,66)">
-            <ellipse cx="20" cy="24" rx="18" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.2)" stroke-width="1"/>
-            <text x="20" y="30" text-anchor="middle" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
-          </g>
-          <!-- User Research -->
-          <g transform="translate(256,56)">
-            <ellipse cx="52" cy="34" rx="48" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.35)" stroke-width="1.2"/>
-            <text x="22" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
-            <text x="46" y="40" font-family="Fraunces,serif" font-size="17" fill="#F4F4EE" font-weight="300">M</text>
-            <text x="70" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
-            <text x="52" y="72" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="8" fill="rgba(244,244,238,0.38)" letter-spacing="1">USER RESEARCH</text>
-          </g>
-          <!-- Sep H -->
-          <g transform="translate(396,66)">
-            <ellipse cx="20" cy="24" rx="18" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.2)" stroke-width="1"/>
-            <text x="20" y="30" text-anchor="middle" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
-          </g>
-          <!-- Personas -->
-          <g transform="translate(444,56)">
-            <ellipse cx="52" cy="34" rx="48" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.35)" stroke-width="1.2"/>
-            <text x="22" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
-            <text x="46" y="40" font-family="Fraunces,serif" font-size="17" fill="#F4F4EE" font-weight="300">M</text>
-            <text x="70" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
-            <text x="52" y="72" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="7.5" fill="rgba(244,244,238,0.38)" letter-spacing="0.8">PERSONAS &amp; JOURNEYS</text>
-          </g>
-          <!-- Sep H -->
-          <g transform="translate(584,66)">
-            <ellipse cx="20" cy="24" rx="18" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.2)" stroke-width="1"/>
-            <text x="20" y="30" text-anchor="middle" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
-          </g>
-          <!-- Backlog -->
-          <g transform="translate(632,56)">
-            <ellipse cx="52" cy="34" rx="48" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.35)" stroke-width="1.2"/>
-            <text x="22" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
-            <text x="46" y="40" font-family="Fraunces,serif" font-size="17" fill="#F4F4EE" font-weight="300">M</text>
-            <text x="70" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
-            <text x="52" y="72" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="7.5" fill="rgba(244,244,238,0.38)" letter-spacing="0.8">BACKLOG &amp; ARQUITETURA</text>
-          </g>
-          <!-- Sep H -->
-          <g transform="translate(772,66)">
-            <ellipse cx="20" cy="24" rx="18" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.2)" stroke-width="1"/>
-            <text x="20" y="30" text-anchor="middle" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
-          </g>
-          <!-- Key Design -->
-          <g transform="translate(820,56)">
-            <ellipse cx="52" cy="34" rx="48" ry="22" fill="#122B1F" stroke="rgba(77,245,160,0.35)" stroke-width="1.2"/>
-            <text x="22" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
-            <text x="46" y="40" font-family="Fraunces,serif" font-size="17" fill="#F4F4EE" font-weight="300">M</text>
-            <text x="70" y="40" font-family="Fraunces,serif" font-size="17" fill="#E8E49A" font-weight="600">H</text>
-            <text x="52" y="72" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="8.5" fill="rgba(244,244,238,0.38)" letter-spacing="1.5">KEY DESIGN</text>
-          </g>
-
-          <!-- Bottom descriptions -->
-          <text x="130" y="152" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">O processo é uma sequência</text>
-          <text x="130" y="167" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">de tarefas encadeadas com</text>
-          <text x="130" y="182" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">supervisão humana.</text>
-
-          <text x="496" y="152" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">Em cada tarefa define-se o nível</text>
-          <text x="496" y="167" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">adequado de autonomia das</text>
-          <text x="496" y="182" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">atividades de máquina.</text>
-
-          <text x="872" y="152" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">Há mais sucesso nas tarefas</text>
-          <text x="872" y="167" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">finais, pois os requisitos são</text>
-          <text x="872" y="182" text-anchor="middle" font-family="'Public Sans',sans-serif" font-size="10.5" fill="rgba(244,244,238,0.35)">consistentes.</text>
-        </svg>
-      </div>
     </div>
   </section>
 
@@ -641,6 +692,25 @@
 
     window.addEventListener('scroll', updateEsteiras, { passive: true });
     updateEsteiras();
+
+
+    /* ── Átomo + Loops sticky scroll-driven ─────────────────── */
+    (function() {
+      const alSec = document.getElementById('al-sticky');
+      if (!alSec) return;
+      const alCanvas = alSec.querySelector('.al-canvas');
+      if (!alCanvas) return;
+      function tickAL() {
+        const rect = alSec.getBoundingClientRect();
+        const scrollable = alSec.offsetHeight - window.innerHeight;
+        if (scrollable <= 0) { alCanvas.style.setProperty('--p', 1); return; }
+        const progress = Math.max(0, Math.min(1, -rect.top / scrollable));
+        alCanvas.style.setProperty('--p', progress.toFixed(4));
+      }
+      window.addEventListener('scroll', tickAL, { passive: true });
+      window.addEventListener('resize', tickAL);
+      tickAL();
+    })();
 
 
     /* ── Reveal observer ────────────────────────────────────── */
