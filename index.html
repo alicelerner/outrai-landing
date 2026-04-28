@@ -626,9 +626,29 @@
     const snakePath      = esteirasSec ? esteirasSec.querySelector('.snake-path') : null;
     let snakeLen = 0;
     let nodeThresholds = [];
-    // Indices of nodes that follow an agent node — delayed by arrow animation (1.2s)
-    const postAgentIdx = new Set([6, 11, 18]);
-    const postAgentTimers = {};
+    // Agent (orange) node indices. Bolinhas após cada agente aguardam o arrow
+    // completar um giro de 1.2s antes de aparecer — em ordem.
+    const agentIdxs = [5, 10, 17];
+    const ARROW_FADE_IN = 300;
+    const ARROW_SPIN = 1200;
+    const POST_ARROW_STAGGER = 250;
+    const agentRevealedAt = {};
+    let postArrowTimer = null;
+    function schedulePostArrowTick(delay) {
+      if (postArrowTimer) clearTimeout(postArrowTimer);
+      postArrowTimer = setTimeout(() => {
+        postArrowTimer = null;
+        updateEsteiras();
+      }, Math.max(16, delay));
+    }
+    function gateAgentFor(i) {
+      let last = -1;
+      for (const a of agentIdxs) {
+        if (a < i) last = a;
+        else break;
+      }
+      return last >= 0 ? last : -1;
+    }
 
     if (snakePath) {
       snakeLen = snakePath.getTotalLength();
@@ -662,32 +682,45 @@
         snakePath.style.strokeDashoffset = snakeLen * (1 - progress);
       }
 
+      const now = performance.now();
+      let nextRetick = Infinity;
       esteirasNodes.forEach((node, i) => {
-        const revealed = progress >= nodeThresholds[i];
-        if (postAgentIdx.has(i)) {
-          // Delayed reveal — waits for agent arrow to complete
-          if (revealed && !node.dataset.revealState) {
-            node.dataset.revealState = 'pending';
-            postAgentTimers[i] = setTimeout(() => {
-              if (node.dataset.revealState === 'pending') {
-                node.style.opacity = 1;
-                node.dataset.revealState = 'done';
-              }
-            }, 1200);
-          } else if (!revealed) {
-            clearTimeout(postAgentTimers[i]);
-            delete node.dataset.revealState;
-            node.style.opacity = 0;
-          }
-        } else {
-          node.style.opacity = revealed ? 1 : 0;
-          if (node.classList.contains('agent-group') && revealed) {
+        const thresholdMet = progress >= nodeThresholds[i];
+        const isAgent = agentIdxs.includes(i);
+
+        if (isAgent) {
+          if (thresholdMet) {
+            node.style.opacity = 1;
             node.classList.add('active');
-          } else if (node.classList.contains('agent-group') && !revealed) {
+            if (!agentRevealedAt[i]) agentRevealedAt[i] = now;
+          } else {
+            node.style.opacity = 0;
             node.classList.remove('active');
+            delete agentRevealedAt[i];
           }
+          return;
+        }
+
+        const gate = gateAgentFor(i);
+        if (gate < 0) {
+          node.style.opacity = thresholdMet ? 1 : 0;
+          return;
+        }
+
+        if (!thresholdMet) { node.style.opacity = 0; return; }
+        const revealedAt = agentRevealedAt[gate];
+        if (!revealedAt) { node.style.opacity = 0; return; }
+        const elapsed = now - revealedAt;
+        const offsetInBucket = i - gate - 1;
+        const required = ARROW_FADE_IN + ARROW_SPIN + offsetInBucket * POST_ARROW_STAGGER;
+        if (elapsed >= required) {
+          node.style.opacity = 1;
+        } else {
+          node.style.opacity = 0;
+          nextRetick = Math.min(nextRetick, required - elapsed);
         }
       });
+      if (nextRetick !== Infinity) schedulePostArrowTick(nextRetick);
     }
 
     window.addEventListener('scroll', updateEsteiras, { passive: true });

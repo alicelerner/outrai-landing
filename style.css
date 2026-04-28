@@ -453,18 +453,17 @@ nav {
 }
 @keyframes spin-once {
   from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  to   { transform: rotate(-360deg); }
 }
 .agent-arrow-img {
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
-  animation: spin-once 1.2s ease-out 1 both;
-  animation-play-state: paused;
+  transition: opacity 0.3s ease;
 }
 .agent-group.active .agent-arrow-img {
   opacity: 1;
-  animation-play-state: running;
+  animation: spin-once 1.2s ease-out 0.3s 1 both;
 }
 /* esteiras-strip — comentado no HTML, regras preservadas para reversão */
 .esteiras-strip {
