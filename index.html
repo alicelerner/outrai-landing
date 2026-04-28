@@ -237,45 +237,39 @@
     </div>
   </section>
 
-  <!-- ─── SOLUÇÃO HÍBRIDA ───────────────────────────────────── -->
-  <section class="sec sec-light tight">
-    <div class="inner">
-      <div class="split img-left">
-        <div class="split-img reveal">
+  <!-- ─── CARACTERÍSTICAS ─────────────────────────────────── -->
+  <div class="hybrid-block">
+    <div class="trio">
+      <div class="trio-card">
+        <div class="trio-img">
           <img src="assets/gift.png" alt="Solução híbrida">
         </div>
-        <div class="reveal d1">
-          <h2 class="split-text-title">solução híbrida</h2>
-          <p class="split-text-body">
-            Não somos um software self-service e nem uma solução 100% dependente de gente.
-          </p>
-          <p class="split-text-body">
-            Nossa oferta é um mix, que envolve <strong>consultoria</strong>,
-            <strong>capacitação</strong> e um produto com <strong>interfaces amigáveis</strong>.
-          </p>
+        <div class="trio-text">
+          <h2 class="trio-title">solução híbrida</h2>
+          <p class="trio-body">Não somos um software self-service e nem uma solução 100% dependente de gente.</p>
+          <p class="trio-body">Nossa oferta é um mix, que envolve <strong>consultoria</strong>, <strong>capacitação</strong> e um produto com <strong>interfaces amigáveis</strong>.</p>
+        </div>
+      </div>
+      <div class="trio-card">
+        <div class="trio-img">
+          <img src="assets/heart.png" alt="Human in the loop">
+        </div>
+        <div class="trio-text">
+          <h2 class="trio-title">human-in-the-loop</h2>
+          <p class="trio-body">A definição precisa de onde a IA acelera e onde o <strong>humano é imprescindível</strong> é o segredo que garante o sucesso do negócio.</p>
+        </div>
+      </div>
+      <div class="trio-card">
+        <div class="trio-img">
+          <img src="assets/woman.png" alt="Rubrica outracoisa*">
+        </div>
+        <div class="trio-text">
+          <h2 class="trio-title">rubrica outracoisa*</h2>
+          <p class="trio-body">O modelo foi exaustivamente treinado em processos e práticas proprietárias, que partem de <strong>décadas de atuação</strong> em esteiras de produto <strong>user-centric</strong>.</p>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- ─── HUMAN-IN-THE-LOOP ─────────────────────────────────── -->
-  <section class="sec sec-light tight">
-    <div class="inner">
-      <div class="split img-right">
-        <div class="reveal">
-          <h2 class="split-text-title">human-in-the-loop</h2>
-          <p class="split-text-body">
-            A definição precisa de onde a IA acelera e onde o
-            <strong>humano é imprescindível</strong> é o segredo
-            que garante o sucesso do negócio.
-          </p>
-        </div>
-        <div class="split-heart reveal d1">
-          <img src="assets/heart.png" alt="Coração anatômico — humano no centro">
-        </div>
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- ─── ÁTOMO ─────────────────────────────────────────────── -->
   <section class="sec sec-dark">
@@ -325,25 +319,6 @@
         <strong>humano</strong>, continua com a execução da tarefa pela
         <strong>máquina</strong>, e se finaliza com um <strong>humano</strong> avaliando o entregável.
       </p>
-    </div>
-  </section>
-
-  <!-- ─── RUBRICA OUTRACOISA* ───────────────────────────────── -->
-  <section class="sec sec-light tight">
-    <div class="inner">
-      <div class="split img-left">
-        <div class="split-img reveal">
-          <img src="assets/woman.png" alt="Rubrica outracoisa*">
-        </div>
-        <div class="reveal d1">
-          <h2 class="split-text-title">rubrica outracoisa*</h2>
-          <p class="split-text-body">
-            O modelo foi exaustivamente treinado em processos e práticas
-            proprietárias, que partem de <strong>décadas de atuação</strong>
-            em esteiras de produto <strong>user-centric</strong>.
-          </p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -675,6 +650,21 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* ── Trio cards staggered reveal ────────────────────────── */
+    (function() {
+      const cards = Array.from(document.querySelectorAll('.trio-card'));
+      if (!cards.length) return;
+      const trioObs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const idx = cards.indexOf(entry.target);
+          setTimeout(() => entry.target.classList.add('in'), idx * 130);
+          trioObs.unobserve(entry.target);
+        });
+      }, { threshold: 0.12 });
+      cards.forEach(c => trioObs.observe(c));
+    })();
 
     /* ── Ponto de partida sequential reveal ────────────────── */
     (function() {
