@@ -192,46 +192,43 @@
       </p>
       <div class="esteiras-infographic">
         <svg viewBox="-40 -10 780 440" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- Snake path desenhado no scroll via stroke-dashoffset -->
+          <!-- Snake path desenhado progressivamente via stroke-dashoffset -->
           <path class="snake-path"
                 d="M 50,70 L 650,70 C 720,70 720,210 650,210 L 50,210 C -20,210 -20,350 50,350 L 650,350"
-                fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="3" stroke-dasharray="10 7"/>
-          <!-- Row 1 (left → right, y=70) -->
-          <g class="row" data-row="0" style="opacity:0.1">
-            <circle cx="50"  cy="70" r="28" fill="#E07828" opacity="0.85"/>
-            <circle cx="150" cy="70" r="28" fill="#1A4D38"/>
-            <circle cx="250" cy="70" r="28" fill="#1A4D38"/>
-            <circle cx="350" cy="70" r="28" fill="#1A4D38"/>
-            <circle cx="450" cy="70" r="28" fill="#1A4D38"/>
-            <circle cx="550" cy="70" r="28" fill="#E07828" opacity="0.85"/>
-            <image class="agent-arrow-img" href="Assets/arrow.svg"
-                   x="505" y="25" width="90" height="90"/>
-            <circle cx="650" cy="70" r="28" fill="#1A4D38"/>
+                fill="none" stroke="rgba(0,0,0,0.3)" stroke-width="3" stroke-dasharray="10 7"/>
+          <!-- Row 1 (left → right, y=70) — nodes in snake order -->
+          <circle class="node" cx="50"  cy="70" r="28" fill="#E07828"/>
+          <circle class="node" cx="150" cy="70" r="28" fill="#1A4D38"/>
+          <circle class="node" cx="250" cy="70" r="28" fill="#1A4D38"/>
+          <circle class="node" cx="350" cy="70" r="28" fill="#1A4D38"/>
+          <circle class="node" cx="450" cy="70" r="28" fill="#1A4D38"/>
+          <g class="node agent-group">
+            <circle cx="550" cy="70" r="28" fill="#E07828"/>
+            <image class="agent-arrow-img" href="Assets/arrow.svg" x="508" y="28" width="84" height="84"/>
           </g>
+          <circle class="node" cx="650" cy="70" r="28" fill="#1A4D38"/>
           <!-- Row 2 (right → left, y=210) -->
-          <g class="row" data-row="1" style="opacity:0.1">
-            <circle cx="650" cy="210" r="28" fill="#1A4D38"/>
-            <circle cx="550" cy="210" r="28" fill="#1A4D38"/>
-            <circle cx="450" cy="210" r="28" fill="#1A4D38"/>
-            <circle cx="350" cy="210" r="28" fill="#E07828" opacity="0.85"/>
-            <image class="agent-arrow-img" href="Assets/arrow.svg"
-                   x="305" y="165" width="90" height="90"/>
-            <circle cx="250" cy="210" r="28" fill="#1A4D38"/>
-            <circle cx="150" cy="210" r="28" fill="#1A4D38"/>
-            <circle cx="50"  cy="210" r="28" fill="#1A4D38"/>
+          <circle class="node" cx="650" cy="210" r="28" fill="#1A4D38"/>
+          <circle class="node" cx="550" cy="210" r="28" fill="#1A4D38"/>
+          <circle class="node" cx="450" cy="210" r="28" fill="#1A4D38"/>
+          <g class="node agent-group">
+            <circle cx="350" cy="210" r="28" fill="#E07828"/>
+            <image class="agent-arrow-img" href="Assets/arrow.svg" x="308" y="168" width="84" height="84"/>
           </g>
+          <circle class="node" cx="250" cy="210" r="28" fill="#1A4D38"/>
+          <circle class="node" cx="150" cy="210" r="28" fill="#1A4D38"/>
+          <circle class="node" cx="50"  cy="210" r="28" fill="#1A4D38"/>
           <!-- Row 3 (left → right, y=350) -->
-          <g class="row" data-row="2" style="opacity:0.1">
-            <circle cx="50"  cy="350" r="28" fill="#1A4D38"/>
-            <circle cx="150" cy="350" r="28" fill="#1A4D38"/>
-            <circle cx="250" cy="350" r="28" fill="#1A4D38"/>
-            <circle cx="350" cy="350" r="28" fill="#E07828" opacity="0.85"/>
-            <image class="agent-arrow-img" href="Assets/arrow.svg"
-                   x="305" y="305" width="90" height="90"/>
-            <circle cx="450" cy="350" r="28" fill="#1A4D38"/>
-            <circle cx="550" cy="350" r="28" fill="#1A4D38"/>
-            <circle cx="650" cy="350" r="28" fill="#1A4D38"/>
+          <circle class="node" cx="50"  cy="350" r="28" fill="#1A4D38"/>
+          <circle class="node" cx="150" cy="350" r="28" fill="#1A4D38"/>
+          <circle class="node" cx="250" cy="350" r="28" fill="#1A4D38"/>
+          <g class="node agent-group">
+            <circle cx="350" cy="350" r="28" fill="#E07828"/>
+            <image class="agent-arrow-img" href="Assets/arrow.svg" x="308" y="308" width="84" height="84"/>
           </g>
+          <circle class="node" cx="450" cy="350" r="28" fill="#1A4D38"/>
+          <circle class="node" cx="550" cy="350" r="28" fill="#1A4D38"/>
+          <circle class="node" cx="650" cy="350" r="28" fill="#1A4D38"/>
         </svg>
       </div>
       <!-- <div class="esteiras-strip">
@@ -597,16 +594,30 @@
     })();
 
     /* ── Esteiras scroll reveal ─────────────────────────────── */
-    const esteirasSec   = document.getElementById('esteirasSec');
-    const esteirasWords = esteirasSec ? Array.from(esteirasSec.querySelectorAll('.w')) : [];
-    const esteirasRows  = esteirasSec ? Array.from(esteirasSec.querySelectorAll('.row')) : [];
-    const snakePath     = esteirasSec ? esteirasSec.querySelector('.snake-path') : null;
+    const esteirasSec    = document.getElementById('esteirasSec');
+    const esteirasWords  = esteirasSec ? Array.from(esteirasSec.querySelectorAll('.w')) : [];
+    const esteirasNodes  = esteirasSec ? Array.from(esteirasSec.querySelectorAll('.node')) : [];
+    const snakePath      = esteirasSec ? esteirasSec.querySelector('.snake-path') : null;
     let snakeLen = 0;
+    let nodeThresholds = [];
+    // Indices of nodes that follow an agent node — delayed by arrow animation (1.2s)
+    const postAgentIdx = new Set([6, 11, 18]);
+    const postAgentTimers = {};
 
     if (snakePath) {
       snakeLen = snakePath.getTotalLength();
       snakePath.style.strokeDasharray = snakeLen;
       snakePath.style.strokeDashoffset = snakeLen;
+      // Row2/3 start offsets derived from measured total length
+      const curveLen  = (snakeLen - 1800) / 2;
+      const r2Start   = 600 + curveLen;
+      const r3Start   = 1200 + 2 * curveLen;
+      const raw = [
+        ...[ 0,100,200,300,400,500,600 ],
+        ...[ 0,100,200,300,400,500,600 ].map(d => r2Start + d),
+        ...[ 0,100,200,300,400,500,600 ].map(d => r3Start + d)
+      ];
+      nodeThresholds = raw.map(l => l / snakeLen);
     }
 
     function updateEsteiras() {
@@ -617,25 +628,40 @@
       const n          = esteirasWords.length;
 
       esteirasWords.forEach((w, i) => {
-        const wordStart = i / n;
-        const diff      = progress - wordStart;
-        let opacity;
-        if      (diff > 0.05)  opacity = 1;
-        else if (diff >= 0)    opacity = 0.12 + (diff / 0.05) * 0.88;
-        else                   opacity = 0.12;
-        w.style.opacity = opacity;
-      });
-
-      esteirasRows.forEach((row, i) => {
-        const rowStart    = i / 3;
-        const rowProgress = Math.max(0, Math.min(1, (progress - rowStart) / 0.33));
-        row.style.opacity = 0.1 + rowProgress * 0.9;
-        row.classList.toggle('active', rowProgress > 0.8);
+        const diff = progress - i / n;
+        w.style.opacity = diff > 0.05 ? 1 : diff >= 0 ? 0.12 + (diff / 0.05) * 0.88 : 0.12;
       });
 
       if (snakePath && snakeLen) {
         snakePath.style.strokeDashoffset = snakeLen * (1 - progress);
       }
+
+      esteirasNodes.forEach((node, i) => {
+        const revealed = progress >= nodeThresholds[i];
+        if (postAgentIdx.has(i)) {
+          // Delayed reveal — waits for agent arrow to complete
+          if (revealed && !node.dataset.revealState) {
+            node.dataset.revealState = 'pending';
+            postAgentTimers[i] = setTimeout(() => {
+              if (node.dataset.revealState === 'pending') {
+                node.style.opacity = 1;
+                node.dataset.revealState = 'done';
+              }
+            }, 1200);
+          } else if (!revealed) {
+            clearTimeout(postAgentTimers[i]);
+            delete node.dataset.revealState;
+            node.style.opacity = 0;
+          }
+        } else {
+          node.style.opacity = revealed ? 1 : 0;
+          if (node.classList.contains('agent-group') && revealed) {
+            node.classList.add('active');
+          } else if (node.classList.contains('agent-group') && !revealed) {
+            node.classList.remove('active');
+          }
+        }
+      });
     }
 
     window.addEventListener('scroll', updateEsteiras, { passive: true });

@@ -440,22 +440,30 @@ nav {
   top: 40px;
   right: 40px;
   width: clamp(260px, 38vw, 520px);
+  opacity: 0.6;
 }
 .esteiras-infographic svg {
   width: 100%;
   height: auto;
+}
+/* Per-node reveal */
+.node {
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 @keyframes spin-once {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
 }
 .agent-arrow-img {
+  opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
-  animation: spin-once 1.4s cubic-bezier(0.4,0,0.2,1) 1 forwards;
+  animation: spin-once 1.2s ease-out 1 both;
   animation-play-state: paused;
 }
-.row.active .agent-arrow-img {
+.agent-group.active .agent-arrow-img {
+  opacity: 1;
   animation-play-state: running;
 }
 /* esteiras-strip — comentado no HTML, regras preservadas para reversão */
