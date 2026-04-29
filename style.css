@@ -1393,5 +1393,5 @@ nav {
 
   /* Footer */
   .footer { height: 65vh; padding-bottom: 110px; }
-  .footer-robots { height: 260px; object-fit: cover; object-position: center top; }
+  .footer-robots { height: 185px; object-fit: cover; object-position: center center; }
 }
