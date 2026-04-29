@@ -284,8 +284,6 @@ nav {
   .partida-layout { grid-template-columns: 1fr; }
   .partida-spacer  { display: none; }
   .sec.loose { padding-block: 64px; }
-  .partida-content .sec-title { font-size: clamp(32px, 9vw, 52px); }
-  .vantagens-header .sec-title { font-size: clamp(36px, 10vw, 52px); }
 }
 
 .partida-content .sec-title {
@@ -1412,7 +1410,12 @@ nav {
   color: var(--neon);
 }
 
-/* ─── Responsive ─────────────────────────────────────────── */
+/* ─── Responsive — mobile overrides (after base rules) ──── */
+@media(max-width:720px){
+  .partida-content .sec-title { font-size: clamp(32px, 9vw, 52px); }
+  .vantagens-header .sec-title { font-size: clamp(36px, 10vw, 52px); }
+}
+
 @media(max-width:480px){
   .sec { padding: 72px 5%; }
   .modal { padding: 40px 24px 32px; }
