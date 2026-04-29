@@ -5,9 +5,11 @@
 *.png
 *.jpg
 *.jpeg
+!Assets/og-image.jpg
 
 # Playwright / browser automation
 .playwright-mcp/
 
 # gstack (dados locais de sessão)
 .gstack/
+.vercel
