@@ -327,7 +327,7 @@
       <div class="trio-card">
         <span class="trio-num">01</span>
         <div class="trio-img">
-          <img src="assets/gift.png" alt="Solução híbrida">
+          <img src="Assets/gift.png" alt="Solução híbrida">
         </div>
         <div class="trio-text">
           <h2 class="trio-title">solução híbrida</h2>
@@ -337,7 +337,7 @@
       <div class="trio-card">
         <span class="trio-num">02</span>
         <div class="trio-img">
-          <img src="assets/heart.png" alt="Human in the loop">
+          <img src="Assets/heart.png" alt="Human in the loop">
         </div>
         <div class="trio-text">
           <h2 class="trio-title">human-in-the-loop</h2>
@@ -347,7 +347,7 @@
       <div class="trio-card">
         <span class="trio-num">03</span>
         <div class="trio-img">
-          <img src="assets/woman.png" alt="Rubrica outracoisa*">
+          <img src="Assets/woman.png" alt="Rubrica outracoisa*">
         </div>
         <div class="trio-text">
           <h2 class="trio-title">rubrica outracoisa*</h2>
@@ -931,7 +931,7 @@
 
       function open() {
         isOpen = true;
-        const openW = window.innerWidth * 0.5;
+        const openW = window.innerWidth < 480 ? window.innerWidth * 0.9 : window.innerWidth * 0.5;
         body.style.cssText = 'display:block; position:absolute; visibility:hidden; width:' + openW + 'px';
         const contentH = closedH + body.offsetHeight;
         body.style.cssText = '';
