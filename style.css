@@ -1414,6 +1414,7 @@ nav {
 @media(max-width:720px){
   .partida-content .sec-title { font-size: clamp(32px, 9vw, 52px); }
   .vantagens-header .sec-title { font-size: clamp(36px, 10vw, 52px); }
+  .al-sticky { display: none; }
 }
 
 @media(max-width:480px){
