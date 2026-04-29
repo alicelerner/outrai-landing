@@ -884,65 +884,22 @@ nav {
     --p: 1;
     gap: 32px;
   }
-  .al-titles {
-    min-height: 0;
-    padding-top: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .al-title-atom {
-    position: static;
-    opacity: 1 !important;
-  }
-  .al-title-loops {
-    position: static;
-    opacity: 1 !important;
-  }
+  .al-titles { min-height: 0; padding-top: 36px; }
+  /* átomo oculto no mobile por ora — remover quando tratar o sticky */
+  .al-title-atom { display: none; }
+  .al-atom { display: none; }
+  .al-caption-atom { display: none; }
+  .al-title-loops { position: static; opacity: 1 !important; }
   .al-sub-loops { position: static; margin-top: 12px; }
   .al-stage-mid {
     max-height: none;
     flex: 0 0 auto;
   }
   .al-side-note { display: none; }
-  .al-diagram {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .al-atom {
-    display: block !important;
-    opacity: 1 !important;
-    width: 88vw;
-    max-width: 88vw;
-    transform: none !important;
-    flex-shrink: 0;
-  }
-  .al-atom-detail { opacity: 1 !important; }
-  .al-row {
-    position: static;
-    opacity: 1 !important;
-    flex-shrink: 0;
-    min-width: 720px;
-  }
-  .al-bottom {
-    min-height: 0;
-    position: static;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .al-caption-atom {
-    display: block;
-    position: static;
-    transform: none !important;
-    opacity: 1 !important;
-    text-align: left;
-    width: 100%;
-  }
+  .al-row { position: static; max-width: 100%; opacity: 1 !important; }
+  .al-diagram { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .al-diagram .al-row { min-width: 720px; }
+  .al-bottom { min-height: 0; }
   .al-paragraphs {
     position: static;
     grid-template-columns: 1fr;
@@ -1414,7 +1371,6 @@ nav {
 @media(max-width:720px){
   .partida-content .sec-title { font-size: clamp(32px, 9vw, 52px); }
   .vantagens-header .sec-title { font-size: clamp(36px, 10vw, 52px); }
-  .al-sticky { display: none; }
 }
 
 @media(max-width:480px){
