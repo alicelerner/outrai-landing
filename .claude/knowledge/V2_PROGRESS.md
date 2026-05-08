@@ -33,8 +33,8 @@ Untouched: Átomo + Loops sticky, snake-path scroll-driven logic in Esteiras.
 | 2 | Reorder sections | done | f60ad6b | Ponto de Partida dropped; Esteiras moved up; Marquee moved between Abordagem and Átomo+Loops; Trio moved after Átomo+Loops; orphan JS and CSS cleaned up |
 | 3 | Pilares (new) | done | cea00e1 | Built as dark mode (mint neon headings, neon bullets), 3-col grid, asterisco extracted from logo SVG into Assets/asterisco.svg. /design-shotgun deferred — auto mode shipped sensible default; can be revisited at CP6 if Alice wants alternatives |
 | 4 | Dream Team (new) | done | 6978c71 | Avatars extracted from pitch PDF page 16 via pdftoppm + PIL crop, mint background turned transparent. Light-mode section between Átomo+Loops (dark) and Trio (light). 5×2 grid → 3-col tablet → 2-col mobile. |
-| 5 | Plataforma (new) | done | this commit | 4 modules using full slide images (sabatina, workspace, dashboard, visao) extracted from PDF pages 39/41/42/45 at 2000px width. Zigzag layout with image alternating left/right. Sticky-scroll Framer-style pattern deferred to future polish. |
-| 6 | Cross-section audit | pending | — | Run /design-review |
+| 5 | Plataforma (new) | done | c0b3e45 | 4 modules using full slide images (sabatina, workspace, dashboard, visao) extracted from PDF pages 39/41/42/45 at 2000px width. Zigzag layout with image alternating left/right. Sticky-scroll Framer-style pattern deferred to future polish. |
+| 6 | Cross-section audit | done | this commit | Smoke-tested live with Playwright. Fixes applied: pilar asterisco now uses CSS mask-image (was rendering black via `<img>`); plataforma cards restructured to wrap eyebrow+body in `.plataforma-card-text` so grid stops auto-placing items into wrong cells; switched grid alignment to `center`; promoted body to display weight (white, larger). Open visual question: marquee position (currently between Abordagem and Átomo+Loops — Alice may want it elsewhere). Hero/Esteiras adjacency still flagged for review. |
 | 7 | PR to main | pending | — | — |
 
 ## Decisions
