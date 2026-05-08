@@ -80,3 +80,34 @@ None active. Asset extraction will be tackled at the start of CP4 and CP5.
 - Marquee final position — currently proposed between Abordagem and Átomo + Loops. Confirm with Alice on visual review at CP6.
 - Modes adjacency — Pilares (CP3) decision (light or dark) depends on rhythm; will be validated against design-shotgun output and DESIGN.md alternation rule.
 - Hero (light) and Esteiras (light) are now adjacent, violating the alternation rule. Visually may work because Hero is `position: fixed` and Esteiras slides over it via sticky-scroll, but flagged for design-review at CP6 (option to add a dark divider band, swap Esteiras to dark, or accept).
+
+## Post-PR iteration log
+
+### 2026-05-08 — Esteiras section iteration (paused, NOT working)
+
+PR #4 closed without merge to keep iterating. Working on `outrai-v2-content` branch. Hero tagline iteration committed and pushed (`9c73939`). **Esteiras iteration is in WIP state — animation visibly buggy in Alice's live test, needs another pass.**
+
+What was attempted on Esteiras:
+
+1. **Mode**: switched section from `sec-light` (mint-lime gradient) to dark (`var(--dark)`) — Alice approved direction
+2. **Text placeholder**: was invisible at first (gradient bled through low-alpha gray), then differentiated using opaque `#6a6a6a @ 0.7 opacity` for placeholder vs. transparent fill exposing parent's mint→neon gradient for revealed
+3. **Gradient on revealed**: applied via `background-clip: text` + `-webkit-text-fill-color: transparent` on parent `.esteiras-text`
+4. **Strict sequential reveal of bolinhas**: rewrote `updateEsteiras` to use a single cursor that advances only as far as (a) progress threshold met AND (b) any pending agent's spin has completed (`now >= nextEnableAt`). Each agent gates the next ball reveal until its arrow finishes one CW rotation. Headless tests showed this works correctly across slow + fast scroll.
+5. **Arrow rotation reversed**: from CCW to CW via keyframe `rotate(0deg) → rotate(360deg)`
+6. **Snake-path stroke + nodes**: white translucent stroke on path; neon fill on green circles; wrapper opacity `0.55` to dim the whole infographic so it doesn't compete with text
+7. **Last word ("pensantes.") not revealing**: bug in word-reveal threshold formula — `diff > 0.05` required `progress > 1.002`, impossible since clamped to 1. Fixed by switching to `progress >= (i + 0.5) / n`.
+8. **Removed color/fill transition** to kill flicker: CSS `transition: color → transparent` interpolates through dark intermediate values, causing each word to flash through black on reveal/unreveal. Now only `opacity 0.25s ease` is transitioned; color/fill flips instantly.
+
+After step 8, Alice tested live and reported it still wasn't working. Did not get a specific repro of the new bug before stopping. Resuming work needs a fresh live test from Alice describing exactly what looks wrong.
+
+Files modified (not committed):
+- `style.css` — `.esteiras-scroll`, `.esteiras-text`, `.w`, `.w.revealed`, `.esteiras-infographic`, `.snake-path`, `circle.node`, `@keyframes spin-once`
+- `index.html` — Esteiras `updateEsteiras()` JS (cursor-based reveal); word reveal threshold formula
+
+### Resume plan
+
+When picking this back up:
+1. Have Alice describe the exact visible glitch she sees on live (was it the animation order, the placeholder appearance, the color flash on reveal, the gradient rendering, or scroll responsiveness?). Don't assume.
+2. Reproduce in browser before changing anything.
+3. Verify each fix with Alice live, one change at a time. Do not batch multiple changes and present together — that was a key source of frustration.
+4. Once Esteiras is approved live, commit + push as separate commit.

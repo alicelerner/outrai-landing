@@ -400,7 +400,8 @@ nav {
   position: relative;
   z-index: 1;
   min-height: 220vh;
-  background: linear-gradient(180deg, #6EE8D4 0%, #A8F590 100%);
+  background: var(--dark);
+  color: var(--offwhite);
 }
 .esteiras-sticky {
   position: sticky;
@@ -414,25 +415,42 @@ nav {
   font-weight: 300;
   line-height: 1.2;
   text-align: left;
-  color: var(--dark);
+  background: linear-gradient(135deg, var(--mint) 0%, var(--neon) 100%);
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
   max-width: 55%;
   position: relative;
   z-index: 1;
 }
 .w {
   display: inline;
-  opacity: 0.12;
+  color: #6a6a6a;
+  -webkit-text-fill-color: #6a6a6a;
+  opacity: 0.7;
+  transition: opacity 0.25s ease;
+}
+.w.revealed {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  opacity: 1;
 }
 .esteiras-infographic {
   position: absolute;
   top: 40px;
   right: 40px;
   width: clamp(260px, 38vw, 520px);
-  opacity: 0.6;
+  opacity: 0.55;
 }
 .esteiras-infographic svg {
   width: 100%;
   height: auto;
+}
+.esteiras-infographic .snake-path {
+  stroke: rgba(255,255,255,0.35);
+}
+.esteiras-infographic circle.node {
+  fill: var(--neon);
 }
 /* Per-node reveal */
 .node {
@@ -441,7 +459,7 @@ nav {
 }
 @keyframes spin-once {
   from { transform: rotate(0deg); }
-  to   { transform: rotate(-360deg); }
+  to   { transform: rotate(360deg); }
 }
 .agent-arrow-img {
   opacity: 0;
@@ -482,29 +500,6 @@ nav {
   max-width: 1280px;
   margin: 0 auto;
 }
-.pilares-header {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  max-width: 880px;
-  margin-bottom: clamp(48px, 7vh, 80px);
-}
-.pilares-eyebrow {
-  font-family: var(--sans);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.55em;
-  text-transform: uppercase;
-  color: rgba(77,245,160,0.45);
-}
-.pilares-title {
-  font-family: var(--sans);
-  font-size: clamp(28px, 3.6vw, 48px);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.015em;
-  color: var(--neon);
-}
 .pilares-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -513,42 +508,44 @@ nav {
 .pilar {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  border-top: 1px solid rgba(77,245,160,0.18);
-  padding-top: 28px;
 }
 .pilar-asterisco {
   display: inline-block;
   width: 44px;
   height: 44px;
-  background-color: var(--neon);
-  -webkit-mask: url("Assets/asterisco.svg") center / contain no-repeat;
-          mask: url("Assets/asterisco.svg") center / contain no-repeat;
-  margin-bottom: 4px;
+  color: var(--neon);
+  margin-bottom: 18px;
 }
-.pilar-asterisco img { display: none; }
+.pilar-asterisco svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 .pilar-title {
   font-family: var(--sans);
   font-size: clamp(22px, 2.4vw, 32px);
   font-weight: 900;
   letter-spacing: -0.01em;
-  line-height: 1.1;
+  line-height: 1.15;
   color: var(--offwhite);
+  margin: 0;
 }
 .pilar-lede {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(16px, 1.4vw, 20px);
-  line-height: 1.4;
-  color: var(--muted);
+  font-family: var(--sans);
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--offwhite);
+  opacity: 0.45;
+  margin: 0;
 }
 .pilar-bullets {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 6px;
+  margin-top: 28px;
 }
 .pilar-bullets li {
   font-family: var(--sans);
@@ -573,9 +570,6 @@ nav {
   .pilares-grid {
     grid-template-columns: 1fr;
     gap: 40px;
-  }
-  .pilar {
-    padding-top: 24px;
   }
 }
 

@@ -101,14 +101,10 @@
   <!-- ─── PILARES ──────────────────────────────────────────────── -->
   <section class="pilares-section">
     <div class="pilares-inner">
-      <header class="pilares-header reveal">
-        <span class="pilares-eyebrow">TRÊS FRENTES</span>
-        <h2 class="pilares-title">A esteira ag&ecirc;ntica entrega valor em tr&ecirc;s frentes simult&acirc;neas.</h2>
-      </header>
       <div class="pilares-grid">
         <article class="pilar reveal">
           <span class="pilar-asterisco" aria-hidden="true">
-            <img src="Assets/asterisco.svg" alt="">
+            <svg viewBox="48 0 37 35" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M69.6191 14.0234L82.4473 8.46875L84.6797 15.334L71.7168 19.1934L80.9346 30.2393L74.4258 34.7598L66.7832 22.3408L58.9873 35V34.9912L52.5781 30.5693L61.9756 19.2383L48.6797 15.5654L51.2002 8.70117L63.8301 13.9785L62.8311 0H70.7168L69.6191 14.0234Z" fill="currentColor"/></svg>
           </span>
           <h3 class="pilar-title">Amplifica&ccedil;&atilde;o</h3>
           <p class="pilar-lede">da profundidade e capacidades estrat&eacute;gicas do time humano.</p>
@@ -120,7 +116,7 @@
         </article>
         <article class="pilar reveal d1">
           <span class="pilar-asterisco" aria-hidden="true">
-            <img src="Assets/asterisco.svg" alt="">
+            <svg viewBox="48 0 37 35" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M69.6191 14.0234L82.4473 8.46875L84.6797 15.334L71.7168 19.1934L80.9346 30.2393L74.4258 34.7598L66.7832 22.3408L58.9873 35V34.9912L52.5781 30.5693L61.9756 19.2383L48.6797 15.5654L51.2002 8.70117L63.8301 13.9785L62.8311 0H70.7168L69.6191 14.0234Z" fill="currentColor"/></svg>
           </span>
           <h3 class="pilar-title">Acelera&ccedil;&atilde;o</h3>
           <p class="pilar-lede">extrema das atividades de execu&ccedil;&atilde;o com esteira ag&ecirc;ntica.</p>
@@ -132,7 +128,7 @@
         </article>
         <article class="pilar reveal d2">
           <span class="pilar-asterisco" aria-hidden="true">
-            <img src="Assets/asterisco.svg" alt="">
+            <svg viewBox="48 0 37 35" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M69.6191 14.0234L82.4473 8.46875L84.6797 15.334L71.7168 19.1934L80.9346 30.2393L74.4258 34.7598L66.7832 22.3408L58.9873 35V34.9912L52.5781 30.5693L61.9756 19.2383L48.6797 15.5654L51.2002 8.70117L63.8301 13.9785L62.8311 0H70.7168L69.6191 14.0234Z" fill="currentColor"/></svg>
           </span>
           <h3 class="pilar-title">Redu&ccedil;&atilde;o de riscos</h3>
           <p class="pilar-lede">com maior intencionalidade e padroniza&ccedil;&atilde;o de uso.</p>
@@ -859,12 +855,11 @@
     const snakePath      = esteirasSec ? esteirasSec.querySelector('.snake-path') : null;
     let snakeLen = 0;
     let nodeThresholds = [];
-    // Agent (orange) node indices. Bolinhas após cada agente aguardam o arrow
-    // completar um giro de 1.2s antes de aparecer — em ordem.
+    // Strict sequential reveal. Each ball waits for the previous; an agent (orange)
+    // gates the next ball until its arrow completes one full clockwise rotation.
     const agentIdxs = [5, 10, 17];
     const ARROW_FADE_IN = 300;
     const ARROW_SPIN = 1200;
-    const POST_ARROW_STAGGER = 250;
     const agentRevealedAt = {};
     let postArrowTimer = null;
     function schedulePostArrowTick(delay) {
@@ -874,20 +869,11 @@
         updateEsteiras();
       }, Math.max(16, delay));
     }
-    function gateAgentFor(i) {
-      let last = -1;
-      for (const a of agentIdxs) {
-        if (a < i) last = a;
-        else break;
-      }
-      return last >= 0 ? last : -1;
-    }
 
     if (snakePath) {
       snakeLen = snakePath.getTotalLength();
       snakePath.style.strokeDasharray = snakeLen;
       snakePath.style.strokeDashoffset = snakeLen;
-      // Row2/3 start offsets derived from measured total length
       const curveLen  = (snakeLen - 1800) / 2;
       const r2Start   = 600 + curveLen;
       const r3Start   = 1200 + 2 * curveLen;
@@ -907,8 +893,8 @@
       const n          = esteirasWords.length;
 
       esteirasWords.forEach((w, i) => {
-        const diff = progress - i / n;
-        w.style.opacity = diff > 0.05 ? 1 : diff >= 0 ? 0.12 + (diff / 0.05) * 0.88 : 0.12;
+        if (progress >= (i + 0.5) / n) w.classList.add('revealed');
+        else w.classList.remove('revealed');
       });
 
       if (snakePath && snakeLen) {
@@ -916,44 +902,35 @@
       }
 
       const now = performance.now();
-      let nextRetick = Infinity;
-      esteirasNodes.forEach((node, i) => {
-        const thresholdMet = progress >= nodeThresholds[i];
-        const isAgent = agentIdxs.includes(i);
+      let cursor = 0;
+      let nextEnableAt = -Infinity;
 
-        if (isAgent) {
-          if (thresholdMet) {
-            node.style.opacity = 1;
-            node.classList.add('active');
-            if (!agentRevealedAt[i]) agentRevealedAt[i] = now;
-          } else {
-            node.style.opacity = 0;
+      for (let i = 0; i < esteirasNodes.length; i++) {
+        if (progress < nodeThresholds[i]) break;
+        if (now < nextEnableAt) break;
+        cursor = i + 1;
+        if (agentIdxs.includes(i)) {
+          if (!agentRevealedAt[i]) agentRevealedAt[i] = now;
+          nextEnableAt = agentRevealedAt[i] + ARROW_FADE_IN + ARROW_SPIN;
+        }
+      }
+
+      esteirasNodes.forEach((node, i) => {
+        if (i < cursor) {
+          node.style.opacity = 1;
+          if (agentIdxs.includes(i)) node.classList.add('active');
+        } else {
+          node.style.opacity = 0;
+          if (agentIdxs.includes(i)) {
             node.classList.remove('active');
             delete agentRevealedAt[i];
           }
-          return;
-        }
-
-        const gate = gateAgentFor(i);
-        if (gate < 0) {
-          node.style.opacity = thresholdMet ? 1 : 0;
-          return;
-        }
-
-        if (!thresholdMet) { node.style.opacity = 0; return; }
-        const revealedAt = agentRevealedAt[gate];
-        if (!revealedAt) { node.style.opacity = 0; return; }
-        const elapsed = now - revealedAt;
-        const offsetInBucket = i - gate - 1;
-        const required = ARROW_FADE_IN + ARROW_SPIN + offsetInBucket * POST_ARROW_STAGGER;
-        if (elapsed >= required) {
-          node.style.opacity = 1;
-        } else {
-          node.style.opacity = 0;
-          nextRetick = Math.min(nextRetick, required - elapsed);
         }
       });
-      if (nextRetick !== Infinity) schedulePostArrowTick(nextRetick);
+
+      if (cursor < esteirasNodes.length && progress >= nodeThresholds[cursor] && now < nextEnableAt) {
+        schedulePostArrowTick(nextEnableAt - now);
+      }
     }
 
     window.addEventListener('scroll', updateEsteiras, { passive: true });
