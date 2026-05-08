@@ -8,8 +8,9 @@ Static landing page for OUTRAI*. No build system — open `index.html` directly 
 
 ## Knowledge
 
-- `DESIGN.md` — design system, paleta, tipografia, componentes, constraints visuais
+- `.claude/knowledge/DESIGN.md` — design system, paleta, tipografia, componentes, constraints visuais
 - `.claude/knowledge/session-log.md` — histórico de sessões, decisões tomadas, bugs conhecidos
+- `.claude/knowledge/MOTION.md` — motion stack (Framer Motion, GSAP, @gsap/react, Lenis). **Read before creating any animation, transition, or scroll effect.**
 
 ## Skill routing
 
