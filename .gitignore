@@ -13,3 +13,7 @@
 # gstack (dados locais de sessão)
 .gstack/
 .vercel
+
+# Pitch reference material (not committed — reference only)
+intro outracoisa* outrai*.pdf
+html intro outrai*/
