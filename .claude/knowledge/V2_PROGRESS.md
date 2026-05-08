@@ -28,8 +28,8 @@ Untouched: Átomo + Loops sticky, snake-path scroll-driven logic in Esteiras.
 
 | CP | Subject | Status | Commit | Notes |
 |---|---|---|---|---|
-| 0 | Branch + tracker | in progress | — | Branch outrai-v2-content created from main |
-| 1 | Tagline + meta | pending | — | — |
+| 0 | Branch + tracker | done | 36db14a | Branch outrai-v2-content created from main |
+| 1 | Tagline + meta | done | this commit | Hero, footer-tag, OG, Twitter, description meta all aligned |
 | 2 | Reorder sections | pending | — | — |
 | 3 | Pilares (new) | pending | — | Run /design-shotgun first |
 | 4 | Dream Team (new) | pending | — | Asset extraction blocking — see below |
