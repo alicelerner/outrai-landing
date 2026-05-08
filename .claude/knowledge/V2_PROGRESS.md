@@ -30,8 +30,8 @@ Untouched: Átomo + Loops sticky, snake-path scroll-driven logic in Esteiras.
 |---|---|---|---|---|
 | 0 | Branch + tracker | done | 36db14a | Branch outrai-v2-content created from main |
 | 1 | Tagline + meta | done | dafb2fc | Hero, footer-tag, OG, Twitter, description meta all aligned |
-| 2 | Reorder sections | done | this commit | Ponto de Partida dropped; Esteiras moved up; Marquee moved between Abordagem and Átomo+Loops; Trio moved after Átomo+Loops; orphan JS and CSS cleaned up |
-| 3 | Pilares (new) | pending | — | Run /design-shotgun first |
+| 2 | Reorder sections | done | f60ad6b | Ponto de Partida dropped; Esteiras moved up; Marquee moved between Abordagem and Átomo+Loops; Trio moved after Átomo+Loops; orphan JS and CSS cleaned up |
+| 3 | Pilares (new) | done | this commit | Built as dark mode (mint neon headings, neon bullets), 3-col grid, asterisco extracted from logo SVG into Assets/asterisco.svg. /design-shotgun deferred — auto mode shipped sensible default; can be revisited at CP6 if Alice wants alternatives |
 | 4 | Dream Team (new) | pending | — | Asset extraction blocking — see below |
 | 5 | Plataforma (new) | pending | — | Asset extraction blocking — see below |
 | 6 | Cross-section audit | pending | — | Run /design-review |

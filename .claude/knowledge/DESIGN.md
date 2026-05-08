@@ -337,6 +337,10 @@ Quando fotografia aparecer (depoimentos, pessoas), avatares recortados em círcu
 
 **`diagram`** — Diagrama vetorial (átomo H-M-H, loops de processo). Elipses em `{colors.forest}`, labels H/M/H em `{colors.cream-label}`, texto de conexão em `{colors.body-dark}` ou `{colors.ink}` conforme o modo. Sem ornamento extra.
 
+### Pilares
+
+**`pilares-grid`** — Bloco de três frentes de valor (amplificação, aceleração, redução de riscos). Modo sombra, grid de 3 colunas em desktop (1 coluna em mobile). Cada coluna tem hairline superior em `rgba(77,245,160,0.18)`, asterisco SVG (`Assets/asterisco.svg`) em `{colors.heading-dark}` (mint neon), título em Public Sans Black (display-sm), subhead em Fraunces itálico, e bullets com bullet-point neon. Eyebrow "TRÊS FRENTES" segue `{typography.label}`. Título da seção em `{colors.heading-dark}`.
+
 ### Footer
 
 **`footer`** — Sempre no modo sombra, fecha qualquer sequência de seções. Background `{colors.dark}`, texto `{colors.body-dark}`. Padding `{spacing.xxl}` vertical, `{spacing.inline}` lateral. O logotipo OUTRAI* e os links de navegação secundários ficam aqui.
