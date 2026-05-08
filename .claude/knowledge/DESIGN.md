@@ -341,6 +341,10 @@ Quando fotografia aparecer (depoimentos, pessoas), avatares recortados em círcu
 
 **`pilares-grid`** — Bloco de três frentes de valor (amplificação, aceleração, redução de riscos). Modo sombra, grid de 3 colunas em desktop (1 coluna em mobile). Cada coluna tem hairline superior em `rgba(77,245,160,0.18)`, asterisco SVG (`Assets/asterisco.svg`) em `{colors.heading-dark}` (mint neon), título em Public Sans Black (display-sm), subhead em Fraunces itálico, e bullets com bullet-point neon. Eyebrow "TRÊS FRENTES" segue `{typography.label}`. Título da seção em `{colors.heading-dark}`.
 
+### Dream Team
+
+**`dream-team-grid`** — Galeria dos 10 agentes nomeados que compõem a esteira agêntica. Modo luz com gradiente vertical mint → lime. Grid 5×2 em desktop, 3 colunas em tablet, 2 colunas em mobile. Cada `agent-card` tem fundo `rgba(255,255,255,0.45)` com `backdrop-filter: blur(8px)` e hairline `rgba(10,10,10,0.08)`. Estrutura interna: função (eyebrow Public Sans 13–14px, peso 600), avatar PNG transparente em silhueta dark, nome em uppercase tracking 0.2em. Avatares vivem em `Assets/dream-team/<nome>.png`. Hover lifta o card 4px e clareia o fundo para `rgba(255,255,255,0.65)`.
+
 ### Footer
 
 **`footer`** — Sempre no modo sombra, fecha qualquer sequência de seções. Background `{colors.dark}`, texto `{colors.body-dark}`. Padding `{spacing.xxl}` vertical, `{spacing.inline}` lateral. O logotipo OUTRAI* e os links de navegação secundários ficam aqui.

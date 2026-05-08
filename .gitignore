@@ -1,10 +1,14 @@
 # macOS
 .DS_Store
 
-# Screenshots de desenvolvimento
+# Screenshots de desenvolvimento (root and arbitrary subfolders)
 *.png
 *.jpg
 *.jpeg
+# Whitelist images under Assets/ (intentional product assets)
+!Assets/**/*.png
+!Assets/**/*.jpg
+!Assets/**/*.jpeg
 !Assets/og-image.jpg
 
 # Playwright / browser automation

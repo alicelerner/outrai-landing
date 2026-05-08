@@ -31,8 +31,8 @@ Untouched: Átomo + Loops sticky, snake-path scroll-driven logic in Esteiras.
 | 0 | Branch + tracker | done | 36db14a | Branch outrai-v2-content created from main |
 | 1 | Tagline + meta | done | dafb2fc | Hero, footer-tag, OG, Twitter, description meta all aligned |
 | 2 | Reorder sections | done | f60ad6b | Ponto de Partida dropped; Esteiras moved up; Marquee moved between Abordagem and Átomo+Loops; Trio moved after Átomo+Loops; orphan JS and CSS cleaned up |
-| 3 | Pilares (new) | done | this commit | Built as dark mode (mint neon headings, neon bullets), 3-col grid, asterisco extracted from logo SVG into Assets/asterisco.svg. /design-shotgun deferred — auto mode shipped sensible default; can be revisited at CP6 if Alice wants alternatives |
-| 4 | Dream Team (new) | pending | — | Asset extraction blocking — see below |
+| 3 | Pilares (new) | done | cea00e1 | Built as dark mode (mint neon headings, neon bullets), 3-col grid, asterisco extracted from logo SVG into Assets/asterisco.svg. /design-shotgun deferred — auto mode shipped sensible default; can be revisited at CP6 if Alice wants alternatives |
+| 4 | Dream Team (new) | done | this commit | Avatars extracted from pitch PDF page 16 via pdftoppm + PIL crop, mint background turned transparent. Light-mode section between Átomo+Loops (dark) and Trio (light). 5×2 grid → 3-col tablet → 2-col mobile. |
 | 5 | Plataforma (new) | pending | — | Asset extraction blocking — see below |
 | 6 | Cross-section audit | pending | — | Run /design-review |
 | 7 | PR to main | pending | — | — |
@@ -52,7 +52,7 @@ Source: `html intro outrai*/` (Keynote export — each slide is a vector PDF in 
 
 | Asset | Source slide | Status | Pipeline |
 |---|---|---|---|
-| 10 dream team avatars (Newton, Jeremias, Carol, Nando, Laurinha, Jefferson, Thiago, Azamba, Livia, Danilo) | Slide ~16 (Dream team) | not extracted | rasterize slide PDF → crop or trace |
+| 10 dream team avatars (Newton, Jeremias, Carol, Nando, Laurinha, Jefferson, Thiago, Azamba, Livia, Danilo) | PDF page 16 | extracted to Assets/dream-team/*.png | rasterize via pdftoppm at 200dpi, crop with PIL, replace mint bg with transparency |
 | 4 platform screens (Sabatina, Workspace, Dashboard, Sessão de ampliação) | Slides ~37–45 | not extracted | rasterize slide PDF in high res |
 | Asterisco SVG | already in `Assets/logo-outrai.svg` | available | — |
 
