@@ -29,8 +29,8 @@ Untouched: Átomo + Loops sticky, snake-path scroll-driven logic in Esteiras.
 | CP | Subject | Status | Commit | Notes |
 |---|---|---|---|---|
 | 0 | Branch + tracker | done | 36db14a | Branch outrai-v2-content created from main |
-| 1 | Tagline + meta | done | this commit | Hero, footer-tag, OG, Twitter, description meta all aligned |
-| 2 | Reorder sections | pending | — | — |
+| 1 | Tagline + meta | done | dafb2fc | Hero, footer-tag, OG, Twitter, description meta all aligned |
+| 2 | Reorder sections | done | this commit | Ponto de Partida dropped; Esteiras moved up; Marquee moved between Abordagem and Átomo+Loops; Trio moved after Átomo+Loops; orphan JS and CSS cleaned up |
 | 3 | Pilares (new) | pending | — | Run /design-shotgun first |
 | 4 | Dream Team (new) | pending | — | Asset extraction blocking — see below |
 | 5 | Plataforma (new) | pending | — | Asset extraction blocking — see below |
@@ -79,3 +79,4 @@ None active. Asset extraction will be tackled at the start of CP4 and CP5.
 
 - Marquee final position — currently proposed between Abordagem and Átomo + Loops. Confirm with Alice on visual review at CP6.
 - Modes adjacency — Pilares (CP3) decision (light or dark) depends on rhythm; will be validated against design-shotgun output and DESIGN.md alternation rule.
+- Hero (light) and Esteiras (light) are now adjacent, violating the alternation rule. Visually may work because Hero is `position: fixed` and Esteiras slides over it via sticky-scroll, but flagged for design-review at CP6 (option to add a dark divider band, swap Esteiras to dark, or accept).
