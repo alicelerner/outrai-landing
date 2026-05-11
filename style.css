@@ -516,8 +516,12 @@ nav {
   z-index: 1;
 }
 .pilares-inner {
-  max-width: var(--section-max);
+  max-width: 1440px;
   margin: 0 auto;
+  padding: clamp(28px, 4vw, 56px);
+  background: rgba(255,255,255,0.03);
+  outline: 1px solid rgba(255,255,255,0.1);
+  border-radius: 32px;
 }
 .pilares-grid {
   display: grid;
