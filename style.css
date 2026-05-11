@@ -427,13 +427,11 @@ nav {
   display: inline;
   color: #6a6a6a;
   -webkit-text-fill-color: #6a6a6a;
-  opacity: 0.7;
-  transition: opacity 0.25s ease;
+  transition: color 0.25s ease, -webkit-text-fill-color 0.25s ease;
 }
 .w.revealed {
   color: transparent;
   -webkit-text-fill-color: transparent;
-  opacity: 1;
 }
 .esteiras-infographic {
   position: absolute;

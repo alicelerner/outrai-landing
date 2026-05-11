@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
 
 </head>
 <body>
@@ -855,20 +855,7 @@
     const snakePath      = esteirasSec ? esteirasSec.querySelector('.snake-path') : null;
     let snakeLen = 0;
     let nodeThresholds = [];
-    // Strict sequential reveal. Each ball waits for the previous; an agent (orange)
-    // gates the next ball until its arrow completes one full clockwise rotation.
     const agentIdxs = [5, 10, 17];
-    const ARROW_FADE_IN = 300;
-    const ARROW_SPIN = 1200;
-    const agentRevealedAt = {};
-    let postArrowTimer = null;
-    function schedulePostArrowTick(delay) {
-      if (postArrowTimer) clearTimeout(postArrowTimer);
-      postArrowTimer = setTimeout(() => {
-        postArrowTimer = null;
-        updateEsteiras();
-      }, Math.max(16, delay));
-    }
 
     if (snakePath) {
       snakeLen = snakePath.getTotalLength();
@@ -901,18 +888,10 @@
         snakePath.style.strokeDashoffset = snakeLen * (1 - progress);
       }
 
-      const now = performance.now();
       let cursor = 0;
-      let nextEnableAt = -Infinity;
-
       for (let i = 0; i < esteirasNodes.length; i++) {
         if (progress < nodeThresholds[i]) break;
-        if (now < nextEnableAt) break;
         cursor = i + 1;
-        if (agentIdxs.includes(i)) {
-          if (!agentRevealedAt[i]) agentRevealedAt[i] = now;
-          nextEnableAt = agentRevealedAt[i] + ARROW_FADE_IN + ARROW_SPIN;
-        }
       }
 
       esteirasNodes.forEach((node, i) => {
@@ -921,16 +900,9 @@
           if (agentIdxs.includes(i)) node.classList.add('active');
         } else {
           node.style.opacity = 0;
-          if (agentIdxs.includes(i)) {
-            node.classList.remove('active');
-            delete agentRevealedAt[i];
-          }
+          if (agentIdxs.includes(i)) node.classList.remove('active');
         }
       });
-
-      if (cursor < esteirasNodes.length && progress >= nodeThresholds[cursor] && now < nextEnableAt) {
-        schedulePostArrowTick(nextEnableAt - now);
-      }
     }
 
     window.addEventListener('scroll', updateEsteiras, { passive: true });
