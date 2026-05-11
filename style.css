@@ -591,6 +591,15 @@ nav {
     gap: 40px;
   }
 }
+/* Pilares — amplified reveal (bigger offset, longer transition, wider stagger) */
+.pilar.reveal {
+  transform: translateY(56px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pilar.reveal.visible { transform: none; }
+.pilar.reveal.d1 { transition-delay: 0.18s; }
+.pilar.reveal.d2 { transition-delay: 0.36s; }
 
 /* ─── DREAM TEAM ──────────────────────────────────────────── */
 .dream-team-section {
