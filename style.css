@@ -1724,6 +1724,12 @@ nav {
   background: rgba(77,245,160,0.06);
   color: var(--neon);
 }
+.widget-toggle svg {
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.widget-body.fadein ~ .widget-toggle svg {
+  transform: rotate(45deg);
+}
 
 /* ─── Responsive — mobile overrides (after base rules) ──── */
 @media(max-width:720px){
