@@ -693,6 +693,8 @@ nav {
 
 /* ─── PLATAFORMA ──────────────────────────────────────────── */
 .plataforma-section {
+  --plataforma-pin-top: clamp(40px, 8vh, 96px);
+  --plataforma-tab-pad: 24px;
   background: var(--dark);
   color: var(--offwhite);
   padding: var(--section-py) var(--section-px) 0;
@@ -719,7 +721,7 @@ nav {
 }
 .plataforma-pin {
   position: sticky;
-  top: clamp(40px, 8vh, 96px);
+  top: var(--plataforma-pin-top);
   padding-bottom: clamp(40px, 6vh, 64px);
 }
 .plataforma-pin-inner {
@@ -742,13 +744,13 @@ nav {
   cursor: pointer;
   display: block;
   width: 100%;
-  padding: 18px 0;
+  padding: var(--plataforma-tab-pad) 0;
   box-sizing: border-box;
 }
 .plataforma-tab-label {
   display: block;
   font-family: var(--sans);
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 500;
   color: rgba(255,255,255,0.4);
   line-height: 1.15;
@@ -778,11 +780,16 @@ nav {
 .plataforma-previews { display: flex; flex-direction: column; }
 .plataforma-preview {
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  /* matches the button's padding-top inside the pin, so video natural position
+     and label natural position share the same offset from grid top */
+  padding-top: var(--plataforma-tab-pad);
 }
+/* Video sticks at (pin-top + tab-pad), the exact same y as the active label.
+   With the cell padding above, video and label dock at the same scroll threshold,
+   so they stay aligned both during entry and after docking. */
 .plataforma-preview video {
+  position: sticky;
+  top: calc(var(--plataforma-pin-top) + var(--plataforma-tab-pad));
   width: calc(100% + clamp(60px, 10vw, 180px));
   max-width: none;
   max-height: 88vh;
