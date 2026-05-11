@@ -18,6 +18,9 @@
 .gstack/
 .vercel
 
+# Claude Code (worktrees temporários de agentes)
+.claude/worktrees/
+
 # Pitch reference material (not committed — reference only)
 intro outracoisa* outrai*.pdf
 html intro outrai*/

@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=8">
 
 </head>
 <body>
@@ -439,50 +439,57 @@
 
   <!-- ─── PLATAFORMA ─────────────────────────────────────────── -->
   <section class="plataforma-section" id="plataforma">
-    <div class="plataforma-inner">
-      <header class="plataforma-header">
-        <span class="plataforma-eyebrow reveal">PLATAFORMA</span>
-        <h2 class="plataforma-title reveal d1">Onde a esteira ag&ecirc;ntica vira pr&aacute;tica.</h2>
-        <p class="plataforma-lede reveal d2">A plataforma centraliza o setup, a execu&ccedil;&atilde;o e a observabilidade dos processos &mdash; e oferece sess&otilde;es de ampliac&atilde;o de vis&atilde;o sempre que o pensamento humano precisa de mais lentes.</p>
-      </header>
-      <div class="plataforma-stack">
-        <article class="plataforma-card reveal">
-          <div class="plataforma-card-text">
-            <span class="plataforma-card-label">01 &middot; SETUP</span>
-            <p class="plataforma-card-body">Os agentes questionam o usu&aacute;rio para um briefing estruturado e user-centric &mdash; antes de qualquer execu&ccedil;&atilde;o.</p>
-          </div>
-          <figure class="plataforma-card-visual">
-            <img src="Assets/plataforma/sabatina.png" alt="Sabatina de context engineering: agentes questionam o usu&aacute;rio em um briefing estruturado">
-          </figure>
-        </article>
-        <article class="plataforma-card reveal">
-          <div class="plataforma-card-text">
-            <span class="plataforma-card-label">02 &middot; SETUP</span>
-            <p class="plataforma-card-body">A plataforma automatiza cronograma, canais, biblioteca e dashboard com base na sabatina e na abordagem definida.</p>
-          </div>
-          <figure class="plataforma-card-visual">
-            <img src="Assets/plataforma/workspace.png" alt="Montagem autom&aacute;tica do workspace do projeto">
-          </figure>
-        </article>
-        <article class="plataforma-card reveal">
-          <div class="plataforma-card-text">
-            <span class="plataforma-card-label">03 &middot; DASHBOARD</span>
-            <p class="plataforma-card-body">Centraliza tarefas ag&ecirc;nticas, inputs e avalia&ccedil;&otilde;es humanas em um s&oacute; lugar &mdash; e oferece funcionalidades de amplia&ccedil;&atilde;o da vis&atilde;o do usu&aacute;rio.</p>
-          </div>
-          <figure class="plataforma-card-visual">
-            <img src="Assets/plataforma/dashboard.png" alt="Dashboard que organiza vis&atilde;o e execu&ccedil;&atilde;o do projeto">
-          </figure>
-        </article>
-        <article class="plataforma-card reveal">
-          <div class="plataforma-card-text">
-            <span class="plataforma-card-label">04 &middot; VIS&Atilde;O</span>
-            <p class="plataforma-card-body">Convoque agentes, ou&ccedil;a a quest&atilde;o sob m&uacute;ltiplas perspectivas e articule seu takeaway &mdash; que entra como contexto para os pr&oacute;ximos passos.</p>
-          </div>
-          <figure class="plataforma-card-visual">
-            <img src="Assets/plataforma/visao.png" alt="Sess&atilde;o de amplia&ccedil;&atilde;o de vis&atilde;o com debate multiagente">
-          </figure>
-        </article>
+    <div class="plataforma-container">
+    <header class="plataforma-header">
+      <h2 class="plataforma-header-title">Onde a esteira ag&ecirc;ntica vira <em>pr&aacute;tica</em>.</h2>
+      <p class="plataforma-header-lede">A plataforma centraliza o setup, a execu&ccedil;&atilde;o e a observabilidade dos processos &mdash; e oferece sess&otilde;es de amplia&ccedil;&atilde;o de vis&atilde;o sempre que o pensamento humano precisa de mais lentes.</p>
+    </header>
+    <div class="plataforma-grid">
+      <div class="plataforma-pin">
+        <div class="plataforma-pin-inner">
+          <ol class="plataforma-tabs" role="tablist" aria-label="Funcionalidades da plataforma">
+            <li class="plataforma-tab is-active" data-target="multiprojeto">
+              <button type="button" role="tab" aria-selected="true" aria-controls="multiprojeto">
+                <span class="plataforma-tab-label">Multiprojeto</span>
+                <p class="plataforma-tab-desc">Acompanhe m&uacute;ltiplos projetos ag&ecirc;nticos lado a lado em um workspace unificado.</p>
+              </button>
+            </li>
+            <li class="plataforma-tab" data-target="sabatina">
+              <button type="button" role="tab" aria-selected="false" aria-controls="sabatina">
+                <span class="plataforma-tab-label">Sabatina de contexto</span>
+                <p class="plataforma-tab-desc">Os agentes questionam voc&ecirc; para um briefing estruturado e user-centric &mdash; antes de qualquer execu&ccedil;&atilde;o.</p>
+              </button>
+            </li>
+            <li class="plataforma-tab" data-target="setup">
+              <button type="button" role="tab" aria-selected="false" aria-controls="setup">
+                <span class="plataforma-tab-label">Setup autom&aacute;tico</span>
+                <p class="plataforma-tab-desc">A plataforma monta cronograma, canais, biblioteca e dashboard com base na sabatina.</p>
+              </button>
+            </li>
+            <li class="plataforma-tab" data-target="visao">
+              <button type="button" role="tab" aria-selected="false" aria-controls="visao">
+                <span class="plataforma-tab-label">Vis&atilde;o ampliada</span>
+                <p class="plataforma-tab-desc">Convoque agentes, ou&ccedil;a a quest&atilde;o sob m&uacute;ltiplas perspectivas e articule seu takeaway.</p>
+              </button>
+            </li>
+          </ol>
+        </div>
       </div>
+      <div class="plataforma-previews">
+        <div class="plataforma-preview" id="multiprojeto">
+          <video src="Assets/plataforma/dashboard.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="plataforma-preview" id="sabatina">
+          <video src="Assets/plataforma/sabatina.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="plataforma-preview" id="setup">
+          <video src="Assets/plataforma/workspace.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="plataforma-preview" id="visao">
+          <video src="Assets/plataforma/visao.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        </div>
+      </div>
+    </div>
     </div>
   </section>
 
@@ -939,6 +946,40 @@
         btn.textContent = 'Enviar';
       }
     });
+  </script>
+
+  <!-- ─── PLATAFORMA — scroll-driven tab sync ────────────────── -->
+  <script>
+    (() => {
+      const previews = document.querySelectorAll('.plataforma-preview');
+      const tabs = document.querySelectorAll('.plataforma-tab');
+      if (!previews.length || !tabs.length) return;
+
+      const tabsByTarget = new Map([...tabs].map(t => [t.dataset.target, t]));
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const tab = tabsByTarget.get(entry.target.id);
+          if (!tab) return;
+          tabs.forEach(t => {
+            const active = t === tab;
+            t.classList.toggle('is-active', active);
+            const btn = t.querySelector('[role="tab"]');
+            if (btn) btn.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+        });
+      }, { rootMargin: '-50% 0px -50% 0px', threshold: 0 });
+
+      previews.forEach(p => io.observe(p));
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = document.getElementById(tab.dataset.target);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    })();
   </script>
 </body>
 </html>
