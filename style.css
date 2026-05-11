@@ -784,16 +784,14 @@ nav {
 .plataforma-previews { display: flex; flex-direction: column; }
 .plataforma-preview {
   height: 100vh;
-  /* matches the button's padding-top inside the pin, so video natural position
-     and label natural position share the same offset from grid top */
-  padding-top: var(--plataforma-tab-pad);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* top-padding matches pin docking + tab button padding, so the video's top
+     edge lines up with the active tab's label top */
+  padding-top: calc(var(--plataforma-pin-top) + var(--plataforma-tab-pad));
 }
-/* Video sticks at (pin-top + tab-pad), the exact same y as the active label.
-   With the cell padding above, video and label dock at the same scroll threshold,
-   so they stay aligned both during entry and after docking. */
 .plataforma-preview video {
-  position: sticky;
-  top: calc(var(--plataforma-pin-top) + var(--plataforma-tab-pad));
   width: calc(100% + clamp(60px, 10vw, 180px));
   max-width: none;
   max-height: 88vh;
