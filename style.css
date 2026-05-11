@@ -734,19 +734,16 @@ nav {
   display: flex;
   flex-direction: column;
 }
-.plataforma-tab { border-top: 1px solid rgba(255,255,255,0.14); }
-.plataforma-tab:last-child { border-bottom: 1px solid rgba(255,255,255,0.14); }
+.plataforma-tab { border-top: 1px solid rgba(255,255,255,0.07); }
+.plataforma-tab:first-child { border-top: none; }
+.plataforma-tab:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
 .plataforma-tab button {
   all: unset;
   cursor: pointer;
   display: block;
   width: 100%;
-  padding: 28px 0;
+  padding: 18px 0;
   box-sizing: border-box;
-  transition: padding-bottom 0.5s cubic-bezier(0.16,1,0.3,1);
-}
-.plataforma-tab.is-active button {
-  padding-bottom: 32px;
 }
 .plataforma-tab-label {
   display: block;
