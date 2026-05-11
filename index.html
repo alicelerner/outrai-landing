@@ -590,12 +590,6 @@
     </div>
   </footer>
 
-  <!-- ─── CONFIRMAÇÃO OVERLAY ───────────────────────────────── -->
-  <div class="confirm-overlay" id="confirmOverlay" aria-hidden="true">
-    <h2 class="confirm-heading">Até já.</h2>
-    <p class="confirm-body">Entraremos em contato com<br>mais notícias em breve.</p>
-  </div>
-
   <!-- ─── WIDGET ─────────────────────────────────────────────── -->
   <div class="widget-anchor">
     <div class="widget-pill" id="widgetPill">
@@ -609,7 +603,10 @@
             <button class="widget-submit" type="submit">Enviar</button>
           </div>
         </form>
-        <p class="widget-success" id="widgetSuccess">Recebemos! Logo mais falamos.</p>
+        <div class="widget-success" id="widgetSuccess" aria-hidden="true">
+          <h2 class="widget-success-heading">Até já.</h2>
+          <p class="widget-success-body">Entraremos em contato com<br>mais notícias em breve.</p>
+        </div>
         <p class="widget-error" id="widgetError">Algo deu errado. Tente novamente ou escreva para <a href="mailto:vamos@outracoisa.co">vamos@outracoisa.co</a>.</p>
       </div>
       <div class="widget-trigger" id="widgetTrigger">
@@ -793,7 +790,6 @@
       const body    = document.getElementById('widgetBody');
       const form    = document.getElementById('widgetForm');
       const success = document.getElementById('widgetSuccess');
-      const confirmOverlay = document.getElementById('confirmOverlay');
 
       // 1. Measure closed dimensions from the trigger's natural size
       const closedW = trigger.offsetWidth;
@@ -863,16 +859,17 @@
           });
           if (!res.ok) throw new Error('request_failed');
 
-          close();
-          confirmOverlay.removeAttribute('aria-hidden');
-          confirmOverlay.classList.add('visible');
+          body.classList.add('success-state');
+          success.classList.add('visible');
+          success.removeAttribute('aria-hidden');
           setTimeout(() => {
-            confirmOverlay.classList.remove('visible');
+            close();
             setTimeout(() => {
-              confirmOverlay.setAttribute('aria-hidden', 'true');
-              form.style.display = '';
+              body.classList.remove('success-state');
+              success.classList.remove('visible');
+              success.setAttribute('aria-hidden', 'true');
               form.reset();
-            }, 400);
+            }, 500);
           }, 3500);
         } catch (_) {
           errorEl.style.display = 'block';
