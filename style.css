@@ -277,21 +277,40 @@ nav {
 /* ─── PONTO DE PARTIDA ───────────────────────────────────── */
 .partida-layout {
   display: grid;
-  grid-template-columns: 2fr 3fr;
-  gap: 0;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(16px, 1.5vw, 24px);
+  align-items: start;
+  padding-bottom: clamp(32px, 5vh, 56px);
+  border-bottom: 1px solid rgba(244,244,238,0.12);
 }
-@media(max-width:720px) {
-  .partida-layout { grid-template-columns: 1fr; }
-  .partida-spacer  { display: none; }
-  .sec.loose { padding-block: 64px; }
-}
-
-.partida-content .sec-title {
+.partida-layout > .sec-title,
+.partida-layout > .dream-team-title {
+  grid-column: 1 / span 3;
   font-family: var(--serif);
   font-optical-sizing: auto;
-  font-size: 64px;
+  font-size: clamp(40px, 5vw, 64px);
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.1;
+  letter-spacing: 0;
+  margin-bottom: 0;
+}
+.partida-layout > .problema-text,
+.partida-layout > .dream-team-lede {
+  grid-column: 4 / span 2;
+}
+@media(max-width:720px) {
+  .partida-layout {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding-bottom: clamp(24px, 4vh, 40px);
+  }
+  .partida-layout > .sec-title,
+  .partida-layout > .dream-team-title,
+  .partida-layout > .problema-text,
+  .partida-layout > .dream-team-lede {
+    grid-column: 1;
+  }
+  .sec.loose { padding-block: 64px; }
 }
 
 .problema-text {
@@ -585,35 +604,20 @@ nav {
   margin: 0 auto;
 }
 .dream-team-header {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  max-width: 880px;
   margin-bottom: clamp(56px, 8vh, 96px);
 }
-.dream-team-eyebrow {
-  font-family: var(--sans);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.55em;
-  text-transform: uppercase;
-  color: rgba(10,10,10,0.55);
+.dream-team-header.partida-layout {
+  border-bottom-color: rgba(10,10,10,0.18);
 }
 .dream-team-title {
-  font-family: var(--sans);
-  font-size: clamp(48px, 8vw, 96px);
-  font-weight: 900;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
   color: #0A0A0A;
 }
 .dream-team-lede {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(18px, 1.6vw, 24px);
-  line-height: 1.4;
-  color: rgba(10,10,10,0.7);
+  font-family: var(--sans);
+  font-size: 18px;
+  line-height: 1.65;
+  font-weight: 300;
+  color: rgba(10,10,10,0.65);
   max-width: 700px;
 }
 .dream-team-grid {
@@ -633,12 +637,6 @@ nav {
   gap: 14px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
-              background 0.4s ease;
-}
-.agent-card:hover {
-  transform: translateY(-4px);
-  background: rgba(255,255,255,0.65);
 }
 .agent-role {
   font-family: var(--sans);
@@ -681,7 +679,6 @@ nav {
   .dream-team-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .dream-team-title { font-size: clamp(40px, 12vw, 56px); }
 }
 
 /* ─── PLATAFORMA ──────────────────────────────────────────── */
@@ -827,9 +824,10 @@ nav {
 .trio-section-title {
   font-family: var(--serif);
   font-optical-sizing: auto;
-  font-size: clamp(36px, 5vw, 60px);
+  font-size: clamp(40px, 5vw, 64px);
   font-weight: 400;
   line-height: 1.1;
+  letter-spacing: 0;
   color: #0A0A0A;
   max-width: 16ch;
 }
@@ -1670,7 +1668,6 @@ nav {
 
 /* ─── Responsive — mobile overrides (after base rules) ──── */
 @media(max-width:720px){
-  .partida-content .sec-title { font-size: clamp(32px, 9vw, 52px); }
   .vantagens-header .sec-title { font-size: clamp(36px, 10vw, 52px); }
 }
 
