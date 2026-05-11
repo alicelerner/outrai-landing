@@ -590,28 +590,6 @@
     </div>
   </footer>
 
-  <!-- ─── MODAL ─────────────────────────────────────────────── -->
-  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="mTitle">
-    <div class="modal">
-      <button class="modal-x" onclick="closeModal()" aria-label="Fechar">&times;</button>
-      <h3 class="modal-title" id="mTitle">Quero saber mais</h3>
-      <p class="modal-desc">Deixa seu nome e email e a gente entra em contato para conversar.</p>
-      <form id="form" novalidate>
-        <div class="field">
-          <label for="fname">Nome</label>
-          <input type="text" id="fname" name="name" placeholder="Seu nome" required autocomplete="name">
-        </div>
-        <div class="field">
-          <label for="femail">Email</label>
-          <input type="email" id="femail" name="email" placeholder="seu@email.com" required autocomplete="email">
-        </div>
-        <button type="submit" class="form-send" id="sendBtn">Enviar</button>
-      </form>
-      <div class="feedback ok"  id="fbOk">Recebemos! A equipe da outracoisa* vai entrar em contato em breve.</div>
-      <div class="feedback err" id="fbErr">Algo deu errado. Tente novamente ou mande um email para <a href="mailto:vamos@outracoisa.co" style="color:inherit;text-decoration:underline">vamos@outracoisa.co</a>.</div>
-    </div>
-  </div>
-
   <!-- ─── CONFIRMAÇÃO OVERLAY ───────────────────────────────── -->
   <div class="confirm-overlay" id="confirmOverlay" aria-hidden="true">
     <h2 class="confirm-heading">Até já.</h2>
@@ -632,6 +610,7 @@
           </div>
         </form>
         <p class="widget-success" id="widgetSuccess">Recebemos! Logo mais falamos.</p>
+        <p class="widget-error" id="widgetError">Algo deu errado. Tente novamente ou escreva para <a href="mailto:vamos@outracoisa.co">vamos@outracoisa.co</a>.</p>
       </div>
       <div class="widget-trigger" id="widgetTrigger">
         <span class="widget-label">Comece sua <em class="widget-label-serif">transformação</em></span>
@@ -800,22 +779,9 @@
       cards.forEach(c => trioObs.observe(c));
     })();
 
-    /* ── Modal ──────────────────────────────────────────────── */
-    function openModal()  {
-      document.getElementById('overlay').classList.add('open');
-      document.body.style.overflow = 'hidden';
-      setTimeout(() => document.getElementById('fname').focus(), 100);
-    }
-    function closeModal() {
-      document.getElementById('overlay').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-    document.getElementById('overlay').addEventListener('click', e => {
-      if (e.target === e.currentTarget) closeModal();
-    });
+    /* ── Escape closes widget ───────────────────────────────── */
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
-        closeModal();
         document.getElementById('widgetPill').classList.remove('open');
       }
     });
@@ -874,20 +840,46 @@
       pill.addEventListener('click',   () => { if (!isOpen) open(); });
       toggle.addEventListener('click', e  => { e.stopPropagation(); isOpen ? close() : open(); });
 
-      form.addEventListener('submit', e => {
+      const errorEl = document.getElementById('widgetError');
+      const submitBtn = form.querySelector('.widget-submit');
+
+      form.addEventListener('submit', async e => {
         e.preventDefault();
-        if (!form.nome.value.trim() || !form.email.value.trim()) return;
-        close();
-        confirmOverlay.removeAttribute('aria-hidden');
-        confirmOverlay.classList.add('visible');
-        setTimeout(() => {
-          confirmOverlay.classList.remove('visible');
+        const nome    = form.nome.value.trim();
+        const empresa = form.empresa.value.trim();
+        const email   = form.email.value.trim();
+        if (!nome || !email) return;
+
+        errorEl.style.display = '';
+        submitBtn.disabled = true;
+        const originalLabel = submitBtn.textContent;
+        submitBtn.textContent = 'Enviando…';
+
+        try {
+          const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ nome, empresa, email })
+          });
+          if (!res.ok) throw new Error('request_failed');
+
+          close();
+          confirmOverlay.removeAttribute('aria-hidden');
+          confirmOverlay.classList.add('visible');
           setTimeout(() => {
-            confirmOverlay.setAttribute('aria-hidden', 'true');
-            form.style.display = '';
-            form.reset();
-          }, 400);
-        }, 3500);
+            confirmOverlay.classList.remove('visible');
+            setTimeout(() => {
+              confirmOverlay.setAttribute('aria-hidden', 'true');
+              form.style.display = '';
+              form.reset();
+            }, 400);
+          }, 3500);
+        } catch (_) {
+          errorEl.style.display = 'block';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        }
       });
     })();
 
@@ -905,48 +897,6 @@
       rows.forEach(r => vio.observe(r));
     })();
 
-    /* ── Form submit ────────────────────────────────────────── */
-    document.getElementById('form').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const name  = document.getElementById('fname').value.trim();
-      const email = document.getElementById('femail').value.trim();
-      if (!name || !email) return;
-
-      const btn = document.getElementById('sendBtn');
-      const ok  = document.getElementById('fbOk');
-      const err = document.getElementById('fbErr');
-      btn.disabled = true;
-      btn.textContent = 'Enviando…';
-      ok.style.display = err.style.display = 'none';
-
-      try {
-        /*
-         * TROCAR: substitua pela URL do seu formulário no Formspree.
-         * 1. Crie conta em https://formspree.io (grátis)
-         * 2. Crie um formulário e copie o endpoint
-         * 3. Cole no lugar de 'FORMSPREE_ENDPOINT_AQUI'
-         */
-        const ENDPOINT = 'FORMSPREE_ENDPOINT_AQUI';
-        if (ENDPOINT === 'FORMSPREE_ENDPOINT_AQUI') throw new Error('not_configured');
-
-        const res = await fetch(ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ name, email })
-        });
-
-        if (res.ok) {
-          this.style.display = 'none';
-          ok.style.display = 'block';
-        } else {
-          throw new Error('server');
-        }
-      } catch(_) {
-        err.style.display = 'block';
-        btn.disabled = false;
-        btn.textContent = 'Enviar';
-      }
-    });
   </script>
 
   <!-- ─── PLATAFORMA — scroll-driven tab sync ────────────────── -->

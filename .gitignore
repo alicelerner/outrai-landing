@@ -18,6 +18,13 @@
 .gstack/
 .vercel
 
+# Env vars (Notion token etc.)
+.env
+.env.*
+
+# Node
+node_modules/
+
 # Claude Code (worktrees temporários de agentes)
 .claude/worktrees/
 
