@@ -337,6 +337,18 @@ Quando fotografia aparecer (depoimentos, pessoas), avatares recortados em círcu
 
 **`diagram`** — Diagrama vetorial (átomo H-M-H, loops de processo). Elipses em `{colors.forest}`, labels H/M/H em `{colors.cream-label}`, texto de conexão em `{colors.body-dark}` ou `{colors.ink}` conforme o modo. Sem ornamento extra.
 
+### Pilares
+
+**`pilares-grid`** — Bloco de três frentes de valor (amplificação, aceleração, redução de riscos). Modo sombra, grid de 3 colunas em desktop (1 coluna em mobile). Cada coluna tem hairline superior em `rgba(77,245,160,0.18)`, asterisco SVG (`Assets/asterisco.svg`) em `{colors.heading-dark}` (mint neon), título em Public Sans Black (display-sm), subhead em Fraunces itálico, e bullets com bullet-point neon. Eyebrow "TRÊS FRENTES" segue `{typography.label}`. Título da seção em `{colors.heading-dark}`.
+
+### Dream Team
+
+**`dream-team-grid`** — Galeria dos 10 agentes nomeados que compõem a esteira agêntica. Modo luz com gradiente vertical mint → lime. Grid 5×2 em desktop, 3 colunas em tablet, 2 colunas em mobile. Cada `agent-card` tem fundo `rgba(255,255,255,0.45)` com `backdrop-filter: blur(8px)` e hairline `rgba(10,10,10,0.08)`. Estrutura interna: função (eyebrow Public Sans 13–14px, peso 600), avatar PNG transparente em silhueta dark, nome em uppercase tracking 0.2em. Avatares vivem em `Assets/dream-team/<nome>.png`. Hover lifta o card 4px e clareia o fundo para `rgba(255,255,255,0.65)`.
+
+### Plataforma
+
+**`plataforma-stack`** — Showcase em coluna única com 4 cards alternando lado de imagem (zigue-zague). Modo sombra profundo, com cabeçalho em mint neon e cards onde cada visual da plataforma fica em uma figura com `border-radius: 14px`, `box-shadow: 0 24px 64px rgba(0,0,0,0.45)` e hairline interna `rgba(77,245,160,0.10)`. Cada card tem label de etapa em laranja âmbar (`{colors.amber}`) com tracking 0.32em (sinal humano), título em Public Sans Black, body em Public Sans regular. Hover dá `scale(1.02)` na imagem. Mobile: tudo colapsa para 1 coluna. Imagens em `Assets/plataforma/<nome>.png` (slides do pitch renderizados em 2000px de largura).
+
 ### Footer
 
 **`footer`** — Sempre no modo sombra, fecha qualquer sequência de seções. Background `{colors.dark}`, texto `{colors.body-dark}`. Padding `{spacing.xxl}` vertical, `{spacing.inline}` lateral. O logotipo OUTRAI* e os links de navegação secundários ficam aqui.
