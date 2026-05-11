@@ -597,7 +597,7 @@ nav {
 @media (max-width: 900px) {
   .pilares-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 72px;
   }
 }
 /* Pilares — amplified reveal (bigger offset, longer transition, wider stagger) */
@@ -1013,8 +1013,8 @@ nav {
   .trio-text { max-width: 100%; }
   .trio-num { margin-bottom: 16px; }
   .trio-section-title { font-size: 38px; }
-  .trio-title { font-size: 22px; }
-  .trio-body { font-size: 15px; }
+  .trio-title { font-size: 28px; }
+  .trio-body { font-size: 17px; }
 }
 
 /* ─── Split sections ─────────────────────────────────────── */
@@ -1378,11 +1378,16 @@ nav {
     padding-bottom: 24px;
   }
   .vantagem-row {
-    grid-template-columns: 80px 1fr;
-    grid-template-rows: auto auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 16px;
+    align-items: start;
   }
+  .vantagem-ghost { font-size: 56px; }
+  .vantagem-heading { font-size: 24px; }
+  .vantagem-body { font-size: 17px; }
   .vantagem-label {
-    grid-column: 2;
+    grid-column: 1;
     text-align: left;
     padding-left: 0;
     margin-top: 4px;
@@ -1646,9 +1651,10 @@ nav {
   .widget-body { padding: 32px 16px 24px; }
   .widget-title { font-size: 28px; margin-bottom: 20px; }
   .widget-label { font-size: 14px; }
+  .widget-input { font-size: 17px; padding: 18px 0; }
 
   /* Footer */
-  .footer { height: 65vh; padding-bottom: 150px; }
+  .footer { height: auto; min-height: 90vh; padding-bottom: 150px; }
   .footer-robots { height: 185px; object-fit: cover; object-position: center center; }
   .footer-logo { width: 220px; margin-bottom: 28px; }
   .footer-tag { font-size: 19px; line-height: 1.4; }
