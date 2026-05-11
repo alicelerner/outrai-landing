@@ -755,23 +755,21 @@ nav {
   transition: color 0.4s ease;
 }
 .plataforma-tab-desc {
-  display: grid;
-  grid-template-rows: 0fr;
+  max-height: 0;
   overflow: hidden;
   margin: 0;
   font-family: var(--sans);
   font-size: 20px;
   line-height: 1.5;
   color: rgba(255,255,255,0.6);
-  transition: grid-template-rows 0.5s cubic-bezier(0.16,1,0.3,1),
+  opacity: 0;
+  transition: max-height 0.5s cubic-bezier(0.16,1,0.3,1),
               margin-top 0.5s cubic-bezier(0.16,1,0.3,1),
               opacity 0.4s ease;
-  opacity: 0;
 }
-.plataforma-tab-desc > * { min-height: 0; }
 .plataforma-tab.is-active .plataforma-tab-label { color: #fff; }
 .plataforma-tab.is-active .plataforma-tab-desc {
-  grid-template-rows: 1fr;
+  max-height: 240px;
   margin-top: 10px;
   opacity: 1;
 }
