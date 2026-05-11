@@ -695,51 +695,19 @@ nav {
 .plataforma-section {
   background: var(--dark);
   color: var(--offwhite);
-  padding: var(--section-py) 0 0 0; /* no horizontal padding — container handles left, right bleeds */
+  padding: var(--section-py) var(--section-px) 0;
   position: relative;
   z-index: 1;
-  overflow-x: clip; /* clip right-bleeding videos without breaking sticky */
+  overflow-x: clip;
+  overflow-clip-margin: var(--section-px); /* let videos bleed past padding-box to border-box (viewport edge) */
 }
 .plataforma-container {
   max-width: var(--section-max);
   margin: 0 auto;
-  padding-left: var(--section-px);
-  /* no padding-right: allows videos to bleed past the container's right edge */
 }
 
-/* Header (scrolls normally with the page) */
-.plataforma-header {
-  display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: clamp(40px, 6vw, 96px);
-  padding-right: var(--section-px);
-  padding-bottom: clamp(40px, 5vh, 64px);
-  border-bottom: 1px solid rgba(255,255,255,0.18);
-  align-items: end;
-}
-.plataforma-header-title {
-  font-family: var(--serif);
-  font-optical-sizing: auto;
-  font-size: clamp(36px, 5vw, 60px);
-  font-weight: 400;
-  line-height: 1.1;
-  color: var(--neon);
-  margin: 0;
-  max-width: 14ch;
-}
-.plataforma-header-title em {
-  font-style: italic;
-  font-weight: 400;
-}
-.plataforma-header-lede {
-  font-family: var(--sans);
-  font-size: clamp(15px, 1.15vw, 17px);
-  line-height: 1.5;
-  color: rgba(255,255,255,0.55);
-  max-width: 42ch;
-  margin: 0;
-  align-self: end;
-}
+/* Header uses the standard .partida-layout (5-col grid, divider, serif title)
+   shared with abordagem + dream team. No section-specific overrides needed. */
 
 /* Two-column grid below the header — left column sticks, right scrolls */
 .plataforma-grid {
